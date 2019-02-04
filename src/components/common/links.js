@@ -5,6 +5,11 @@ import Tooltip from '@material-ui/core/Tooltip'
 import IconButton from '@material-ui/core/IconButton'
 import GhIcon from './icons/GitHub'
 
+const styles = () => ({
+  icon: { color: "inherit" }
+})
+
+
 export const IconLink = ({children, href, newTab, tooltip, ...other}) => (
   <Tooltip title={tooltip}>
     <IconButton {...other} component="a" target={newTab && "_blank"} href={href}>
@@ -14,7 +19,7 @@ export const IconLink = ({children, href, newTab, tooltip, ...other}) => (
 )
 
 IconLink.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
   href: PropTypes.string,
   newTab: PropTypes.bool,
   tooltip: PropTypes.string
@@ -27,7 +32,7 @@ export const GitHubLink = ({icon: Icon, repo, IconProps, ...other}) => (
 )
 
 GitHubLink.propTypes = {
-  icon: PropTypes.element,
+  icon: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
   repo: PropTypes.string.isRequired,
   IconProps: PropTypes.object
 }
