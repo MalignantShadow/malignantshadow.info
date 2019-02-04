@@ -5,12 +5,17 @@ import ReactDOM from 'react-dom';
 import { withStyles, createMuiTheme } from "@material-ui/core/styles"
 import BookIcon from '@material-ui/icons/Book'
 
-import AppWrapper from './components/common/AppWrapper'
-import AppBar from './components/common/AppBar'
 import { GitHubLink } from './components/common/links'
 
-const theme = createMuiTheme({
+import { indigo, purple } from '@material-ui/core/colors'
 
+import App from './components/common/App'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: indigo,
+    secondary: purple
+  }
 })
 
 const styles = () => ({
@@ -19,28 +24,30 @@ const styles = () => ({
   }
 })
 
-const App = withStyles(styles)(({classes}) => (
-  <AppWrapper theme={theme}>
-    <AppBar
-      title={"Title"}
-      buttons={[
-        <GitHubLink
-          key="ghUser"
-          className={classes.barIcon}
-          repo="MalignantShadow"
-          tooltip="My GitHub"
-        />,
-        <GitHubLink
-          key="siteRepo"
-          className={classes.barIcon}
-          repo={"MalignantShadow/malignantshadow.info"}
-          icon={BookIcon}
-          tooltip="Website source"
-        />
-      ]}
-    />
-  </AppWrapper>
+
+const Portfolio = withStyles(styles)(({classes}) => (
+  <App
+    title="MalignantShadow"
+    theme={theme}
+    barButtons={[
+      <GitHubLink
+        key="ghUser"
+        className={classes.barIcon}
+        repo="MalignantShadow"
+        tooltip="My GitHub"
+      />,
+      <GitHubLink
+        key="siteRepo"
+        className={classes.barIcon}
+        repo={"MalignantShadow/malignantshadow.info"}
+        icon={BookIcon}
+        tooltip="Website source"
+      />
+    ]}
+  />
 ))
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+
+ReactDOM.render(<Portfolio />, document.getElementById('root'));
 //serviceWorker.unregister();
