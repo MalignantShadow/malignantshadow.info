@@ -9,6 +9,9 @@ import { indigo, purple } from '@material-ui/core/colors'
 import App from './components/common/App'
 import { GitHubLink } from './components/common/links'
 
+//pages
+import AboutMe from './pages/www/AboutMe'
+
 const theme = createMuiTheme({
   palette: {
     primary: indigo,
@@ -26,6 +29,7 @@ const routing = [
   {
     title: "About Me",
     path: "/",
+    component: AboutMe,
     exact: true
   }, {
     title: "Projects",
@@ -38,6 +42,7 @@ const routing = [
     ]
   }, { // 404
     path: "",
+    title: "404",
     hidden: true
   }
 ]

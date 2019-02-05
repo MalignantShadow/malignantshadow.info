@@ -11,8 +11,6 @@ import { resolve } from "../../lib/routing"
 
 const styles = theme => ({
   root: {
-    display: "flex",
-    flexDirection: "row",
     marginTop: 56,
     [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
       marginTop: 48,
@@ -24,7 +22,17 @@ const styles = theme => ({
       marginLeft: 240
     }
   },
-  content: {}
+  contentWrapper: {
+    display: "flex",
+    justifyContent: "center"
+  },
+  content: {
+    width: theme.breakpoints.values.md,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px`,
+    [theme.breakpoints.down('sm')]: {
+      width: "100%"
+    }
+  }
 })
 
 const makeRoute = ({ ...props }) => <Route {...props}/>
@@ -76,10 +84,12 @@ class App extends React.Component {
               {children}
             </AppDrawer>
             <div className={classes.root}>
-              <div>
-                <Switch>
-                  {getRoutes(children)}
-                </Switch>
+              <div className={classes.contentWrapper}>
+                <div className={classes.content}>
+                  <Switch>
+                    {getRoutes(children)}
+                  </Switch>
+                </div>
               </div>
             </div>
           </React.Fragment>
