@@ -7,7 +7,7 @@ import GhIcon from './icons/GitHub'
 
 export const IconLink = ({children, href, newTab, tooltip, ...other}) => (
   <Tooltip title={tooltip}>
-    <IconButton {...other} component="a" target={newTab && "_blank"} href={href}>
+    <IconButton {...other} component="a" target={newTab && "_blank"} rel={newTab && "noopener noreferrer"} href={href}>
       {children}
     </IconButton>
   </Tooltip>
