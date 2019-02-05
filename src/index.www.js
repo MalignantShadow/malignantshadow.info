@@ -24,6 +24,25 @@ const styles = () => ({
   }
 })
 
+const routing = [
+  {
+    title: "About Me",
+    path: "/",
+    exact: true
+  }, {
+    title: "Projects",
+    path: "/projects",
+    children: [
+      { title: "Ascension", path: "Ascension" },
+      { title: "Akensha", path: "Akensha" },
+      { title: "DeityCreative", path: "iD_Creative" },
+      { title: "ItemMail", path: "ItemMail" },
+    ]
+  }, { // 404
+    path: "",
+    hidden: true
+  }
+]
 
 const Portfolio = withStyles(styles)(({classes}) => (
   <App
@@ -44,7 +63,10 @@ const Portfolio = withStyles(styles)(({classes}) => (
         tooltip="Website source"
       />
     ]}
-  />
+    DrawerItemProps={{title: "Caleb Downs", subtitle: "aka Shad0w"}}
+  >
+    {routing}
+  </App>
 ))
 
 
