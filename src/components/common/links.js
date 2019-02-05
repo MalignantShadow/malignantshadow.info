@@ -5,11 +5,6 @@ import Tooltip from '@material-ui/core/Tooltip'
 import IconButton from '@material-ui/core/IconButton'
 import GhIcon from './icons/GitHub'
 
-const styles = () => ({
-  icon: { color: "inherit" }
-})
-
-
 export const IconLink = ({children, href, newTab, tooltip, ...other}) => (
   <Tooltip title={tooltip}>
     <IconButton {...other} component="a" target={newTab && "_blank"} href={href}>
