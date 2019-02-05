@@ -47,12 +47,14 @@ const Portfolio = withStyles(styles)(({classes}) => (
     theme={theme}
     barButtons={[
       <GitHubLink
+        newTab
         key="ghUser"
         className={classes.barIcon}
         repo="MalignantShadow"
         tooltip="My GitHub"
       />,
       <GitHubLink
+        newTab
         key="siteRepo"
         className={classes.barIcon}
         repo={"MalignantShadow/malignantshadow.info"}
