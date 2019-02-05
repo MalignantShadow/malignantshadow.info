@@ -21,12 +21,6 @@ class PlexusCanvas extends React.Component {
 
     for(let i = 0; i < dots.length; i++) {
       const dot = dots[i]
-      ctx.save()
-      ctx.fillStyle = dotColor
-      ctx.beginPath()
-      ctx.arc(dot.x, dot.y, 1.5, 0, 2 * Math.PI)
-      ctx.fill()
-      ctx.restore()
       let lines = 0
       for(let j = i + 1; j < dots.length && lines <= maxLines; j++) {
         const neighbor = dots[j]
@@ -44,6 +38,13 @@ class PlexusCanvas extends React.Component {
           lines++
         }
       }
+      
+      ctx.save()
+      ctx.fillStyle = dotColor
+      ctx.beginPath()
+      ctx.arc(dot.x, dot.y, 1.5, 0, 2 * Math.PI)
+      ctx.fill()
+      ctx.restore()
     }
   }
 
@@ -116,7 +117,7 @@ PlexusCanvas.defaultProps = {
   minDistance: 125,
   maxLines: 10,
   dotColor: "#CCC",
-  lineColor: "#999"
+  lineColor: "#777"
 }
 
 export default PlexusCanvas
