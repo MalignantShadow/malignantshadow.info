@@ -3,6 +3,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
+import Tooltip from '@material-ui/core/Tooltip'
 import ArrowDown from "@material-ui/icons/KeyboardArrowDown"
 import BookIcon from '@material-ui/icons/Book'
 
@@ -84,10 +85,12 @@ const styles = theme => ({
   }
 })
 
-const SocialLink = ({href, children, ...other}) => (
-  <a href={href} rel="noopener noreferrer" target="_blank" {...other}>
-    {children}
-  </a>
+const SocialLink = ({href, tooltip, children, ...other}) => (
+  <Tooltip title={tooltip} placement="top">
+    <a href={href} rel="noopener noreferrer" target="_blank" {...other}>
+      {children}
+    </a>
+  </Tooltip>
 )
 
 //TODO: add controls for plexus
@@ -98,7 +101,7 @@ export default withStyles(styles)(({classes}) => (
     <Hero className={classes.root}>
       <Typography className={classes.salutation} variant={"h1"}>Bonjour!</Typography>
       <Typography className={classes.intro} align="center">
-        Hello human! My name is Caleb Downs, I am a programmer/developer located in Irvine, California.
+        Hello, human! My name is Caleb Downs, I am a programmer/developer located in Irvine, California.
         I have many hobbies, but the majority of my time is spent programming or playing a video game (sometimes both).
       </Typography>
       <Typography className={classes.intro} align="center">
@@ -108,13 +111,13 @@ export default withStyles(styles)(({classes}) => (
       <div className={classes.grow}/>
       <Avatar className={classes.avatar} src="/img/me.png"/>
       <div className={classes.socialWrapper}>
-        <SocialLink href="https://www.github.com/MalignantShadow">
+        <SocialLink href="https://www.github.com/MalignantShadow" tooltip="MalignantShadow">
           <GitHub className={classes.social}/>
         </SocialLink>
-        <SocialLink href="https://www.linkedin.com/in/caleb-downs-6a94198a/">
+        <SocialLink href="https://www.linkedin.com/in/caleb-downs-6a94198a/" tooltip="LinkedIn">
           <LinkedIn className={classes.social}/>
         </SocialLink>
-        <SocialLink href="https:///wwww.github.com/MalignantShadow/malignantshadow.info">
+        <SocialLink href="https:///wwww.github.com/MalignantShadow/malignantshadow.info" tooltip="Website Source">
           <BookIcon className={classes.social}/>
         </SocialLink>
       </div>
