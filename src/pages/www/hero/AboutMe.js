@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import ArrowDown from "@material-ui/icons/KeyboardArrowDown"
+import BookIcon from '@material-ui/icons/Book'
 
 import Hero from '../../../components/common/Hero'
 import LinkedIn from '../../../components/common/icons/LinkedIn'
@@ -112,6 +113,9 @@ export default withStyles(styles)(({classes}) => (
         </SocialLink>
         <SocialLink href="https://www.linkedin.com/in/caleb-downs-6a94198a/">
           <LinkedIn className={classes.social}/>
+        </SocialLink>
+        <SocialLink href="https:///wwww.github.com/MalignantShadow/malignantshadow.info">
+          <BookIcon className={classes.social}/>
         </SocialLink>
       </div>
       <div className={classes.divider}/>
