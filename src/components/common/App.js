@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 
@@ -69,7 +69,6 @@ class App extends React.Component {
     const { mobileOpen } = this.state
     return (
       <AppWrapper theme={theme}>
-        <Router>
           <React.Fragment>
             <AppBar
               routing={children}
@@ -93,7 +92,6 @@ class App extends React.Component {
               </div>
             </div>
           </React.Fragment>
-        </Router>
       </AppWrapper>
     )
   }
