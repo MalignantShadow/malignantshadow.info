@@ -6,7 +6,7 @@ import { createMuiTheme } from "@material-ui/core/styles"
 import { indigo, purple } from '@material-ui/core/colors'
 
 import AppWrapper from './components/common/AppWrapper'
-import AboutMe from './pages/www/hero/AboutMe'
+import AboutMe from './pages/www/AboutMe'
 
 const theme = createMuiTheme({
   palette: {

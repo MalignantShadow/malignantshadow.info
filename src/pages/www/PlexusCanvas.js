@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import AnimatedCanvas from "../../../components/common/AnimatedCanvas"
+import AnimatedCanvas from "../../components/common/AnimatedCanvas"
 
 class PlexusCanvas extends React.Component {
 
