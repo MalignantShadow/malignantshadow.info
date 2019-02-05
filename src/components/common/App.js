@@ -7,6 +7,8 @@ import AppWrapper from './AppWrapper'
 import AppBar from './AppBar'
 import AppDrawer from './AppDrawer'
 
+import { resolve } from "../../lib/routing"
+
 const styles = theme => ({
   root: {
     display: "flex",
@@ -37,7 +39,7 @@ const getRoutes = (routing, parent) => {
       routes.concat(getRoutes(children, path))
     else
       routes.push(makeRoute({
-        path: path.startsWith("/") ? path : `${parent || ""}/${path}`,
+        path: resolve(parent, path),
         exact,
         component,
         key: i
@@ -54,16 +56,15 @@ class App extends React.Component {
 
   setDrawerState = (open) => () => this.setState({ mobileOpen: open })
 
-  //children = routing, passed to drawer and react-router
   render() {
-    const { children, classes, theme, title, barButtons, DrawerItemProps } = this.props
+    const { children, classes, theme, barButtons, DrawerItemProps } = this.props
     const { mobileOpen } = this.state
     return (
       <AppWrapper theme={theme}>
         <Router>
           <React.Fragment>
             <AppBar
-              title={title}
+              routing={children}
               onDrawerOpen={this.setDrawerState(true)}
               buttons={barButtons}
             />

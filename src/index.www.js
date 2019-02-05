@@ -4,12 +4,10 @@ import ReactDOM from 'react-dom';
 
 import { withStyles, createMuiTheme } from "@material-ui/core/styles"
 import BookIcon from '@material-ui/icons/Book'
-
-import { GitHubLink } from './components/common/links'
-
 import { indigo, purple } from '@material-ui/core/colors'
 
 import App from './components/common/App'
+import { GitHubLink } from './components/common/links'
 
 const theme = createMuiTheme({
   palette: {
@@ -46,7 +44,6 @@ const routing = [
 
 const Portfolio = withStyles(styles)(({classes}) => (
   <App
-    title="MalignantShadow"
     theme={theme}
     barButtons={[
       <GitHubLink

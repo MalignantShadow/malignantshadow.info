@@ -14,6 +14,8 @@ import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core'
 import ChevronUp from '@material-ui/icons/KeyboardArrowUp'
 import ChevronDown from '@material-ui/icons/KeyboardArrowDown'
 
+import { resolve } from "../../lib/routing"
+
 const styles = theme => ({
   root: {},
   paper: { width: 240 }
@@ -100,7 +102,7 @@ class DrawerItemCollapse extends React.Component {
             return (
               <DrawerItem
                 child
-                path={e.path.startsWith("/") ? e.path : `${path}/${e.path}`}
+                path={resolve(path, e.path)}
                 title={e.listTitle || e.title}
                 key={i}
               />
