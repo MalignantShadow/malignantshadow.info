@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import AnimatedCanvas from "../../../components/common/AnimatedCanvas"
 
 class PlexusCanvas extends React.Component {
@@ -38,7 +40,7 @@ class PlexusCanvas extends React.Component {
           lines++
         }
       }
-      
+
       ctx.save()
       ctx.fillStyle = dotColor
       ctx.beginPath()
@@ -109,6 +111,15 @@ class PlexusCanvas extends React.Component {
     )
   }
 
+}
+
+PlexusCanvas.propTypes = {
+  maxDots: PropTypes.number,
+  speed: PropTypes.number,
+  minDistance: PropTypes.number,
+  maxLines: PropTypes.number,
+  dotColor: PropTypes.string,
+  lineColor: PropTypes.string
 }
 
 PlexusCanvas.defaultProps = {
