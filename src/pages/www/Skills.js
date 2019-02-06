@@ -33,12 +33,12 @@ const styles = theme => ({
     }
   },
   skillsWrapper: {
+    marginTop: theme.spacing.unit * -20,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
   skillsPaper: {
-    margin: theme.spacing.unit * -20,
     width: theme.breakpoints.values.lg,
     display: "flex",
     [theme.breakpoints.down("md")]: {
