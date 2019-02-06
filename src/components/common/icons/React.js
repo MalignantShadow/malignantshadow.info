@@ -2,7 +2,7 @@ import React from 'react'
 import SvgIcon from '@material-ui/core/SvgIcon'
 
 export default (props) => (
-  <SvgIcon viewBox="0 0 600 600">
+  <SvgIcon {...props} viewBox="0 0 600 600">
     <circle cx="299.5" cy="299.6" r="50.2"/>
     <path d="M299.5,414.6c-70.5,0-132.1-8.3-178.2-24.1c-29.9-10.2-55.3-23.8-73.4-39.3c-19.2-16.4-29.4-34.3-29.4-51.6
        c0-33.2,36.4-65.7,97.5-86.9c50-17.4,115.2-27.1,183.4-27.1c67,0,131.3,9.4,181,26.6c29.1,10,53.6,23,71,37.4
