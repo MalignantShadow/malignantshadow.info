@@ -38,7 +38,7 @@ const styles = theme => ({
     alignItems: "center",
   },
   skillsPaper: {
-    margin: theme.spacing.unit * -16,
+    margin: theme.spacing.unit * -20,
     width: theme.breakpoints.values.lg,
     display: "flex",
     [theme.breakpoints.down("md")]: {
@@ -118,10 +118,10 @@ export default withStyles(styles)(({classes}) => (
       <div className={classes.bg}>
         <div className={classes.introWrapper}>
           <Typography className={classes.introText} variant="h4" align="center">
-            My name is Caleb, what's yours?
+            Greetings, User
           </Typography>
           <Typography className={classes.introText} variant="subtitle1" align="center">
-            I started teaching myself Java just before starting high school for a small project that
+            I started teaching myself Java just before starting high school in 2010 for a small project that
             I never ended up finishing. Since then, my skillset has only grown larger from passion and a lot of practice.
             I'm a quick learner, curious at heart, and innovative.
           </Typography>
@@ -134,22 +134,33 @@ export default withStyles(styles)(({classes}) => (
             title="Game Designer"
             subtitle="My main passion is games. Like any game design hobbyist, I have a dream game that I will eventually create."
           >
-
+            <ColumnText title="Favorite Games">
+              {[
+                "Halo, Portal, Pokemon, League of Legends, Slay the Spire, Puzzle Quest, and many more"
+              ]}
+            </ColumnText>
+            <ColumnText title="Currently Learning">
+              {[
+                "Unity/C#"
+              ]}
+            </ColumnText>
+            <ColumnText title="My Games">
+              {[
+                "Mineopoly",
+                "Ascension: Tabletop (RPG System, WIP)",
+                "Ascension: Preamble (WIP)"
+              ]}
+            </ColumnText>
           </Column>
           <Column
             icon={CodeIcon}
             title="Developer"
-            subtitle="My secondary passion is programming. I have the most fun when I'm programming a game or a tool for a game."
+            subtitle="My secondary passion is programming. I have the most fun when I'm programming a game or a tool for a game, but I have worked on other types of projects."
           >
             <ColumnText title="Languages I'm Fluent">
               {[
                 <React.Fragment key={0}><b>Misc: </b>Java, Kotlin</React.Fragment>,
                 <React.Fragment key={1}><b>Web: </b>HTML5, CSS3, Javascript, CoffeeScript, SASS</React.Fragment>
-              ]}
-            </ColumnText>
-            <ColumnText title="Languages I Understand">
-              {[
-                "Almost anything, just give me time!"
               ]}
             </ColumnText>
             <ColumnText title="Frameworks">
@@ -172,9 +183,13 @@ export default withStyles(styles)(({classes}) => (
           <Column
             icon={InfinityIcon}
             title="Flexible"
-            subtitle="My skillset is large and I'm always learning about anything and everything I can."
+            subtitle="I'm always learning about anything and everything I can. I often tell people that my brain absorbs information like a dry sponge on a rainy day."
           >
-
+            <ColumnText title="Other Random Skills">
+              {[
+                "Amateur Linguist, Amateur Creative Writer, Amateur Cartographer"
+              ]}
+            </ColumnText>
           </Column>
         </Paper>
       </div>
