@@ -19,7 +19,17 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 8}px ${theme.spacing.unit * 72}px ${theme.spacing.unit}px ${theme.spacing.unit * 72}px`
+  },
+  contentWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    height: "100%",
+    width: theme.breakpoints.values.md,
+    padding: `${theme.spacing.unit * 4}px`,
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   },
   bg: {
     zIndex: -10,
@@ -46,11 +56,18 @@ const styles = theme => ({
     fontSize: 16,
     "&:not(:first-child)": {
       marginTop: theme.spacing.unit * 4
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: 12
     }
   },
   avatar: {
     width: 128,
     height: 128,
+    [theme.breakpoints.down("lg")]: {
+      width: 64,
+      height: 64,
+    }
   },
   socialWrapper: {
     margin: `${theme.spacing.unit * 4}px 0`,
@@ -66,7 +83,7 @@ const styles = theme => ({
   },
   divider: {
     width: "100%",
-    borderBottom: `1px solid ${color}`,
+    borderBottom: `1px solid ${theme.palette.secondary.main}`,
   },
   seeMoreWrapper: {
     marginTop: theme.spacing.unit * 2,
