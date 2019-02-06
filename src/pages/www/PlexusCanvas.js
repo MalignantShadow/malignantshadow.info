@@ -13,8 +13,6 @@ class PlexusCanvas extends React.Component {
     const { dots } = this.state
     const { minDistance, maxLines, dotColor, lineColor } = this.props
 
-    console.log(canvas.width, canvas.height, dots.length)
-
     //clear
     ctx.save()
     ctx.fillStyle = "transparent"
@@ -74,7 +72,6 @@ class PlexusCanvas extends React.Component {
       d.y += speed * Math.sin(d.angle * Math.PI / 180)
 
       const quad = Math.floor(d.angle / 90)
-      console.log(d.angle, quad)
 
       if(d.x <= 0) {
         d.x = 0
