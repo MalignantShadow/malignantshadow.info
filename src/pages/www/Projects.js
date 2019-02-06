@@ -222,7 +222,7 @@ class Projects extends React.Component {
   }
 
   render() {
-    const { children, classes } = this.props
+    const { classes } = this.props
     return (
       <div className={classes.root}>
         <Typography className={classes.heading} variant="h4" align="center">My Projects</Typography>
