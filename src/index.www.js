@@ -18,6 +18,24 @@ const theme = createMuiTheme({
   }
 })
 
+const scrollbarStyle = document.createElement("style")
+scrollbarStyle.innerHTML = `
+::-webkit-scrollbar {
+  width: 8px
+}
+
+::-webkit-scrollbar-track {
+  background-color: #111
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: ${theme.palette.secondary.main};
+  padding: 10px;
+}
+`
+
+document.head.appendChild(scrollbarStyle)
+
 const Portfolio = () => (
   <AppWrapper theme={theme}>
     <AboutMe/>
