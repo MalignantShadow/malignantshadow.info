@@ -116,32 +116,34 @@ export default withStyles(styles)(({classes}) => (
     <div className={classes.bg}/>
     <PlexusCanvas className={classes.canvas}/>
     <Hero className={classes.root}>
-      <Typography className={classes.salutation} variant={"h1"}>Bonjour!</Typography>
-      <Typography className={classes.intro} align="center">
-        Hello, human! My name is Caleb Downs, I am a programmer/developer located in Irvine, California.
-        I have many hobbies, but the majority of my time is spent programming or playing a video game (sometimes both).
-      </Typography>
-      <Typography className={classes.intro} align="center">
-        I have a wide range of skills utilizing a variety a different languages and frameworks, and I pride
-        myself on being a quick learner. (rewrite me)
-      </Typography>
-      <div className={classes.grow}/>
-      <Avatar className={classes.avatar} src="/img/me.png"/>
-      <div className={classes.socialWrapper}>
-        <SocialLink href="https://www.github.com/MalignantShadow" tooltip="MalignantShadow">
-          <GitHub className={classes.social}/>
-        </SocialLink>
-        <SocialLink href="https://www.linkedin.com/in/caleb-downs-6a94198a/" tooltip="LinkedIn">
-          <LinkedIn className={classes.social}/>
-        </SocialLink>
-        <SocialLink href="https:///wwww.github.com/MalignantShadow/malignantshadow.info" tooltip="Website Source">
-          <BookIcon className={classes.social}/>
-        </SocialLink>
-      </div>
-      <div className={classes.divider}/>
-      <div className={classes.seeMoreWrapper}>
-        <Typography className={classes.seeMoreText}>See More</Typography>
-        <ArrowDown className={classes.seeMoreArrow}/>
+      <div className={classes.contentWrapper}>
+        <Typography className={classes.salutation} variant={"h1"}>Bonjour!</Typography>
+        <Typography className={classes.intro} align="center">
+          Hello, human! My name is Caleb Downs, I am a programmer/developer located in Irvine, California.
+          I have many hobbies, but the majority of my time is spent programming or playing a video game (sometimes both).
+        </Typography>
+        <Typography className={classes.intro} align="center">
+          I have a wide range of skills utilizing a variety a different languages and frameworks, and I pride
+          myself on being a quick learner. (rewrite me)
+        </Typography>
+        <div className={classes.grow}/>
+        <Avatar className={classes.avatar} src="/img/me.png"/>
+        <div className={classes.socialWrapper}>
+          <SocialLink href="https://www.github.com/MalignantShadow" tooltip="MalignantShadow">
+            <GitHub className={classes.social}/>
+          </SocialLink>
+          <SocialLink href="https://www.linkedin.com/in/caleb-downs-6a94198a/" tooltip="LinkedIn">
+            <LinkedIn className={classes.social}/>
+          </SocialLink>
+          <SocialLink href="https:///wwww.github.com/MalignantShadow/malignantshadow.info" tooltip="Website Source">
+            <BookIcon className={classes.social}/>
+          </SocialLink>
+        </div>
+        <div className={classes.divider}/>
+        <div className={classes.seeMoreWrapper}>
+          <Typography className={classes.seeMoreText}>See More</Typography>
+          <ArrowDown className={classes.seeMoreArrow}/>
+        </div>
       </div>
     </Hero>
   </React.Fragment>
