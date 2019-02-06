@@ -1,5 +1,5 @@
 import React from 'react'
-import {SvgIcon} from 'material-ui'
+import SvgIcon from '@material-ui/core/SvgIcon'
 
 function Blake(props) {
   const {className, style, light} = props
