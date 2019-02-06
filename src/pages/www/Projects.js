@@ -28,16 +28,24 @@ const tagDescriptions = {
 const projectStyles = theme => ({
   root: {
     display: "flex",
-    flexGrow: 1
+    flexGrow: 1,
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    }
   },
   imgWrapper: {
+    display: "flex",
+    justifyContent: "center",
     flexBasis: 0,
     flexGrow: 1,
-    flexShrink: 1
+    flexShrink: 1,
+    [theme.breakpoints.down("sm")]: {
+      maxHeight: 250
+    }
   },
   img: {
     maxWidth: "100%",
-    height: "auto"
+    maxHeight: 250
   },
   icon: {
 
@@ -56,14 +64,15 @@ const projectStyles = theme => ({
 
   },
   tag: {
+    marginTop: theme.spacing.unit* 2,
     "&:not(:last-child)": {
       marginRight: theme.spacing.unit
     }
   },
   tagWrapper: {
     display: "flex",
-    marginTop: theme.spacing.unit* 2,
-    justifyContent: "center"
+    justifyContent: "center",
+    flexWrap: "wrap"
   },
   buttonWrapper: {
 
@@ -131,7 +140,10 @@ const styles = theme => ({
   },
   swipeableView: {
     "& > div": {
-      height: 500
+      height: 500,
+      [theme.breakpoints.down("sm")]: {
+        height: 850
+      }
     }
   },
   projectSlide: {
