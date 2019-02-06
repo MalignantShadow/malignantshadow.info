@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button'
 import ArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import ArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import Tooltip from '@material-ui/core/Tooltip'
-import MuiLink from  '@material-ui/core/Link'
+//import MuiLink from  '@material-ui/core/Link'
 import SwipeableViews from 'react-swipeable-views'
 
 import { RepoButton } from '../../components/common/links'
@@ -86,6 +86,7 @@ const projectStyles = theme => ({
 const Project = withStyles(projectStyles)(({classes, children, name, imgSrc, repoType, repo, tags, projectPageButtonHref, projectPageButtonText}) => (
   <div className={classes.root}>
     <div className={classes.imgWrapper}>
+      {/* eslint-disable-next-line */}
       <img className={classes.img} src={imgSrc}/>
     </div>
     <div className={classes.rightContent}>
