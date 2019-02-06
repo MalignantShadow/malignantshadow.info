@@ -143,14 +143,19 @@ const projectListing = [
   <Project
     key="asc-rpg"
     name="Ascension: Tabletop"
-    tags={["game", "wip", "rpg", "umbrella:asc", { name: "reference:material-ui", desc: "The reference site will use React + Material-UI" }]}
+    tags={["game", "wip", "rpg", "umbrella:asc", { name: "reference:material-ui", desc: "The reference site uses React + Material-UI" }]}
     projectPageButtonHref="https://asc.malignantshadow.info"
     projectPageButtonText="View reference site"
   >
-    Ascension: Tabletop takes the world of Ecumene and transforms it into a playable role-playing game.
+    Ascension: Tabletop takes the world of Ecumene and transforms it into a playable role-playing game. Players familiar
+    with D&D 5th-Edition rules should find the game easy to pick up and fun to play. The game utilizes an unconventional
+    class system that will intrigue and challenge players, rewarding creative decisions.
     <br/><br/>
     The game and the world are still a work in progress. As far as game balancing is concerned, the game is considered
     in an alpha state.
+    <br/><br/>
+    Concepts and paradigms within the game, as well as Project Ascension in general, are inspired by
+    RWBY, Halo, and Avatar: The Last Airbender (among others).
   </Project>,
   <Project
     key={"itemmail"}
