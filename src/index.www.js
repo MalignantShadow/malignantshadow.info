@@ -7,6 +7,7 @@ import { indigo, deepOrange } from '@material-ui/core/colors'
 
 import AppWrapper from './components/common/AppWrapper'
 import AboutMe from './pages/www/AboutMe'
+import Skills from './pages/www/Skills'
 
 const theme = createMuiTheme({
   palette: {
@@ -39,6 +40,7 @@ document.head.appendChild(scrollbarStyle)
 const Portfolio = () => (
   <AppWrapper theme={theme}>
     <AboutMe/>
+    <Skills/>
   </AppWrapper>
 )
 
