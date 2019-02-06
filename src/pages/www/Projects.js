@@ -170,6 +170,20 @@ const projectListing = [
     RWBY, Halo, and Avatar: The Last Airbender (among others).
   </Project>,
   <Project
+    key="akensha"
+    name="Circuit Script"
+    repoType="github"
+    repo="MalignantShadow/akensha-svg"
+    tags={["java", "generation", "writing-system", "conlangs", "umbrella:asc"]}
+  >
+    Circuit Script is a vertical writing system I made for a constructed language I have not fully developed yet.
+    The writing system was inspired by computer circuitry (hence its name), and words are designed to look like such.
+    There are also rules defined for stylizing words, like the one shown on this card (which was generated using this tool).
+    <br/><br/>
+    I have further plans for this tool! I eventually want to create a web-based, interactive version of this tool that
+    allows the user to drag the arms of letters. The tool would also allow easy saving to the user's device in svg format.
+  </Project>,
+  <Project
     key={"itemmail"}
     name="ItemMail"
     repoType="github"
@@ -199,20 +213,6 @@ const projectListing = [
     teleported to the appropriate space on the board.
     <br/><br/>
     Due to possible underlying API changes, the plugin most likely does not work (The plugin was last updated in 2014).
-  </Project>,
-  <Project
-    key="akensha"
-    name="Circuit Script"
-    repoType="github"
-    repo="MalignantShadow/akensha-svg"
-    tags={["java", "generation", "writing-system", "conlangs", "umbrella:asc"]}
-  >
-    Circuit Script is a vertical writing system I made for a constructed language I have not fully developed yet.
-    The writing system was inspired by computer circuitry (hence its name), and words are designed to look like such.
-    There are also rules defined for stylizing words, like the one shown on this card (which was generated using this tool).
-    <br/><br/>
-    I have further plans for this tool! I eventually want to create a web-based, interactive version of this tool that
-    allows the user to drag the arms of letters. The tool would also allow easy saving to the user's device in svg format.
   </Project>
 ]
 
