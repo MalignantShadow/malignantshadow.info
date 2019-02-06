@@ -9,6 +9,7 @@ import AppWrapper from './components/common/AppWrapper'
 import AboutMe from './pages/www/AboutMe'
 import Skills from './pages/www/Skills'
 import Projects from './pages/www/Projects'
+import Footer from './pages/www/Footer'
 
 const theme = createMuiTheme({
   palette: {
@@ -43,6 +44,7 @@ const Portfolio = () => (
     <AboutMe/>
     <Skills/>
     <Projects/>
+    <Footer/>
   </AppWrapper>
 )
 
