@@ -170,6 +170,18 @@ const projectListing = [
     RWBY, Halo, and Avatar: The Last Airbender (among others).
   </Project>,
   <Project
+    key="asc-pre"
+    name="Ascension: Preamble"
+    tags={["game", "wip", "roguelike", "cardcrawl", "umbrella:asc", "unity"]}
+  >
+    Ascension: Preamble is my first attempt at a game, using Unity as its engine. The game will feature a slightly-confused
+    main character roaming a building named "Station7," encountering AI and strange creatures along the way. Due to the
+    nature of the game Preamble, will have a slight console feel to it's interface.
+    <br/><br/>
+    The design and concepts of the game are inspired by Slay the Spire, but it is not meant to look or feel like a direct
+    clone or copy of the game.
+  </Project>,
+  <Project
     key="akensha"
     name="Circuit Script"
     repoType="github"
