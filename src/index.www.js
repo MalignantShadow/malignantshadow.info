@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Switch, Route } from 'react-router-dom'
 //import * as serviceWorker from './serviceWorker';
 
 import { createMuiTheme } from "@material-ui/core/styles"
 import { indigo, deepOrange } from '@material-ui/core/colors'
 
+import App from './components/common/App'
 import AppWrapper from './components/common/AppWrapper'
 import AboutMe from './pages/www/AboutMe'
 import Skills from './pages/www/Skills'
@@ -70,14 +72,39 @@ class Portfolio extends React.Component {
     const { theme } = this.props
     return (
       <AppWrapper theme={theme}>
-        <AboutMe
-          onSeeMoreClick={this.startScroll}
-        />
-        <Skills
-          ref={this.skillsRef}
-        />
-        <Projects/>
-        <Footer/>
+        <Switch>
+          <Route exact path="/" render={() => (
+            <React.Fragment>
+              <AboutMe
+                onSeeMoreClick={this.startScroll}
+              />
+              <Skills
+                ref={this.skillsRef}
+              />
+              <Projects/>
+              <Footer/>
+            </React.Fragment>
+          )}/>
+          <Route render={() => (
+            <React.Fragment>
+              <App>
+                {[{
+                  title: "Home",
+                  path: "/",
+                  exact: true
+                }, {
+                  title: "Projects",
+                  path: "/projects",
+                  children: [
+                    { title: "Project 1", path: "1", component: () => { return null } },
+                    { title: "Project 2", path: "2", component: () => { return null } },
+                    { title: "Project 3", path: "3", component: () => { return null } },
+                  ]
+                }]}
+              </App>
+            </React.Fragment>
+          )}/>
+        </Switch>
       </AppWrapper>
     )
   }
