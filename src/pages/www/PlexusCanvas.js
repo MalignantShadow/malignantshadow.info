@@ -58,12 +58,12 @@ class PlexusCanvas extends React.Component {
         }
       }
 
-      // ctx.save()
-      // ctx.fillStyle = dotColor
-      // ctx.beginPath()
-      // ctx.arc(dot.x, dot.y, 1.5, 0, 2 * Math.PI)
-      // ctx.fill()
-      // ctx.restore()
+      ctx.save()
+      ctx.fillStyle = dotColor
+      ctx.beginPath()
+      ctx.arc(dot.x, dot.y, 1, 0, 2 * Math.PI)
+      ctx.fill()
+      ctx.restore()
     }
   }
 
