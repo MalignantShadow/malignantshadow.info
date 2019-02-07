@@ -11,7 +11,7 @@ class PlexusCanvas extends React.Component {
 
   draw = (canvas, ctx) => {
     const { dots } = this.state
-    const { minDistance, maxLines, dotColor, lineColor } = this.props
+    const { minDistance, maxLines, maxTriangles, triangleColor, dotColor, lineColor } = this.props
 
     //clear
     ctx.save()
@@ -22,12 +22,14 @@ class PlexusCanvas extends React.Component {
     for(let i = 0; i < dots.length; i++) {
       const dot = dots[i]
       let lines = 0
+      const neighbors = []
       for(let j = i + 1; j < dots.length && lines <= maxLines; j++) {
         const neighbor = dots[j]
         const xDelta = dot.x - neighbor.x
         const yDelta = dot.y - neighbor.y
         const distSq = (xDelta * xDelta) + (yDelta * yDelta)
         if(distSq <= (minDistance * minDistance)) {
+          neighbors.push(neighbor)
           ctx.save()
           ctx.strokeStyle = lineColor
           ctx.beginPath()
@@ -39,12 +41,29 @@ class PlexusCanvas extends React.Component {
         }
       }
 
-      ctx.save()
-      ctx.fillStyle = dotColor
-      ctx.beginPath()
-      ctx.arc(dot.x, dot.y, 1.5, 0, 2 * Math.PI)
-      ctx.fill()
-      ctx.restore()
+      if(neighbors.length >= 2) {
+        let triangles = 0
+        for(let j=0; j < neighbors.length - 1 && triangles <= maxTriangles; j++) {
+          const a = neighbors[j]
+          const b = neighbors[j + 1]
+          ctx.save()
+          ctx.fillStyle = triangleColor
+          ctx.beginPath()
+          ctx.moveTo(dot.x, dot.y)
+          ctx.lineTo(a.x, a.y)
+          ctx.lineTo(b.x, b.y)
+          ctx.fill()
+          ctx.restore()
+          triangles++
+        }
+      }
+
+      // ctx.save()
+      // ctx.fillStyle = dotColor
+      // ctx.beginPath()
+      // ctx.arc(dot.x, dot.y, 1.5, 0, 2 * Math.PI)
+      // ctx.fill()
+      // ctx.restore()
     }
   }
 
@@ -99,7 +118,13 @@ class PlexusCanvas extends React.Component {
   }
 
   render() {
-    const {maxDots, maxLines, speed, minDistance, dotColor, lineColor, ...other} = this.props
+    const {
+      speed,
+      minDistance,
+      maxLines, lineColor,
+      maxDots, dotColor,
+      maxTriangles, triangleColor,
+      ...other} = this.props
     return (
       <AnimatedCanvas
         draw={this.tick}
@@ -124,8 +149,10 @@ PlexusCanvas.defaultProps = {
   speed: 1,
   minDistance: 125,
   maxLines: 10,
+  maxTriangles: 2,
   dotColor: "#CCC",
-  lineColor: "#777"
+  lineColor: "#777",
+  triangleColor: "rgba(255, 255, 255, .05)"
 }
 
 export default PlexusCanvas
