@@ -82,6 +82,5 @@ class Portfolio extends React.Component {
 
 }
 
-
-ReactDOM.render(<Portfolio />, document.getElementById('root'));
+ReactDOM.render(<Portfolio theme={theme}/>, document.getElementById('root'));
 //serviceWorker.unregister();
