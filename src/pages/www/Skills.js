@@ -112,9 +112,9 @@ const ColumnText = withStyles(columnTextStyles)(({classes, title, children}) => 
   </div>
 ))
 
-export default withStyles(styles)(({classes}) => (
+const Skills = withStyles(styles)(({classes, forwardedRef}) => (
   <React.Fragment>
-    <div className={classes.root}>
+    <div className={classes.root} ref={forwardedRef}>
       <div className={classes.bg}>
         <div className={classes.introWrapper}>
           <Typography className={classes.introText} variant="h4" align="center">
@@ -196,3 +196,5 @@ export default withStyles(styles)(({classes}) => (
     </div>
   </React.Fragment>
 ))
+
+export default React.forwardRef((props, ref) => <Skills {...props} forwardedRef={ref}/>)

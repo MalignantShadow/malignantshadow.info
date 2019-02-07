@@ -90,6 +90,11 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    cursor: "pointer",
+
+    "&:hover *": {
+      color: "#FFF"
+    }
   },
   seeMoreText: {
     fontSize: 18,
@@ -111,7 +116,7 @@ const SocialLink = ({href, tooltip, children, ...other}) => (
 )
 
 //TODO: add controls for plexus
-export default withStyles(styles)(({classes}) => (
+export default withStyles(styles)(({classes, onSeeMoreClick}) => (
   <React.Fragment>
     <div className={classes.bg}/>
     <PlexusCanvas className={classes.canvas}/>
@@ -140,7 +145,7 @@ export default withStyles(styles)(({classes}) => (
           </SocialLink>
         </div>
         <div className={classes.divider}/>
-        <div className={classes.seeMoreWrapper}>
+        <div className={classes.seeMoreWrapper} onClick={onSeeMoreClick}>
           <Typography className={classes.seeMoreText}>See More</Typography>
           <ArrowDown className={classes.seeMoreArrow}/>
         </div>
