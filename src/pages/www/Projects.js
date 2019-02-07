@@ -31,6 +31,7 @@ const projectStyles = theme => ({
     flexGrow: 1,
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
+      width: "100%"
     }
   },
   imgWrapper: {
@@ -60,8 +61,8 @@ const projectStyles = theme => ({
   heading: {
     marginBottom: theme.spacing.unit * 2
   },
-  text: {
-
+  description: {
+    overflowY: "auto"
   },
   tag: {
     marginTop: theme.spacing.unit* 2,
@@ -69,10 +70,22 @@ const projectStyles = theme => ({
       marginRight: theme.spacing.unit
     }
   },
+  tagFrame: {
+    [theme.breakpoints.down("sm")]: {
+      overflowX: "auto"
+    }
+  },
   tagWrapper: {
     display: "flex",
+    flexShrink: 0,
     justifyContent: "center",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+
+    [theme.breakpoints.down("sm")]: {
+      flexWrap: "nowrap",
+      width: "100%",
+      overflowX: "auto"
+    }
   },
   buttonWrapper: {
 
@@ -91,7 +104,7 @@ const Project = withStyles(projectStyles)(({classes, children, name, imgSrc, rep
     </div>
     <div className={classes.rightContent}>
       <Typography className={classes.heading} variant="h6" align="center">{name}</Typography>
-      <Typography>{children}</Typography>
+      <Typography className={classes.description}>{children}</Typography>
       <div className={classes.tagWrapper}>
         {tags.map((e, i) => {
           const tagDescription = typeof e === "string" ? tagDescriptions[e] : e.desc
