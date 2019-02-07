@@ -43,25 +43,27 @@ class Portfolio extends React.Component {
 
   skillsRef = React.createRef()
   scrollStart = 0
-  scrollDuration = .75
-  scrollTick = 5
-  scrollPerTick = 0
+  scrollDuration = 750
   scrollTo = 0
+  raf = null
 
   scroll = () => {
-    setTimeout(() => {
-      if(document.documentElement.scrollTop >= this.scrollTo) return
-      document.documentElement.scrollTop += this.scrollPerTick
-      setTimeout(this.scroll, this.scrollTick)
-    }, this.scrollTick)
+    const now = Date.now().valueOf()
+    if(now > this.scrollStart + this.scrollDuration) {
+      cancelAnimationFrame(this.raf)
+      return
+    }
+    const normalStart = now - this.scrollStart
+    console.log(this.scrollTo, normalStart, this.scrollDuration, normalStart / this.scrollDuration)
+    document.documentElement.scrollTop = this.scrollTo * (normalStart/ this.scrollDuration)
+    this.raf = requestAnimationFrame(this.scroll)
   }
 
   startScroll = () => {
     this.scrollStart = Date.now().valueOf()
     this.scrollTo = this.skillsRef.current.getBoundingClientRect().top + window.pageYOffset
-    const diff = this.scrollTo - document.documentElement.scrollTop
-    this.scrollPerTick = diff / (1000 / this.scrollTick * this.scrollDuration) * this.scrollTick
-    this.scroll()
+    console.log(this.scrollTo)
+    this.raf = requestAnimationFrame(this.scroll)
   }
 
   render() {
