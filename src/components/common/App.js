@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import AppWrapper from './AppWrapper'
 import AppBar from './AppBar'
 import AppDrawer from './AppDrawer'
 
@@ -45,7 +44,7 @@ const getRoutes = (routing, parent) => {
     const { path, exact, component, children } = e
     if (children)
       routes.concat(getRoutes(children, path))
-    else
+    else if (component)
       routes.push(makeRoute({
         path: resolve(parent, path),
         exact,
@@ -65,34 +64,32 @@ class App extends React.Component {
   setDrawerState = (open) => () => this.setState({ mobileOpen: open })
 
   render() {
-    const { children, classes, theme, barButtons, DrawerItemProps } = this.props
+    const { children, classes, barButtons, DrawerItemProps } = this.props
     const { mobileOpen } = this.state
     return (
-      <AppWrapper theme={theme}>
-          <React.Fragment>
-            <AppBar
-              routing={children}
-              onDrawerOpen={this.setDrawerState(true)}
-              buttons={barButtons}
-            />
-            <AppDrawer
-              mobileOpen={mobileOpen}
-              onClose={this.setDrawerState(false)}
-              {...DrawerItemProps}
-            >
-              {children}
-            </AppDrawer>
-            <div className={classes.root}>
-              <div className={classes.contentWrapper}>
-                <div className={classes.content}>
-                  <Switch>
-                    {getRoutes(children)}
-                  </Switch>
-                </div>
-              </div>
+      <React.Fragment>
+        <AppBar
+          routing={children}
+          onDrawerOpen={this.setDrawerState(true)}
+          buttons={barButtons}
+        />
+        <AppDrawer
+          mobileOpen={mobileOpen}
+          onClose={this.setDrawerState(false)}
+          {...DrawerItemProps}
+        >
+          {children}
+        </AppDrawer>
+        <div className={classes.root}>
+          <div className={classes.contentWrapper}>
+            <div className={classes.content}>
+              <Switch>
+                {getRoutes(children)}
+              </Switch>
             </div>
-          </React.Fragment>
-      </AppWrapper>
+          </div>
+        </div>
+      </React.Fragment>
     )
   }
 }
