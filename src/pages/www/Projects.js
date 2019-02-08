@@ -2,6 +2,7 @@ import React from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 import Chip from '@material-ui/core/Chip'
+import Hidden from '@material-ui/core/Hidden'
 import MobileStepper from '@material-ui/core/MobileStepper'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
@@ -39,14 +40,11 @@ const projectStyles = theme => ({
     justifyContent: "center",
     flexBasis: 0,
     flexGrow: 1,
-    flexShrink: 1,
-    [theme.breakpoints.down("sm")]: {
-      maxHeight: 250
-    }
+    flexShrink: 1
   },
   img: {
     maxWidth: "100%",
-    maxHeight: 250
+    flexGrow: 1
   },
   icon: {
 
@@ -79,13 +77,7 @@ const projectStyles = theme => ({
     display: "flex",
     flexShrink: 0,
     justifyContent: "center",
-    flexWrap: "wrap",
-
-    [theme.breakpoints.down("sm")]: {
-      flexWrap: "nowrap",
-      width: "100%",
-      overflowX: "auto"
-    }
+    flexWrap: "wrap"
   },
   buttonWrapper: {
 
@@ -98,10 +90,13 @@ const projectStyles = theme => ({
 
 const Project = withStyles(projectStyles)(({classes, children, name, imgSrc, repoType, repo, tags, projectPageButtonHref, projectPageButtonText}) => (
   <div className={classes.root}>
-    <div className={classes.imgWrapper}>
-      {/* eslint-disable-next-line */}
-      <img className={classes.img} src={imgSrc}/>
-    </div>
+    <Hidden smDown>
+      <div className={classes.imgWrapper}>
+        {imgSrc && ( // eslint-disable-next-line
+          <img className={classes.img} src={imgSrc}/>
+        )}
+      </div>
+    </Hidden>
     <div className={classes.rightContent}>
       <Typography className={classes.heading} variant="h6" align="center">{name}</Typography>
       <Typography className={classes.description}>{children}</Typography>
@@ -154,10 +149,7 @@ const styles = theme => ({
   },
   swipeableView: {
     "& > div": {
-      height: 500,
-      [theme.breakpoints.down("sm")]: {
-        height: 850
-      }
+      height: 500
     }
   },
   projectSlide: {
