@@ -193,6 +193,7 @@ const projectListing = [
     repoType="github"
     repo="MalignantShadow/akensha-svg"
     tags={["java", "generation", "writing-system", "conlangs", "umbrella:asc"]}
+    imgSrc="/img/AkenshaSVG_Harmony.svg"
   >
     Circuit Script is a vertical writing system I made for a constructed language I have not fully developed yet.
     The writing system was inspired by computer circuitry (hence its name), and words are designed to look like such.
