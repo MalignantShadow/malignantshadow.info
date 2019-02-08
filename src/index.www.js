@@ -6,8 +6,8 @@ import { Switch, Route } from 'react-router-dom'
 import { createMuiTheme } from "@material-ui/core/styles"
 import { indigo, deepOrange } from '@material-ui/core/colors'
 
-import App from './components/common/App'
-import AppWrapper from './components/common/AppWrapper'
+import App from './components/common/app/App'
+import AppWrapper from './components/common/app/AppWrapper'
 import AboutMe from './pages/www/AboutMe'
 import Skills from './pages/www/Skills'
 import Projects from './pages/www/Projects'

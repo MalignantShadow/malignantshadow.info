@@ -7,7 +7,8 @@ import Tooltip from '@material-ui/core/Tooltip'
 import ArrowDown from "@material-ui/icons/KeyboardArrowDown"
 import BookIcon from '@material-ui/icons/Book'
 
-import Hero from '../../components/common/Hero'
+import Hero from '../../components/common/app/Hero'
+import TextScroller from '../../components/common/TextScroller'
 import LinkedIn from '../../components/common/icons/LinkedIn'
 import GitHub from '../../components/common/icons/GitHub'
 
@@ -45,6 +46,9 @@ const styles = theme => ({
     height: "100vh"
   },
   grow: { flexGrow: 1 },
+  scroller: {
+    height: 104
+  },
   salutation: {
     color: color
   },
@@ -122,7 +126,12 @@ export default withStyles(styles)(({classes, onSeeMoreClick}) => (
     <PlexusCanvas className={classes.canvas}/>
     <Hero className={classes.root}>
       <div className={classes.contentWrapper}>
-        <Typography className={classes.salutation} variant={"h1"}>Bonjour!</Typography>
+        <TextScroller
+          className={classes.scroller}
+          TypographyProps={{variant: "h1", className: classes.salutation}}
+        >
+          {["Hello!", "Hola!", "你好!", "Bonjour!", "Привет!", "Guten tag!", "こんにちは!"]}
+        </TextScroller>
         <Typography className={classes.intro} align="center">
           Hello, human! My name is Caleb Downs, I am a programmer/developer located in Irvine, California.
           I have many hobbies, but the majority of my time is spent programming or playing a video game (sometimes both).
