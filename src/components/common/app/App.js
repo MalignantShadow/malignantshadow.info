@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles'
 import AppBar from './AppBar'
 import AppDrawer from './AppDrawer'
 
-import { resolve } from "../../lib/routing"
+import { resolve } from "../../../lib/routing"
 
 const styles = theme => ({
   root: {
