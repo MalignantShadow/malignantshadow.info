@@ -9,8 +9,8 @@ export default ({theme, children}) => {
   return (
     <Router>
       <React.Fragment>
-        <CssBaseline/>
         <MuiThemeProvider theme={theme}>
+          <CssBaseline/>
           {children}
         </MuiThemeProvider>
       </React.Fragment>
