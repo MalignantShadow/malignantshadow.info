@@ -8,9 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import InvertColorsIcon from '@material-ui/icons/InvertColors'
 
 import App from './components/common/app/App'
-import AppBar from './components/common/app/AppBar'
 import AppWrapper from './components/common/app/AppWrapper'
-import Asc from "./components/asc/icons/Asc"
 import routing from "./lib/routeInfo/asc"
 
 const baseTheme = {
