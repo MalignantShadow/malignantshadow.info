@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
+import classNames from 'classnames'
 
 import { withStyles } from '@material-ui/core/styles'
 import MuiBar from '@material-ui/core/AppBar'
@@ -22,15 +23,15 @@ const styles = theme => ({
   menuButton: { color: "inherit" }
 })
 
-export default withRouter(withStyles(styles)(({classes, routing, location, buttons, onDrawerOpen}) => (
-  <MuiBar>
-    <Toolbar className={classes.bar}>
+export default withRouter(withStyles(styles)(({classes, children, buttons, toolbarClassName, routing, onDrawerOpen, location,  history, match, staticContext, ...other}) => (
+  <MuiBar {...other}>
+    <Toolbar className={classNames(classes.bar, toolbarClassName)}>
       <Hidden lgUp implementation="css">
         <IconButton onClick={onDrawerOpen} className={classes.menuButton}>
           <MenuIcon/>
         </IconButton>
       </Hidden>
-      <Typography variant="h6" color="inherit" noWrap>{getTitle(routing, location.pathname)}</Typography>
+      <Typography variant="h6" color="inherit" noWrap>{children || getTitle(routing, location.pathname)}</Typography>
       <div className={classes.stretch}/>
       <div>{buttons}</div>
     </Toolbar>
