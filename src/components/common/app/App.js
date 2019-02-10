@@ -37,6 +37,7 @@ const styles = theme => ({
 const makeRoute = ({ ...props }) => <Route {...props}/>
 
 const getRoutes = (routing, parent) => {
+  if(!routing || routing.length === 0) return []
   const routes = []
   routing.forEach((e, i) => {
     if (e === "divider") return
