@@ -1,6 +1,3 @@
-
-// import pages
-
 export default [{
   title: "Ascension: Tabletop",
   listTitle: "Home",
