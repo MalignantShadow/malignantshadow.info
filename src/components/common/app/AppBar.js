@@ -31,7 +31,11 @@ export default withRouter(withStyles(styles)(({classes, children, buttons, toolb
           <MenuIcon/>
         </IconButton>
       </Hidden>
-      <Typography variant="h6" color="inherit" noWrap>{children || getTitle(routing, location.pathname)}</Typography>
+      { !children ?
+        <Typography variant="h6" color="inherit" noWrap>{getTitle(routing, location.pathname)}</Typography>
+      :
+        children
+      }
       <div className={classes.stretch}/>
       <div>{buttons}</div>
     </Toolbar>
