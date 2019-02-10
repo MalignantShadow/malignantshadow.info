@@ -2,49 +2,53 @@ export default [{
   title: "Ascension: Tabletop",
   listTitle: "Home",
   path: "/",
-  exact: true
+  exact: true,
+  page: "home"
 }, {
   title: "Rules",
   path: "/rules",
+  page: "rules",
   children: [{
     title: "Aptitude Scores",
     path: "aptitude-scores",
-    component: () => null
+    page: "aptitudeScores"
   }, {
     title: "Combat",
     path: "combat",
-    component: () => null
+    page: "combat"
   }, {
     title: "Social",
     path: "social",
-    component: () => null
+    page: "social"
   }]
 }, {
   title: "Reference",
   path: "/ref",
+  page: "ref",
   children: [{
     title: "Abilities",
     path: "abilities",
-    component: () => null
+    page: "abilities"
   },{
     title: "Classifications",
     path: "classifications",
-    component: () => null
+    page: "classifications"
   }, {
     title: "Feats",
     path: "feats",
-    component: () => null
+    page: "feats"
   }]
 }, {
   title: "Tools",
   path: "/tools",
+  page: "tools",
   children: [{
     title: "Create a Character",
     path: "create-a-character",
-    component: () => null
+    page: "createCharacter"
   }, {
     title: "Interactive Map",
     path: "map",
-    component: () => null
+    page: "map"
   }]
 }]

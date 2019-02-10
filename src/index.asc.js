@@ -9,7 +9,8 @@ import InvertColorsIcon from '@material-ui/icons/InvertColors'
 
 import App from './components/common/app/App'
 import AppWrapper from './components/common/app/AppWrapper'
-import routing from "./lib/routeInfo/asc"
+import routing from "./lib/asc/routeInfo"
+import pages from "./lib/asc/pageInfo"
 
 const baseTheme = {
   typography: {
@@ -51,6 +52,7 @@ class AscRef extends React.Component {
     return (
       <AppWrapper theme={theme}>
         <App
+          pageInfo={pages}
           barButtons={
             <React.Fragment>
               <Tooltip placement="bottom" title={`Turn ${lightsOn ? "off" : " on"} the lights`}>

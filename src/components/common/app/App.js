@@ -36,20 +36,20 @@ const styles = theme => ({
 
 const makeRoute = ({ ...props }) => <Route {...props}/>
 
-const getRoutes = (routing, parent) => {
+const getRoutes = (routing, parent, pageInfo) => {
   if(!routing || routing.length === 0) return []
   const routes = []
   routing.forEach((e, i) => {
     if (e === "divider") return
 
-    const { path, exact, component, children } = e
+    const { path, page, exact, component, children } = e
     if (children)
-      routes.concat(getRoutes(children, path))
+      routes.concat(getRoutes(children, path, pageInfo[page]))
     else if (component)
       routes.push(makeRoute({
         path: resolve(parent, path),
         exact,
-        component,
+        component: pageInfo[page],
         key: i
       }))
   })
@@ -65,7 +65,7 @@ class App extends React.Component {
   setDrawerState = (open) => () => this.setState({ mobileOpen: open })
 
   render() {
-    const { children, classes, barButtons, DrawerProps } = this.props
+    const { children, pageInfo, classes, barButtons, DrawerProps } = this.props
     const { mobileOpen } = this.state
     return (
       <React.Fragment>
@@ -85,7 +85,7 @@ class App extends React.Component {
           <div className={classes.contentWrapper}>
             <div className={classes.content}>
               <Switch>
-                {getRoutes(children)}
+                {getRoutes(children, undefined, pageInfo)}
               </Switch>
             </div>
           </div>
