@@ -64,7 +64,7 @@ class App extends React.Component {
   setDrawerState = (open) => () => this.setState({ mobileOpen: open })
 
   render() {
-    const { children, classes, barButtons, DrawerItemProps } = this.props
+    const { children, classes, barButtons, DrawerProps } = this.props
     const { mobileOpen } = this.state
     return (
       <React.Fragment>
@@ -74,9 +74,9 @@ class App extends React.Component {
           buttons={barButtons}
         />
         <AppDrawer
+          {...DrawerProps}
           mobileOpen={mobileOpen}
           onClose={this.setDrawerState(false)}
-          {...DrawerItemProps}
         >
           {children}
         </AppDrawer>
