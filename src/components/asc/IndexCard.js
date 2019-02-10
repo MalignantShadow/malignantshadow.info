@@ -9,7 +9,9 @@ const IndexCard = withStyles(theme => ({
 
   },
   title: {
-    padding: theme.spacing.unit / 2
+    padding: theme.spacing.unit / 2,
+    borderTopLeftRadius: theme.shape.borderRadius,
+    borderTopRightRadius: theme.shape.borderRadius
   }
 }))(withTheme()(({classes, children, theme, title, color, ...other}) => {
 
