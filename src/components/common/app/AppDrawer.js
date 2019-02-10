@@ -50,8 +50,20 @@ const diStyles = theme => ({
     fontSize: ".875rem"
   },
   active: {
-    color: theme.palette.primary.main,
-    fontWeight: theme.typography.fontWeightMedium
+    backgroundColor: theme.palette.primary.main,
+    fontWeight: theme.typography.fontWeightMedium,
+
+    "&:hover": {
+      backgroundColor: theme.palette.primary.main,
+    }
+  },
+  activeText: {
+    color: theme.palette.getContrastText(theme.palette.primary.main)
+  },
+  basic: {
+    "&:focus": {
+      backgroundColor: theme.palette.primary.main
+    }
   },
   child: {
     paddingLeft: theme.spacing.unit * 3
@@ -61,12 +73,16 @@ const diStyles = theme => ({
   }
 })
 
-const DrawerItem = withRouter(withStyles(diStyles)(({ classes, child, path, title, location }) => (
-  <ListItem button component={Link} to={path} className={classNames(classes.item, {[classes.child]: child})}>
+const DrawerItem = withRouter(withStyles(diStyles)(({ classes, topLevel, child, path, title, location }) => (
+  <ListItem button component={Link} to={path} className={classNames(classes.item, {
+    [classes.basic]: topLevel || child,
+    [classes.child]: child,
+    [classes.active]: location.pathname === path
+  })}>
     <ListItemText
       primaryTypographyProps={{
         className: classNames(classes.itemText, {
-          [classes.active]: location.pathname === path
+          [classes.activeText]: location.pathname === path
         })
       }}
       primary={title}/>
@@ -76,7 +92,7 @@ const DrawerItem = withRouter(withStyles(diStyles)(({ classes, child, path, titl
 class DrawerItemCollapse extends React.Component {
 
   state = {
-    open: false
+    open: this.props.location.pathname.startsWith(this.props.path)
   }
 
   toggleOpen = () => this.setState({ open: !this.state.open })
@@ -87,7 +103,7 @@ class DrawerItemCollapse extends React.Component {
 
     return (
       <React.Fragment>
-        <ListItem button onClick={this.toggleOpen}>
+        <ListItem button onClick={this.toggleOpen} className={classes.item}>
           <ListItemText
             primaryTypographyProps={{
               className: classNames(classes.parent, classes.itemText)
@@ -115,7 +131,7 @@ class DrawerItemCollapse extends React.Component {
 
 }
 
-DrawerItemCollapse = withStyles(diStyles)(DrawerItemCollapse)
+DrawerItemCollapse = withStyles(diStyles)(withRouter(DrawerItemCollapse))
 
 const DrawerHead = withStyles(dhStyles)(({ classes, title, subtitle }) => (
   <div className={classes.root}>
@@ -128,18 +144,20 @@ const DrawerHead = withStyles(dhStyles)(({ classes, title, subtitle }) => (
 
 const DrawerItems = withStyles(styles)(({ routing, classes, title, subtitle }) => {
   const drawer = []
-  routing.forEach((e, i) => {
-    if (e === "divider") {
-      drawer.push(<Divider key={i}/>)
-      return
-    }
-    if (e.hidden) return
+  if(routing) {
+    routing.forEach((e, i) => {
+      if (e === "divider") {
+        drawer.push(<Divider key={i}/>)
+        return
+      }
+      if (e.hidden) return
 
-    drawer.push(e.children ?
-      <DrawerItemCollapse {...e} key={i}/> :
-      <DrawerItem path={e.path} title={e.listTitle || e.title} key={i}/>
-    )
-  })
+      drawer.push(e.children ?
+        <DrawerItemCollapse {...e} key={i}/> :
+        <DrawerItem topLevel path={e.path} title={e.listTitle || e.title} key={i}/>
+      )
+    })
+  }
   return (
     <div className={classes.root}>
       <DrawerHead title={title} subtitle={subtitle}/>
