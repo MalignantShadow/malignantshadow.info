@@ -42,10 +42,10 @@ const getRoutes = (routing, parent, pageInfo) => {
   routing.forEach((e, i) => {
     if (e === "divider") return
 
-    const { path, page, exact, component, children } = e
+    const { path, page, exact, children } = e
     if (children)
       routes.concat(getRoutes(children, path, pageInfo[page]))
-    else if (component)
+    else
       routes.push(makeRoute({
         path: resolve(parent, path),
         exact,
