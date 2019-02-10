@@ -180,7 +180,7 @@ const DrawerItems = withStyles(styles)(({ routing, classes, title, subtitle }) =
 })
 
 //children = routing
-export default withStyles(styles)(({ classes, children, mobileOpen, onClose, title, subtitle }) => {
+export default withStyles(styles)(({ classes, children, mobileOpen, onClose, title, subtitle, hideDesktop }) => {
 
   const items = <DrawerItems routing={children} title={title} subtitle={subtitle}/>
 
@@ -197,15 +197,17 @@ export default withStyles(styles)(({ classes, children, mobileOpen, onClose, tit
           {items}
         </Drawer>
       </Hidden>
-      <Hidden mdDown implementation="css">
-        <Drawer
-          open
-          variant="permanent"
-          classes={{ paper: classes.paper }}
-        >
-          {items}
-        </Drawer>
-      </Hidden>
+      {!hideDesktop &&
+        <Hidden mdDown implementation="css">
+          <Drawer
+            open
+            variant="permanent"
+            classes={{ paper: classes.paper }}
+          >
+            {items}
+          </Drawer>
+        </Hidden>
+      }
     </React.Fragment>
   )
 
