@@ -11,8 +11,7 @@ import Hidden from '@material-ui/core/Hidden'
 import Typography from '@material-ui/core/Typography'
 import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core'
 
-import ChevronUp from '@material-ui/icons/KeyboardArrowUp'
-import ChevronDown from '@material-ui/icons/KeyboardArrowDown'
+import ExpandMore from '@material-ui/icons/ExpandMore'
 
 import { resolve } from "../../../lib/routing"
 
@@ -68,8 +67,17 @@ const diStyles = theme => ({
   child: {
     paddingLeft: theme.spacing.unit * 3
   },
-  chevron: {
-    marginRight: 0
+  collapseIcon: {
+    marginRight: 0,
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    })
+  },
+  expanded: {
+    transform: "rotate(180deg)"
   }
 })
 
@@ -109,7 +117,9 @@ class DrawerItemCollapse extends React.Component {
               className: classNames(classes.parent, classes.itemText)
             }}
             primary={listTitle || title}/>
-          <ListItemIcon className={classes.chevron}>{open ? <ChevronUp/> : <ChevronDown/>}</ListItemIcon>
+          <ListItemIcon className={classes.collapseIcon}>
+            <ExpandMore className={classNames(classes.expand, {[classes.expanded]: open})}/>
+          </ListItemIcon>
         </ListItem>
         <Collapse in={open}>
           {children.map((e, i) => {
