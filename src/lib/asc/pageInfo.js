@@ -1,4 +1,5 @@
-import Home from '../../pages/asc/Home'
+import Home from '../../pages/asc/home'
+import Reference from '../../pages/asc/reference'
 
 const empty = () => null
 
@@ -12,9 +13,18 @@ export default {
     }
   },
   ref: {
-
+    page: Reference,
+    children: {
+      abilities: empty,
+      classifications: empty,
+      feats: empty
+    }
   },
   tools: {
-
+    page: empty,
+    children: {
+      createCharacter: empty,
+      map: empty
+    }
   }
 }
