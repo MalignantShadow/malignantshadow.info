@@ -10,8 +10,8 @@ import { fade } from '@material-ui/core/styles/colorManipulator'
 import Typography from '@material-ui/core/Typography'
 import Hidden from '@material-ui/core/Hidden'
 import Button from '@material-ui/core/Button'
-import Tooltip from '@material-ui/core/Tooltip'
-import InvertColorsIcon from '@material-ui/icons/InvertColors'
+// import Tooltip from '@material-ui/core/Tooltip'
+// import InvertColorsIcon from '@material-ui/icons/InvertColors'
 
 import AppWrapper from './components/common/app/AppWrapper'
 import AppBar from './components/common/app/AppBar'
@@ -95,9 +95,9 @@ class AscRef extends React.Component {
     mobileOpen: false,
   }
 
-  handleLights = () => {
-    this.setState({ lightsOn: !this.state.lightsOn  })
-  }
+  // handleLights = () => {
+  //   this.setState({ lightsOn: !this.state.lightsOn  })
+  // }
 
   setDrawerState = (open) => () => this.setState({ mobileOpen: open })
 
