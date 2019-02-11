@@ -18,7 +18,7 @@ import AppBar from './components/common/app/AppBar'
 import AppDrawer from './components/common/app/AppDrawer'
 import AppContent from './components/common/app/AppContent'
 import Asc from './components/asc/icons/Asc'
-import routing from "./lib/asc/routeInfo"
+import routes from "./lib/asc/routeInfo"
 import pages from "./lib/asc/pageInfo"
 import { useRoutes } from "./lib/routing"
 
@@ -114,7 +114,7 @@ class AscRef extends React.Component {
           <Asc/>
           <Typography className={classes.title} variant="h5" color="inherit">Tabletop</Typography>
           <Hidden mdDown>
-            {routing.map((e, i) => (
+            {routes.map((e, i) => (
               !e.children ? null : (<ToolbarButton key={i} {...e}/>)
             ))}
           </Hidden>
@@ -127,7 +127,7 @@ class AscRef extends React.Component {
           title="Ascension: Tabletop"
           subtitle="Edition 0"
         >
-          {routing}
+          {routes}
         </AppDrawer>
         <AppContent classes={{root: classes.contentRoot}}>
           <Switch>
