@@ -7,6 +7,7 @@ import { withRouter, Link, Switch } from 'react-router-dom'
 
 import { createMuiTheme, withStyles } from '@material-ui/core/styles'
 import { fade } from '@material-ui/core/styles/colorManipulator'
+import * as colors  from '@material-ui/core/colors'
 import Typography from '@material-ui/core/Typography'
 import Hidden from '@material-ui/core/Hidden'
 import Button from '@material-ui/core/Button'
@@ -53,7 +54,11 @@ const styles = theme => ({
   title: {
     marginLeft: theme.spacing.unit * 1.5,
     paddingRight: theme.spacing.unit * 3,
-    borderRight: "1px solid"
+    borderRight: "1px solid",
+
+    [theme.breakpoints.down("md")]: {
+      borderRight: "none"
+    }
   },
   contentRoot: {
     [theme.breakpoints.up("lg")]: { marginLeft: 0 }
