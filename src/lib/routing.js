@@ -23,9 +23,9 @@ export const useRoutes = (routing, pageInfo) => {
 
     const { path, page, exact, children } = e
     let resolvedPage = pageInfo[page]
-    if (children && children.length)
-      routes = routes.concat(useRoutes(children, pageInfo[page]))
     if(typeof resolvedPage === "object") resolvedPage = resolvedPage.page
+    if (children)
+      routes = routes.concat(useRoutes(children, pageInfo[page].children))
     routes.push(<Route
       key={i}
       path={path}
