@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 import { Link, withRouter } from 'react-router-dom'
 
@@ -33,11 +34,16 @@ const getBreadcrumbs = (includeRoot, routing, path) => {
 const SiteBreadcrumbs = withStyles(theme => ({
   paper: {
     padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit}px`
+  },
+  icon: {
+    color: theme.palette.getContrastText(theme.palette.background.paper),
+    display: "flex",
+    userSelect: "none"
   }
-}))(withRouter(({classes, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => (
-  <Paper className={classes.paper} {...PaperProps}>
-    <Breadcrumbs separator={<NavigateNext fontSize="small" />} aria-label="Breadcrumb" {...other}>
-      {Icon && <MuiLink component={Link} to="/"><Icon {...IconProps}/></MuiLink>}
+}))(withRouter(({classes, className, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => (
+  <Paper {...PaperProps} className={classNames(classes.paper, className)} >
+    <Breadcrumbs separator={<NavigateNext fontSize="small"/>} aria-label="Breadcrumb" {...other}>
+      {Icon && <MuiLink className={classes.icon} component={Link} to="/"><Icon className={classes.icon} fontSize="small" {...IconProps}/></MuiLink>}
       {getBreadcrumbs(includeRoot, children, location.pathname)}
     </Breadcrumbs>
   </Paper>
