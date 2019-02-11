@@ -81,8 +81,8 @@ const diStyles = theme => ({
   }
 })
 
-const DrawerItem = withRouter(withStyles(diStyles)(({ classes, topLevel, child, path, title, location }) => (
-  <ListItem button component={Link} to={path} className={classNames(classes.item, {
+const DrawerItem = withRouter(withStyles(diStyles)(({ classes, onClose, topLevel, child, path, title, location }) => (
+  <ListItem button onClick={onClose} component={Link} to={path} className={classNames(classes.item, {
     [classes.basic]: topLevel || child,
     [classes.child]: child,
     [classes.active]: location.pathname === path
@@ -106,7 +106,7 @@ class DrawerItemCollapse extends React.Component {
   toggleOpen = () => this.setState({ open: !this.state.open })
 
   render() {
-    const { classes, path, children, listTitle, title } = this.props
+    const { classes, onClose, path, children, listTitle, title } = this.props
     const { open } = this.state
 
     return (
@@ -127,6 +127,7 @@ class DrawerItemCollapse extends React.Component {
 
             return (
               <DrawerItem
+                onClose={onClose}
                 child
                 path={resolve(path, e.path)}
                 title={e.listTitle || e.title}
@@ -152,7 +153,7 @@ const DrawerHead = withStyles(dhStyles)(({ classes, title, subtitle }) => (
   </div>
 ))
 
-const DrawerItems = withStyles(styles)(({ routing, classes, title, subtitle }) => {
+const DrawerItems = withStyles(styles)(({ onClose, routing, classes, title, subtitle }) => {
   const drawer = []
   if(routing) {
     routing.forEach((e, i) => {
@@ -163,8 +164,8 @@ const DrawerItems = withStyles(styles)(({ routing, classes, title, subtitle }) =
       if (e.hidden) return
 
       drawer.push(e.children ?
-        <DrawerItemCollapse {...e} key={i}/> :
-        <DrawerItem topLevel path={e.path} title={e.listTitle || e.title} key={i}/>
+        <DrawerItemCollapse {...e} onClose={onClose} key={i}/> :
+        <DrawerItem onClose={onClose} topLevel path={e.path} title={e.listTitle || e.title} key={i}/>
       )
     })
   }
@@ -182,7 +183,7 @@ const DrawerItems = withStyles(styles)(({ routing, classes, title, subtitle }) =
 //children = routing
 export default withStyles(styles)(({ classes, children, mobileOpen, onClose, title, subtitle, hideDesktop }) => {
 
-  const items = <DrawerItems routing={children} title={title} subtitle={subtitle}/>
+  const items = <DrawerItems routing={children} title={title} subtitle={subtitle} onClose={onClose}/>
 
   return (
     <React.Fragment>
@@ -194,7 +195,13 @@ export default withStyles(styles)(({ classes, children, mobileOpen, onClose, tit
           ModalProps={{ keepMounted: true }}
           classes={{ paper: classes.paper }}
         >
-          {items}
+          <div
+            tabIndex={0}
+            role="button"
+            onKeyDown={onClose}
+          >
+            {items}
+          </div>
         </Drawer>
       </Hidden>
       {!hideDesktop &&
