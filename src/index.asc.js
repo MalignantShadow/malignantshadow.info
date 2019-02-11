@@ -20,7 +20,7 @@ import AppContent from './components/common/app/AppContent'
 import Asc from './components/asc/icons/Asc'
 import routing from "./lib/asc/routeInfo"
 import pages from "./lib/asc/pageInfo"
-import { getRoutes } from "./lib/routing"
+import { useRoutes } from "./lib/routing"
 
 const baseTheme = {
   typography: {
@@ -131,7 +131,7 @@ class AscRef extends React.Component {
         </AppDrawer>
         <AppContent classes={{root: classes.contentRoot}}>
           <Switch>
-            {getRoutes(routing, undefined, pages)}
+            {useRoutes(routes, pages)}
           </Switch>
         </AppContent>
       </AppWrapper>
