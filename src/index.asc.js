@@ -23,9 +23,20 @@ import routes from "./lib/asc/routeInfo"
 import pages from "./lib/asc/pageInfo"
 import { useRoutes } from "./lib/routing"
 
+const makeColor = (color) => ({
+  light: color[300],
+  main: color[500],
+  dark: color[700]
+})
+
 const baseTheme = {
   typography: {
     useNextVariants: true
+  },
+  asc: {
+    abilities: makeColor(colors.purple),
+    classifications: makeColor(colors.teal),
+    rules: makeColor(colors.lightGreen)
   }
 }
 
