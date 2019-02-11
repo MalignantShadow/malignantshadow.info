@@ -26,7 +26,7 @@ const getBreadcrumbs = (includeRoot, routing, path) => {
     }
   }
   return breadcrumbs.map((e, i) => (
-    i === breadcrumbs.length + 1 ? (
+    i < breadcrumbs.length - 1 ? (
       <MuiLink color="inherit" component={Link} to={e.path}>{e.title}</MuiLink>
     ) : (
       <Typography color="textPrimary">{e.title}</Typography>
