@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-export const resolve = (parent, path) => !parent || path.startsWith("/") ? path : `${parent}/${path}`
+export const resolve = (parent, path) => !parent || path.startsWith("/") ? path : `${parent}${parent.endsWith("/") ? "" : "/"}${path}`
 
 export const getTitle = (routing, path, parent) => {
   if(!routing) return null
@@ -15,22 +15,42 @@ export const getTitle = (routing, path, parent) => {
   return null
 }
 
-export const getRoutes = (routing, parent, pageInfo) => {
+export const useRoutes = (routing, pageInfo) => {
   if(!routing || routing.length === 0) return []
   const routes = []
   routing.forEach((e, i) => {
-    if (e === "divider") return
+    if (typeof e !== "object") return
 
     const { path, page, exact, children } = e
-    if (children)
-      routes.concat(getRoutes(children, path, pageInfo[page]))
-    else
-      routes.push(<Route
-        key={i}
-        path={resolve(parent, path)}
-        exact={exact}
-        component={pageInfo[page]}
-      />)
+    let resolvedPage = pageInfo[page]
+    if(typeof resolvedPage === "object") resolvedPage = resolvedPage.page
+    routes.push(<Route
+      key={i}
+      path={path}
+      exact={exact}
+      component={resolvedPage}
+    />)
+    if (children && children.length)
+      routes.concat(useRoutes(children, pageInfo[page]))
+
   })
+  return routes
+}
+
+export const makeRoutes = (info, parent = "/") => {
+  const routes = []
+  for(let r of info) {
+    if(typeof r !== "object") {
+      routes.push(r)
+      continue
+    }
+
+    const { title, slug, path, children, page, ...other } = r
+    const resolvedSlug = slug || title.toLowerCase().replace(/\s+/, "-")
+    const resolvedPath = resolve(parent, typeof path !== "string" ? resolvedSlug : path)
+    const route = {title, path: resolvedPath, page: typeof page !== "string" ? resolvedSlug : page, ...other}
+    if(children && children.length) route.children = makeRoutes(children, resolvedPath)
+    routes.push(route)
+  }
   return routes
 }

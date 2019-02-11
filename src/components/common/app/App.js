@@ -5,7 +5,7 @@ import AppBar from './AppBar'
 import AppDrawer from './AppDrawer'
 import AppContent from './AppContent'
 
-import { getRoutes } from "../../../lib/routing"
+import { useRoutes } from "../../../lib/routing"
 
 class App extends React.Component {
 
@@ -34,7 +34,7 @@ class App extends React.Component {
         </AppDrawer>
         <AppContent>
           <Switch>
-            {getRoutes(children, undefined, pageInfo)}
+            {useRoutes(children, pageInfo)}
           </Switch>
         </AppContent>
       </React.Fragment>
