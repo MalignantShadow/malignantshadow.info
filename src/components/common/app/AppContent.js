@@ -21,7 +21,7 @@ export default withStyles(theme => ({
   },
   content: {
     width: theme.breakpoints.values.lg,
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px`,
     [theme.breakpoints.down('md')]: {
       width: "100%"
     }
