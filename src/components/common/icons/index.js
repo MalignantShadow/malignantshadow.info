@@ -1,0 +1,6 @@
+export { default as BitBucket } from './BitBucket'
+export { default as Blake } from './Blake'
+export { default as GitHub } from './GitHub'
+export { default as LinkedIn } from './LinkedIn'
+export { default as MuiLogo } from './MuiLogo'
+export { default as React } from './React'
