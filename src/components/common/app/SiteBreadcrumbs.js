@@ -34,15 +34,21 @@ const getBreadcrumbs = (includeRoot, routing, path) => {
   ))
 }
 
-export default withStyles(theme => ({
+const SiteBreadcrumbs = withStyles(theme => ({
   paper: {
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
   }
-}))(withRouter(({classes, children, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => (
+}))(withRouter(({classes, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => (
   <Paper className={classes.paper} {...PaperProps}>
     <Breadcrumbs separator={<NavigateNext fontSize="small" />} aria-label="Breadcrumb" {...other}>
       {Icon && <MuiLink component={Link} to="/"><Icon {...IconProps}/></MuiLink>}
-      {getBreadcrumbs(false, children, location.pathname)}
+      {getBreadcrumbs(includeRoot, children, location.pathname)}
     </Breadcrumbs>
   </Paper>
 )))
+
+SiteBreadcrumbs.defaultProps = {
+  includeRoot: false
+}
+
+export default SiteBreadcrumbs
