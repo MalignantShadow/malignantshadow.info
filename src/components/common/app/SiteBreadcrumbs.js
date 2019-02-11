@@ -32,7 +32,7 @@ const getBreadcrumbs = (includeRoot, routing, path) => {
 
 const SiteBreadcrumbs = withStyles(theme => ({
   paper: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+    padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit}px`
   }
 }))(withRouter(({classes, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => (
   <Paper className={classes.paper} {...PaperProps}>
