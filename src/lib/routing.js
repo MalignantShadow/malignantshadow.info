@@ -17,12 +17,14 @@ export const getTitle = (routing, path, parent) => {
 
 export const useRoutes = (routing, pageInfo) => {
   if(!routing || routing.length === 0) return []
-  const routes = []
+  let routes = []
   routing.forEach((e, i) => {
     if (typeof e !== "object") return
 
     const { path, page, exact, children } = e
     let resolvedPage = pageInfo[page]
+    if (children && children.length)
+      routes = routes.concat(useRoutes(children, pageInfo[page]))
     if(typeof resolvedPage === "object") resolvedPage = resolvedPage.page
     routes.push(<Route
       key={i}
@@ -30,8 +32,6 @@ export const useRoutes = (routing, pageInfo) => {
       exact={exact}
       component={resolvedPage}
     />)
-    if (children && children.length)
-      routes.concat(useRoutes(children, pageInfo[page]))
 
   })
   return routes
