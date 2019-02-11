@@ -15,7 +15,7 @@ export default withStyles(theme => ({
     flexGrow: 1
   },
   content: {
-    marginTop: theme.spacing.unit
+    marginTop: theme.spacing.unit * 2
   }
 }))(({classes, children, rightContent}) => (
   <React.Fragment>
