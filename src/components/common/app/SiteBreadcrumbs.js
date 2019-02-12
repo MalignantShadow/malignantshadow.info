@@ -12,13 +12,13 @@ import NavigateNext from '@material-ui/icons/NavigateNext'
 
 const getBreadcrumbs = (includeRoot, routing, path) => {
   if(!routing || routing.length === 0) return []
-  const breadcrumbs = []
+  let breadcrumbs = []
   for(let r of routing) {
     if(path.startsWith(r.path)) {
       if(r.path === "/" && !includeRoot) continue
       breadcrumbs.push({path: r.path, title: r.title})
       if(r.children)
-        breadcrumbs.concat(getBreadcrumbs(includeRoot, r.children, path))
+        breadcrumbs = breadcrumbs.concat(getBreadcrumbs(includeRoot, r.children, path))
 
       break
     }
