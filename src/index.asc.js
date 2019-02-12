@@ -33,10 +33,25 @@ const baseTheme = {
   typography: {
     useNextVariants: true
   },
+  palette: {
+    primary: {
+      light : colors.grey[800],
+      main: colors.grey[900],
+      dark: "#000"
+    },
+    secondary: colors.deepPurple
+  },
   asc: {
-    abilities: makeColor(colors.purple),
+    abilities: makeColor(colors.deepPurple),
     classifications: makeColor(colors.teal),
-    rules: makeColor(colors.lightGreen)
+    rules: makeColor(colors.red),
+    term: {
+      ability: makeColor(colors.deepPurple),
+      condition: makeColor(colors.teal),
+      place: makeColor(colors.blue),
+      monster: makeColor(colors.red),
+      dice: makeColor(colors.indigo)
+    }
   }
 }
 
