@@ -21,8 +21,23 @@ export default makeRoutes([{
   slug: "ref",
   children: [{
     title: "Abilities"
-  },{
-    title: "Classifications"
+  }, {
+    title: "Skills"
+  }, {
+    title: "Classifications",
+    children: [{
+      title: "Aurora"
+    }, {
+      title: "Golem"
+    }, {
+      title: "Maelstrom"
+    }, {
+      title: "Salamander"
+    }, {
+      title: "Shadowborne"
+    }, {
+      title: "Tempest"
+    }]
   }, {
     title: "Feats"
   }]
