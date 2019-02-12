@@ -19,16 +19,11 @@ const getBreadcrumbs = (includeRoot, routing, path) => {
       breadcrumbs.push({path: r.path, title: r.title})
       if(r.children)
         breadcrumbs.concat(getBreadcrumbs(includeRoot, r.children, path))
-      else break
+
+      break
     }
   }
-  return breadcrumbs.map((e, i) => (
-    i < breadcrumbs.length - 1 ? (
-      <MuiLink key={i} color="inherit" component={Link} to={e.path}>{e.title}</MuiLink>
-    ) : (
-      <Typography key={i} color="textPrimary">{e.title}</Typography>
-    )
-  ))
+  return breadcrumbs
 }
 
 const SiteBreadcrumbs = withStyles(theme => ({
@@ -40,14 +35,23 @@ const SiteBreadcrumbs = withStyles(theme => ({
     display: "flex",
     userSelect: "none"
   }
-}))(withRouter(({classes, className, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => (
-  <Paper {...PaperProps} className={classNames(classes.paper, className)} >
-    <Breadcrumbs separator={<NavigateNext fontSize="small"/>} aria-label="Breadcrumb" {...other}>
-      {Icon && <MuiLink className={classes.icon} component={Link} to="/"><Icon className={classes.icon} fontSize="small" {...IconProps}/></MuiLink>}
-      {getBreadcrumbs(includeRoot, children, location.pathname)}
-    </Breadcrumbs>
-  </Paper>
-)))
+}))(withRouter(({classes, className, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => {
+  const breadcrumbs = getBreadcrumbs(includeRoot, children, location.pathname)
+  return (
+    <Paper {...PaperProps} className={classNames(classes.paper, className)} >
+      <Breadcrumbs separator={<NavigateNext fontSize="small"/>} aria-label="Breadcrumb" {...other}>
+        {Icon && <MuiLink className={classes.icon} component={Link} to="/"><Icon className={classes.icon} fontSize="small" {...IconProps}/></MuiLink>}
+        {breadcrumbs.map((e, i) => (
+          i < breadcrumbs.length - 1 ? (
+            <MuiLink key={i} color="inherit" component={Link} to={e.path}>{e.title}</MuiLink>
+          ) : (
+            <Typography key={i} color="textPrimary">{e.title}</Typography>
+          )
+        ))}
+      </Breadcrumbs>
+    </Paper>
+  )
+}))
 
 SiteBreadcrumbs.defaultProps = {
   includeRoot: false
