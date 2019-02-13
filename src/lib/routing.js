@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
+export const slug = (str) => str.toLowerCase().replace(/\s+/, "-")
+
 export const resolve = (parent, path) => !parent || path.startsWith("/") ? path : `${parent}${parent.endsWith("/") ? "" : "/"}${path}`
 
 export const getTitle = (routing, path, parent) => {
@@ -45,8 +47,8 @@ export const makeRoutes = (info, parent = "/") => {
       continue
     }
 
-    const { title, slug, path, children, page, ...other } = r
-    const resolvedSlug = slug || title.toLowerCase().replace(/\s+/, "-")
+    const { title, slug: slugProp, path, children, page, ...other } = r
+    const resolvedSlug = slugProp || slug(title)
     const resolvedPath = resolve(parent, typeof path !== "string" ? resolvedSlug : path)
     const route = {title, path: resolvedPath, page: typeof page !== "string" ? resolvedSlug : page, ...other}
     if(children && children.length) route.children = makeRoutes(children, resolvedPath)
