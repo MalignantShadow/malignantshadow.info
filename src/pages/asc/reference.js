@@ -105,7 +105,7 @@ export default withStyles(theme => ({
             {Object.entries(skillsByAptitude)
               .sort((a, b) => a[0].localeCompare(b[0]))
               .map(([aptitude], i) => (
-                <Button key={i} className={classes.skill} component={Link} to={`/ref/skills#${aptitude}`}>
+                <Button key={i} className={classes.skill} component={Link} to={`/ref/skills#${aptitude.toLowerCase().substring(0, 3)}`}>
                   {aptitude}
                 </Button>
               )
