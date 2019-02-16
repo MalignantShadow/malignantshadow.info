@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
 import LinkIcon from '@material-ui/icons/Link'
 
+import { slug } from "../../lib/routing"
+
 const mapping = {
   title: "h3",
   h1: "h4",
@@ -61,21 +63,22 @@ class AscHeading extends React.Component {
   handleLeave = () => this.setState({showHash: false})
 
   render() {
-    const { classes, className, children, variant, subtitle, caption, ...other } = this.props
+    const { classes, className, id, children, variant, subtitle, caption, ...other } = this.props
     const { showHash } = this.state
+    const resolvedId = id || slug(children)
     return (
       <React.Fragment>
         <div className={classNames(classes.root, {
           [classes.title]: variant === "title",
           [classes.h1]: variant === "h1",
           [classes.h2]: variant === "h2"
-        }, className)} {...other} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
+        }, className)} {...other} id={resolvedId} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
           <Typography variant={mapping[variant]}>{children}</Typography>
           {variant === "title" && subtitle &&
             <Typography className={classes.subtitle}>{subtitle}</Typography>
           }
-          {showHash && other.id && variant !== "title" &&
-            <Link href={`#${other.id}`}><LinkIcon className={classes.hash} /></Link>
+          {showHash && variant !== "title" &&
+            <Link href={`#${resolvedId}`}><LinkIcon className={classes.hash}/></Link>
           }
         </div>
         { caption &&

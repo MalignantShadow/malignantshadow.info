@@ -22,13 +22,13 @@ export default withStyles(theme => ({
         decide, based on the situation, to you roll a general aptitude check instead of a skill check.
       </Typography>
     </Section>
-    <Section id="#cha" variant="h1" title="Charisma" caption="Measures one's strength of character.">
+    <Section id="cha" variant="h1" title="Charisma" caption="Measures one's strength of character.">
       <Typography  paragraph>
         The GM may call for a Charisma skill check when your character wants to talk or act/perform their way out of (or into)
         a situation.
       </Typography>
     </Section>
-    <Section id="#deceoption" variant="h2" title="Deception">
+    <Section variant="h2" title="Deception">
       <Typography paragraph>
         A Deception check determines how well your character can hide the truth. Deception differs from persuasion; while
         your character may be trying to convince or "persuade" another character, it is considered <b>deception</b> if
@@ -37,7 +37,7 @@ export default withStyles(theme => ({
         , and <b>passing misleading information</b>.
       </Typography>
     </Section>
-    <Section id="intimidation" variant="h2" title="Intimidation">
+    <Section variant="h2" title="Intimidation">
       <Typography paragraph>
         
       </Typography>
