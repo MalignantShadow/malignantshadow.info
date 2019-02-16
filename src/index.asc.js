@@ -47,7 +47,7 @@ const theme = createMuiTheme({
     rules: makeColor(colors.red),
     term: {
       ability: makeColor(colors.purple),
-      condition: makeColor(colors.teal),
+      condition: makeColor(colors.green),
       place: makeColor(colors.blue),
       monster: makeColor(colors.red),
       dice: makeColor(colors.indigo)
