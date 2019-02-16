@@ -1,3 +1,7 @@
+const s = (name, desc, aptitude, examples) => ({name, desc, aptitude, examples})
+
+export const athletics = s("Athletics", "Pertains to situations that require physical strength and endurance.", "Strength", "Running, climbing, long jumping")
+
 const skills = [{
   name: "Athletics",
   desc: "Pertains to situations that require physical strength and endurance.",
