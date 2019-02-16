@@ -3,3 +3,9 @@ export { default as AscHeading } from './AscHeading'
 export { default as AscSection } from './AscSection'
 export { default as IndexCard } from './IndexCard'
 export { default as IndexCardContent } from './IndexCardContent'
+
+// Terms
+export {
+  ConditionTerm,
+  TermBase
+ } from './terms'
