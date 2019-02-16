@@ -29,7 +29,7 @@ const makeColor = (color) => ({
   dark: color[700]
 })
 
-const baseTheme = {
+const theme = createMuiTheme({
   typography: {
     useNextVariants: true
   },
@@ -42,27 +42,16 @@ const baseTheme = {
     secondary: colors.deepPurple
   },
   asc: {
-    abilities: makeColor(colors.deepPurple),
+    abilities: makeColor(colors.purple),
     classifications: makeColor(colors.teal),
     rules: makeColor(colors.red),
     term: {
-      ability: makeColor(colors.deepPurple),
+      ability: makeColor(colors.purple),
       condition: makeColor(colors.teal),
       place: makeColor(colors.blue),
       monster: makeColor(colors.red),
       dice: makeColor(colors.indigo)
     }
-  }
-}
-
-const light =  createMuiTheme({
-  ...baseTheme
-})
-
-const dark = createMuiTheme({
-  ...baseTheme,
-  palette: {
-    type: "dark"
   }
 })
 
@@ -122,20 +111,14 @@ const ToolbarButton = withStyles(theme => {
 class AscRef extends React.Component {
 
   state = {
-    lightsOn: true,
     mobileOpen: false,
   }
-
-  // handleLights = () => {
-  //   this.setState({ lightsOn: !this.state.lightsOn  })
-  // }
 
   setDrawerState = (open) => () => this.setState({ mobileOpen: open })
 
   render() {
-    const { lightsOn, mobileOpen } = this.state
+    const { mobileOpen } = this.state
     const { classes } = this.props
-    const theme = lightsOn ? light : dark
     return (
       <AppWrapper theme={theme}>
         <AppBar
@@ -172,5 +155,5 @@ class AscRef extends React.Component {
 
 AscRef = withStyles(styles)(AscRef)
 
-ReactDOM.render(<AscRef />, document.getElementById('root'));
+ReactDOM.render(<AscRef/>, document.getElementById('root'));
 //serviceWorker.unregister();
