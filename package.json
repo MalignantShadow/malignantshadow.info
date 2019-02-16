@@ -53,6 +53,8 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-swipeable-views": "^0.13.1",
+    "react-swipeable-views-utils": "latest",
+    "react-waypoint": "^8.1.0",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
@@ -62,8 +64,7 @@
     "webpack": "4.19.1",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "3.6.3",
-    "react-swipeable-views-utils": "latest"
+    "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
     "start": "node scripts/start.js",
