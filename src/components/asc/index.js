@@ -1,5 +1,5 @@
 export { default as AscPage } from './AscPage'
+export { default as AscHeading } from './AscHeading'
+export { default as AscSection } from './AscSection'
 export { default as IndexCard } from './IndexCard'
 export { default as IndexCardContent } from './IndexCardContent'
-export { default as TocFrame } from './TocFrame'
-export { default as TocItem } from './TocItem'
