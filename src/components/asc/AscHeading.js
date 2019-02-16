@@ -11,6 +11,7 @@ import { slug } from "../../lib/routing"
 
 const mapping = {
   title: "h3",
+  subtitle: "h6",
   h1: "h4",
   h2: "h5",
 }
@@ -33,8 +34,6 @@ const styles = theme => ({
   },
   subtitle: {
     color: fade(theme.palette.getContrastText(theme.palette.background.default), .5),
-    textTransform: "uppercase",
-    fontWeight: 500,
     marginLeft: theme.spacing.unit
   },
   hash: {
@@ -75,7 +74,7 @@ class AscHeading extends React.Component {
         }, className)} {...other} id={resolvedId} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
           <Typography variant={mapping[variant]}>{children}</Typography>
           {variant === "title" && subtitle &&
-            <Typography className={classes.subtitle}>{subtitle}</Typography>
+            <Typography variant={mapping.subtitle} className={classes.subtitle}>{subtitle}</Typography>
           }
           {showHash && variant !== "title" &&
             <Link href={`#${resolvedId}`}><LinkIcon className={classes.hash}/></Link>
