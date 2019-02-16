@@ -24,7 +24,7 @@ export default withStyles(theme => ({
     </Section>
     <Section id="#cha" variant="h1" title="Charisma" caption="Measures one's strength of character.">
       <Typography  paragraph>
-        The GM calls for Charisma skill checks when your character wants to talk or act/perform their way out of (or into)
+        The GM may call for a Charisma skill check when your character wants to talk or act/perform their way out of (or into)
         a situation.
       </Typography>
     </Section>
