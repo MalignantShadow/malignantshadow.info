@@ -5,15 +5,15 @@ import 'typeface-roboto'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 
-export default ({theme, children}) => {
+export default ({ theme, children }) => {
   return (
-    <Router>
-      <React.Fragment>
-        <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
+      <Router>
+        <React.Fragment>
           <CssBaseline/>
           {children}
-        </MuiThemeProvider>
-      </React.Fragment>
-    </Router>
+        </React.Fragment>
+      </Router>
+    </MuiThemeProvider>
   )
 }
