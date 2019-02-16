@@ -34,6 +34,12 @@ const SiteBreadcrumbs = withStyles(theme => ({
     color: theme.palette.getContrastText(theme.palette.background.paper),
     display: "flex",
     userSelect: "none"
+  },
+  link: {
+    "&:hover": {
+      color: theme.palette.primary.main,
+      textDecoration: "none"
+    }
   }
 }))(withRouter(({classes, className, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => {
   const breadcrumbs = getBreadcrumbs(includeRoot, children, location.pathname)
@@ -43,7 +49,7 @@ const SiteBreadcrumbs = withStyles(theme => ({
         {Icon && <MuiLink className={classes.icon} component={Link} to="/"><Icon className={classes.icon} fontSize="small" {...IconProps}/></MuiLink>}
         {breadcrumbs.map((e, i) => (
           i < breadcrumbs.length - 1 ? (
-            <MuiLink key={i} color="inherit" component={Link} to={e.path}>{e.title}</MuiLink>
+            <MuiLink key={i} color="inherit" component={Link} className={classes.link} to={e.path}>{e.title}</MuiLink>
           ) : (
             <Typography key={i} color="textPrimary">{e.title}</Typography>
           )
