@@ -9,6 +9,7 @@ export { default as IndexCardContent } from './IndexCardContent'
 export {
   ConditionTerm,
   ClassificationTerm,
+  DiceTerm,
   GameTerm,
   TermBase
  } from './terms'
