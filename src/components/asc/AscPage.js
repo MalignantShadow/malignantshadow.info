@@ -15,10 +15,8 @@ export default withStyles(theme => ({
     flexGrow: 1
   },
   content: {
-    marginTop: theme.spacing.unit * 2
-  },
-  toc: {
-    width: 225
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 16
   }
 }))(({classes, children, rightContent}) => (
   <div className={classes.root}>
