@@ -1,7 +1,10 @@
 import * as colors from '@material-ui/core/colors'
 import dice from './dice'
 
-//import icons
+//class icons
+import {
+  Shadowborne
+} from '../../../components/asc/icons'
 
 export const aurora = {
   name: "Aurora",
@@ -19,12 +22,12 @@ export const aurora = {
 
 export const shadowborne = {
   name: "Shadowborne",
-  icon: null,
+  icon: Shadowborne,
   affinity: "Darkness",
   colors: {
     main: colors.common.black
   },
-  termDesc: "",
+  termDesc: "The most inroverted of the bunch",
   game: {
     hitDice: dice(1, 8)
   }
