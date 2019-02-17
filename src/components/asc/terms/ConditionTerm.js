@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 
+import ConditionText from '../ConditionText'
 import TermBase from './TermBase'
 import * as conditions from '../../../lib/asc/game/conditions'
 
@@ -34,11 +34,7 @@ export default withStyles(theme => {
         category: classes.category
       }}
     >
-      <ul className={classes.ul}>
-        {condition.desc.map((e, i) => (
-          <li key={i}><Typography>{e}</Typography></li>
-        ))}
-      </ul>
+      <ConditionText className={classes.ul}>{condition.desc}</ConditionText>
     </TermBase>
   )
 })
