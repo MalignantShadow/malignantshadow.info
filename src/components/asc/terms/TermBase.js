@@ -61,7 +61,7 @@ export default withStyles(theme => ({
   content: {
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit}px`
   }
-}))(({classes, children, icon: Icon, name, category, text = name, href}) => (
+}))(({classes, children, icon: Icon, name, title = name, category, text = name, href, TooltipProps}) => (
   <Tooltip
     TransitionComponent={Fade}
     placement="top-start"
@@ -70,7 +70,7 @@ export default withStyles(theme => ({
       <React.Fragment>
         <div className={classes.header}>
           { Icon && <Icon className={classes.icon}/>}
-          <Typography variant="h5" className={classes.name}>{name}</Typography>
+          <Typography variant="h5" className={classes.name}>{title}</Typography>
           {category &&
             <Typography component="span" className={classes.category}>{category}</Typography>
           }
