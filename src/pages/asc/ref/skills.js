@@ -99,7 +99,39 @@ export default withStyles(theme => ({
     </Section>
     <Section id="int" variant="h1" title="Intelligence" caption="Measures one's mental acuity and memory.">
       <Typography paragraph>
-
+          The GM may call for an Intelligence check when to recall information or identify an object or place.
+      </Typography>
+    </Section>
+    <Section variant="h2" title="History">
+      <Typography paragraph>
+        A History check determines how well and accurate you can recall information about the history of Ecumene. For instance, his check may be
+        prompted when you try to <b>indentify a building's historical significance</b>, <b>recall a historical battle</b>, or <b>identify a
+        legendary person from a picture of them</b>.
+      </Typography>
+    </Section>
+    <Section variant="h2" title="Investigation">
+      <Typography paragraph>
+        An Investigation check determines how well you can make a deduction or extrapolate information. Typical examples of Investigation checks
+        include <b>asking around for the location of a specific landmark</b>, <b>searching for traps</b>, or <b>determining the weak points
+        in a structure</b>. Investigation differs from Perception; Perception is usually considered to be passive (noticing something <b>as it
+        happens</b>), while Investigation is usually prompted when a character makes a conscious decision to search for a specific thing.
+      </Typography>
+    </Section>
+    <Section variant="h2" title="Nature">
+      <Typography paragraph>
+        A Nature checks how well you can recall information about the landscapes, plants, animals, and weather cycles of Ecumene.
+      </Typography>
+    </Section>
+    <Section variant="h1" title="Strength" caption="Measures one's ability to exert force.">
+      <Typography paragraph>
+        The GM may call for a Strength when you want to use your raw physical power to accomplish a task.
+      </Typography>
+    </Section>
+    <Section variant="h2" title="Athletics">
+      <Typography paragraph>
+        An Athletics check determines how well you can endure a troubling situation or apply brute force to an object. Common examples
+        include <b>treading water for an extended period of time</b>, <b>forcing open a door</b>, <b>moving a heavy object</b>, and <b>standing
+        you ground while something tries to move you</b>.
       </Typography>
     </Section>
   </AscPage>
