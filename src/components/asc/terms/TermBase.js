@@ -36,7 +36,7 @@ export default withStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#000",
+    backgroundColor: theme.palette.primary.main,
   },
   icon: {
     marginLeft: theme.spacing.unit,
