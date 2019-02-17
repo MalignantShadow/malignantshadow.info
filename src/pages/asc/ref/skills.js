@@ -3,7 +3,12 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
-import { AscPage, AscSection, ConditionTerm } from '../../../components/asc'
+import {
+  AscPage,
+  AscSection,
+  ConditionTerm,
+  ClassificationTerm
+ } from '../../../components/asc'
 
 const Section = withStyles(theme => ({
   heading: { borderColor: theme.asc.abilities.main }
@@ -43,11 +48,16 @@ export default withStyles(theme => ({
         verbal, by using a specific combination of words to create an elaborate threat, or they can be physical, such as harming
         the person and stating that will continue to do so unless they unveil the information you want. Verbal threats can be implied or explicit.
       </Typography>
-      <Typography paragraph>
-        An <i>explicit</i> threat is a statement that can be taken as a threat at face value, such as "<b>I'm gonna gouge out your eyes with a
-        spoon</b>." An <i>implicit</i> threat is one that requires a bit of thinking in order to be considered a threat, such as "<b>That's a nice
-        house, it'd be a shame if it caught fire</b>."
-      </Typography>
+      <ul>
+        <li><Typography>
+          An <i>explicit</i> threat is a statement that can be taken as a threat at face value, such as "<b>I'm gonna gouge out your eyes with a
+          spoon</b>."
+        </Typography></li>
+        <li><Typography>
+          An <i>implicit</i> threat is one that requires a bit of thinking in order to be considered a threat, such as "<b>That's a nice
+         house, it'd be a shame if it caught fire</b>."
+        </Typography></li>
+      </ul>
     </Section>
     <Section variant="h2" title="Performance">
       <Typography paragraph>
@@ -84,7 +94,7 @@ export default withStyles(theme => ({
     <Section variant="h2" title="Stealth" caption="Contested with: Perception">
       <Typography paragraph>
         A Stealth check detmines how well you can stay out of sight from onlookers. Typical situations include <b>eavesdropping</b> and <b>traveling
-           through a crowded/gaurded area without being detected</b>.
+        through a crowded/gaurded area without being detected</b>. <ClassificationTerm term="shadowborne"/> are particularly adept at Stealth.
       </Typography>
     </Section>
     <Section id="int" variant="h1" title="Intelligence" caption="Measures one's mental acuity and memory.">
