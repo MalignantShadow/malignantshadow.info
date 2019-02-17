@@ -26,6 +26,9 @@ export default withStyles(theme => ({
         of Constitution). This section details the appropriate time to use each of these skills. Note that the GM may
         decide, based on the situation, to you roll a general aptitude check instead of a skill check.
       </Typography>
+      <Typography paragraph>
+        This page does explain how to roll skill checks. It is only a reference page for the appropriate times a certain skill may be used.
+      </Typography>
     </Section>
     <Section id="cha" variant="h1" title="Charisma" caption="Measures one's strength of character.">
       <Typography paragraph>
