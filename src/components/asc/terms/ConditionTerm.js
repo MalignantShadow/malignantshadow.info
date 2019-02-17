@@ -5,19 +5,13 @@ import { withStyles } from '@material-ui/core/styles'
 import ConditionText from '../ConditionText'
 import TermBase from './TermBase'
 import * as conditions from '../../../lib/asc/game/conditions'
+import { styleTerm, styleCategory } from './util'
 
 export default withStyles(theme => {
   const color = theme.asc.term.condition
   return {
-    term: {
-      color: color.main,
-      borderColor: color.main,
-    },
-    category: {
-      backgroundColor: color.main,
-      color: "#FFF",
-      borderColor: color.light,
-    },
+    ...styleTerm(color),
+    ...styleCategory(color, { color: "#FFF" }),
     ul: {
       margin: 0,
       paddingLeft: theme.spacing.unit * 3
