@@ -8,6 +8,7 @@ import {
 
 export const aurora = {
   name: "Aurora",
+  aspect: "Dawn",
   icon: null,
   affinity: "Light",
   colors: {
@@ -16,20 +17,36 @@ export const aurora = {
   },
   termDesc: "",
   game: {
-    hitDice: dice(1, 10)
+    hitDice: dice(1, 10),
+    prof: {
+      weapons: [],
+      savingThrows: [],
+      skills: []
+    }
   }
 }
 
 export const shadowborne = {
   name: "Shadowborne",
+  aspect: "Dusk",
   icon: Shadowborne,
   affinity: "Darkness",
   colors: {
     main: colors.common.black
   },
   termDesc: "The most inroverted of the bunch",
+  archetypes: ["Marksman", "Assassin"],
   game: {
-    hitDice: dice(1, 8)
+    hitDice: dice(1, 8),
+    prof: {
+      weapons: ["Automatic rifles", "precision", "simple melee", "sidearms"],
+      savingThrows: ["dex", "int"],
+      skills: {
+        choices: 2,
+        starting: "Stealth",
+        pool: ["Acrobatics", "Insight", "Investigation", "Perception", "Sleight of Hand"]
+      }
+    },
   }
 }
 
