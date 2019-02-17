@@ -23,6 +23,7 @@ export default withStyles(theme => {
     <TermBase
       name={condition.name}
       category="Condition"
+      href={`/ref/conditions#${term}`}
       classes={{
         term: classes.term,
         category: classes.category

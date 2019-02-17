@@ -35,6 +35,7 @@ export default withStyles(theme => ({
       icon={icon}
       name={name}
       category="classification"
+      href={`/ref/classifications/${term}`}
       classes={{
         category: classes.category
       }}
