@@ -80,6 +80,7 @@ export default withStyles(theme => ({
         </div>
       </React.Fragment>
     }
+    {...TooltipProps}
   >
     {href ?
       <MuiLink component={Link} to={href} className={classes.term}>{text}</MuiLink>
