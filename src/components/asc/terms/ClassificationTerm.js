@@ -42,12 +42,20 @@ export default withStyles(theme => ({
     color: theme.asc.term.dice.main,
     fontWeight: 500
   }
-}))(({classes, term}) => {
-  const { name, aspect, termDesc, icon, affinity, archetypes, colors, game: {hitDice, prof: {savingThrows, weapons, skills}} } = classifications[term]
+}))(({classes, term, plural}) => {
+  const {
+    name,
+    aspect,
+    termDesc,
+    icon,
+    affinity,
+    archetypes,
+    colors,
+    game: {hitDice, prof: {savingThrows, weapons, skills}}
+  } = classifications[term]
   return (
     <TermBase
       icon={icon}
-      name={name}
       title={
         <span>
           <span>{name}</span>
@@ -55,6 +63,7 @@ export default withStyles(theme => ({
         </span>
       }
       category="classification"
+      text={plural ? `${name}s` : name}
       href={`/ref/classifications/${term}`}
       classes={{
         category: classes.category
