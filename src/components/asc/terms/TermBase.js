@@ -30,7 +30,8 @@ export default withStyles(theme => ({
     },
     "&:hover": {
       textDecoration: "none"
-    }
+    },
+    fontSize: "inherit"
   },
   header: {
     display: "flex",
