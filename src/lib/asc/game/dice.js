@@ -10,8 +10,10 @@ export default (amount = 1, die = 6, mod = 0) => Object.defineProperties({}, {
       return `${min} - ${max}`
     }
   },
-  toString: function() {
-    let string = `${this.amount}d${this.die}`
-    return mod === 0 ? string : `${string} ${this.mod < 0 ? "-" : "+"} ${this.mod}`
+  toString: {
+    value: function() {
+      let string = `${this.amount}d${this.die}`
+      return mod === 0 ? string : `${string} ${this.mod < 0 ? "-" : "+"} ${this.mod}`
+    }
   }
 })
