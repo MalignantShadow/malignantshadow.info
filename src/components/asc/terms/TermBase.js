@@ -11,7 +11,7 @@ export default withStyles(theme => ({
   tooltip: {
     backgroundColor: theme.palette.background.default,
     color: theme.palette.getContrastText(theme.palette.background.default),
-    width: 550,
+    width: 700,
     maxWidth: "unset",
     border: "1px solid",
     borderRadius: 0,
