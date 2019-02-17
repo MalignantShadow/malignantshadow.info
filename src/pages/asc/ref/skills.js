@@ -7,7 +7,8 @@ import {
   AscPage,
   AscSection,
   ConditionTerm,
-  ClassificationTerm
+  ClassificationTerm,
+  GameTerm,
  } from '../../../components/asc'
 
 const Section = withStyles(theme => ({
@@ -23,8 +24,8 @@ export default withStyles(theme => ({
     <Section variant="title" title="Skills" subtitle="Reference Page">
       <Typography paragraph>
         A skill is a pre-defined type of action in the game, associated with one of the six aptitudes (with the exception
-        of Constitution). This section details the appropriate time to use each of these skills. Note that the GM may
-        decide, based on the situation, to you roll a general aptitude check instead of a skill check.
+        of Constitution). This section details the appropriate time to use each of these skills. Note that
+        the <GameTerm term="gm"/> may decide, based on the situation, to you roll a general aptitude check instead of a skill check.
       </Typography>
       <Typography paragraph>
         This page does explain how to roll skill checks. It is only a reference page for the appropriate times a certain skill may be used.
@@ -32,7 +33,7 @@ export default withStyles(theme => ({
     </Section>
     <Section id="cha" variant="h1" title="Charisma" caption="Measures one's strength of character.">
       <Typography paragraph>
-        The GM may call for a Charisma skill check when you want to talk or act/perform their way out of (or into)
+        The <GameTerm term="gm"/> may call for a Charisma skill check when you want to talk or act/perform their way out of (or into)
         a situation.
       </Typography>
     </Section>
@@ -77,14 +78,14 @@ export default withStyles(theme => ({
     </Section>
     <Section id="dex" variant="h1" caption="Measures one's flexibility and agility." title="Dexterity">
       <Typography paragraph>
-        The GM may call for a Dexterity check when your character need to complete a task with balance, precision, or silence.
+        The <GameTerm term="gm"/> may call for a Dexterity check when your character need to complete a task with balance, precision, or silence.
       </Typography>
     </Section>
     <Section variant="h2" title="Acrobatics">
       <Typography paragraph>
         An Acrobatics check determines how well you can keep your balance or footing during a task. Common situations typically encompass
-        slippery or unstable areas; such as walking across ice or a narrow walkway/bridge. The GM may also ask for this check when you
-        want to make a precise adjustment while running, like jumping over a table. A critical fail on an Acrobatics check may cause your
+        slippery or unstable areas; such as walking across ice or a narrow walkway/bridge. The <GameTerm term="gm"/> may also ask for this check when
+        you want to make a precise adjustment while running, like jumping over a table. A critical fail on an Acrobatics check may cause your
         character to become <ConditionTerm term="prone"/>.
       </Typography>
     </Section>
@@ -102,7 +103,7 @@ export default withStyles(theme => ({
     </Section>
     <Section id="int" variant="h1" title="Intelligence" caption="Measures one's mental acuity and memory.">
       <Typography paragraph>
-          The GM may call for an Intelligence check when to recall information or identify an object or place.
+          The <GameTerm term="gm"/> may call for an Intelligence check when to recall information or identify an object or place.
       </Typography>
     </Section>
     <Section variant="h2" title="History">
@@ -127,7 +128,7 @@ export default withStyles(theme => ({
     </Section>
     <Section variant="h1" title="Strength" caption="Measures one's ability to exert force.">
       <Typography paragraph>
-        The GM may call for a Strength when you want to use your raw physical power to accomplish a task.
+        The <GameTerm term="gm"/> may call for a Strength when you want to use your raw physical power to accomplish a task.
       </Typography>
     </Section>
     <Section variant="h2" title="Athletics">
