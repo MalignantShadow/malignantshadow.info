@@ -81,7 +81,7 @@ class AscHeading extends React.Component {
           }
         </div>
         { caption &&
-          <Typography className={classes.caption} paragraph>{caption}</Typography>
+          <Typography className={classes.caption} gutterBottom>{caption}</Typography>
         }
       </React.Fragment>
     )
