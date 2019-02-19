@@ -8,6 +8,7 @@ import Link from '@material-ui/core/Link'
 import LinkIcon from '@material-ui/icons/Link'
 
 import { slug } from "../../lib/routing"
+import { appbarRelativeStyles } from '../../components/common/util'
 
 const mapping = {
   title: "h3",
@@ -49,6 +50,12 @@ const styles = theme => ({
   caption: {
     fontStyle: "italic",
     marginLeft: theme.spacing.unit * 3
+  },
+  anchor: {
+    ...appbarRelativeStyles(theme, height => ({
+      marginTop: -height - (theme.spacing.unit * 2)
+    })),
+    position: "absolute"
   }
 })
 
@@ -67,11 +74,13 @@ class AscHeading extends React.Component {
     const resolvedId = id || slug(children)
     return (
       <React.Fragment>
+        {/* eslint-disable-next-line */}
+        <a className={classes.anchor} id={resolvedId}/>
         <div className={classNames(classes.root, {
           [classes.title]: variant === "title",
           [classes.h1]: variant === "h1",
           [classes.h2]: variant === "h2"
-        }, className)} {...other} id={resolvedId} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
+        }, className)} {...other} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
           <Typography variant={mapping[variant]}>{children}</Typography>
           {variant === "title" && subtitle &&
             <Typography variant={mapping.subtitle} className={classes.subtitle}>{subtitle}</Typography>
