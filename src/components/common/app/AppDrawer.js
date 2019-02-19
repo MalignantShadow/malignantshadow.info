@@ -97,52 +97,41 @@ const DrawerItem = withRouter(withStyles(diStyles)(({ classes, onClose, topLevel
   </ListItem>
 )))
 
-class DrawerItemCollapse extends React.Component {
+const DrawerItemCollapse = withStyles(diStyles)(withRouter(({ classes, onClose, location, path, children, listTitle, title }) => {
+  const [open, setOpen] = React.useState(location.pathname.startsWith(path))
 
-  state = {
-    open: this.props.location.pathname.startsWith(this.props.path)
-  }
+  const toggleOpen = () => setOpen(!open)
 
-  toggleOpen = () => this.setState({ open: !this.state.open })
+  return (
+    <React.Fragment>
+      <ListItem button onClick={toggleOpen} className={classes.item}>
+        <ListItemText
+          primaryTypographyProps={{
+            className: classNames(classes.parent, classes.itemText)
+          }}
+          primary={listTitle || title}/>
+        <ListItemIcon className={classes.collapseIcon}>
+          <ExpandMore className={classNames(classes.expand, {[classes.expanded]: open})}/>
+        </ListItemIcon>
+      </ListItem>
+      <Collapse in={open}>
+        {children.map((e, i) => {
+          if (typeof e !== "object" || e.hidden) return null
 
-  render() {
-    const { classes, onClose, path, children, listTitle, title } = this.props
-    const { open } = this.state
-
-    return (
-      <React.Fragment>
-        <ListItem button onClick={this.toggleOpen} className={classes.item}>
-          <ListItemText
-            primaryTypographyProps={{
-              className: classNames(classes.parent, classes.itemText)
-            }}
-            primary={listTitle || title}/>
-          <ListItemIcon className={classes.collapseIcon}>
-            <ExpandMore className={classNames(classes.expand, {[classes.expanded]: open})}/>
-          </ListItemIcon>
-        </ListItem>
-        <Collapse in={open}>
-          {children.map((e, i) => {
-            if (typeof e !== "object" || e.hidden) return null
-
-            return (
-              <DrawerItem
-                onClose={onClose}
-                child
-                path={resolve(path, e.path)}
-                title={e.listTitle || e.title}
-                key={i}
-              />
-            )
-          })}
-        </Collapse>
-      </React.Fragment>
-    )
-  }
-
-}
-
-DrawerItemCollapse = withStyles(diStyles)(withRouter(DrawerItemCollapse))
+          return (
+            <DrawerItem
+              onClose={onClose}
+              child
+              path={resolve(path, e.path)}
+              title={e.listTitle || e.title}
+              key={i}
+            />
+          )
+        })}
+      </Collapse>
+    </React.Fragment>
+  )
+}))
 
 const DrawerHead = withStyles(dhStyles)(({ classes, title, subtitle }) => (
   <div className={classes.root}>
