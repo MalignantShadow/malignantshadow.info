@@ -20,34 +20,27 @@ const Section = withStyles(theme => ({
   <AscSection className={classes.heading} {...other}>{children}</AscSection>
 ))
 
-// const toc = [{
-//   title: "Reference: Skills",
-//   isTitle: true
-// },
-// "divider",
-// {
-//   title: "Charisma",
-//   children: [{
-//     title: "Deception"
-//   }, {
-//     title: "Intimidation"
-//   }, {
-//     title: "Performance"
-//   }, {
-//     title: "Persuasion"
-//   }]
-// }]
 
 const SkillTocItem = styledTocItem(theme => theme.asc.abilities)
 
 const toc = <React.Fragment>
-  <SkillTocItem title>Reference: Skills</SkillTocItem>
+  <SkillTocItem title href="#topContent">Reference: Skills</SkillTocItem>
   <Divider/>
-  <SkillTocItem>Charisma</SkillTocItem>
-  <SkillTocItem depth={1}>Deception</SkillTocItem>
-  <SkillTocItem depth={1}>Intimidation</SkillTocItem>
-  <SkillTocItem depth={1}>Performance</SkillTocItem>
-  <SkillTocItem depth={1}>Persuasion</SkillTocItem>
+  <SkillTocItem href="#cha">Charisma</SkillTocItem>
+  <SkillTocItem href="#deception" depth={1}>Deception</SkillTocItem>
+  <SkillTocItem href="#intimidation" depth={1}>Intimidation</SkillTocItem>
+  <SkillTocItem href="#performance" depth={1}>Performance</SkillTocItem>
+  <SkillTocItem href="#persuasion" depth={1}>Persuasion</SkillTocItem>
+  <SkillTocItem href="#dex">Dexterity</SkillTocItem>
+  <SkillTocItem href="#acrobatics" depth={1}>Acrobatics</SkillTocItem>
+  <SkillTocItem href="#sleight-of-hand" depth={1}>Sleight of Hand</SkillTocItem>
+  <SkillTocItem href="#stealth" depth={1}>Stealth</SkillTocItem>
+  <SkillTocItem href="#int">Intelligence</SkillTocItem>
+  <SkillTocItem href="#history" depth={1}>History</SkillTocItem>
+  <SkillTocItem href="#investigation" depth={1}>Investigation</SkillTocItem>
+  <SkillTocItem href="#nature" depth={1}>Nature</SkillTocItem>
+  <SkillTocItem href="#str">Strength</SkillTocItem>
+  <SkillTocItem href="#athletics" depth={1}>Athletics</SkillTocItem>
 </React.Fragment>
 
 export default withStyles(theme => ({
@@ -55,7 +48,7 @@ export default withStyles(theme => ({
 
 }))(({classes}) => (
   <AscPage toc={toc}>
-    <Section variant="title" title="Skills" subtitle="Reference Page">
+    <Section id="topContent" variant="title" title="Skills" subtitle="Reference Page">
       <Typography paragraph>
         A skill is a pre-defined type of action in the game, associated with one of the six aptitudes (with the exception
         of Constitution). This section details the appropriate time to use each of these skills. Note that
