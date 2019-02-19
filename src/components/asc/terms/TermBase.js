@@ -66,9 +66,10 @@ export default withStyles(theme => ({
   }
 }))(({classes, children, icon: Icon, name, title = name, category, text = name, href, TooltipProps, disableHover}) =>{
 
-  const term = !disableHover && href ?
-    <MuiLink component={Link} to={href} className={classes.term}>{text}</MuiLink>
-    : <Typography className={classNames(classes.term, {[classes.termText]: !disableHover})} component="span">{text}</Typography>
+  const className = classNames(classes.term, {[classes.termText]: !disableHover})
+  const term = href ?
+    <MuiLink component={Link} to={href} className={className}>{text}</MuiLink>
+    : <Typography className={className} component="span">{text}</Typography>
 
 return disableHover ? term :
   <Tooltip
