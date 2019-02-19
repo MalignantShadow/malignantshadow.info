@@ -43,6 +43,7 @@ const theme = createMuiTheme({
   },
   asc: {
     abilities: makeColor(colors.purple),
+    skills: makeColor(colors.orange),
     classifications: makeColor(colors.teal),
     rules: makeColor(colors.red),
     term: {

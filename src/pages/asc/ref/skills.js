@@ -14,12 +14,12 @@ import {
  import { styledTocItem } from '../../../components/asc/util'
 
 const Section = withStyles(theme => ({
-  heading: { borderColor: theme.asc.abilities.main }
+  heading: { borderColor: theme.asc.skills.main }
 }))(({classes, children, ...other}) => (
   <AscSection className={classes.heading} {...other}>{children}</AscSection>
 ))
 
-const SkillTocItem = styledTocItem(theme => theme.asc.abilities)
+const SkillTocItem = styledTocItem(theme => theme.asc.skills)
 
 const toc = <React.Fragment>
   <SkillTocItem title href="#topContent">Reference: Skills</SkillTocItem>
