@@ -3,6 +3,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Hidden from '@material-ui/core/Hidden'
 
+import { appbarRelativeStyles } from '../../components/common/util'
 import { SiteBreadcrumbs } from '../common/app'
 import Asc from './icons/Asc'
 import routing from '../../lib/asc/routeInfo'
@@ -29,10 +30,12 @@ export default withStyles(theme => ({
   toc: {
     marginRight: theme.spacing.unit * 4,
     minWidth: 275,
-    height: "fit-content",
-    // 100vh - spacing * 4 (around breadcrumbs) - 30px (breadcrumbs) - 64px (appbar) - 2 * spacing (below toc)
-    maxHeight: `calc(100vh - ${theme.spacing.unit * 6}px - 94px)`,
-    overflowY: "auto"
+    ...appbarRelativeStyles(theme, height => ({
+      // 100vh - padding - appbar
+      maxHeight: `calc(100vh - ${theme.spacing.unit * 4}px - ${height}px)`
+    })),
+    overflowY: "auto",
+    position: "fixed"
   },
 }))(({classes, children, rightContent, toc}) => {
 

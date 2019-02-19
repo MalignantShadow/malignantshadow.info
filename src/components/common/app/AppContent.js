@@ -1,16 +1,13 @@
 import React from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
+import { appbarRelativeStyles } from '../util'
 
 export default withStyles(theme => ({
   root: {
-    marginTop: 56,
-    [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
-      marginTop: 48,
-    },
-    [theme.breakpoints.up('sm')]: {
-      marginTop: 64,
-    },
+    ...appbarRelativeStyles(theme, height => ({
+      marginTop: height
+    })),
     [theme.breakpoints.up("lg")]: {
       marginLeft: 240
     }
