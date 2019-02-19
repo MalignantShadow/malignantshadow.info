@@ -132,7 +132,10 @@ export default withStyles(theme => ({
     <Section variant="h2" title="Stealth" caption="Contested with: Perception">
       <Typography paragraph>
         A Stealth check detmines how well you can stay out of sight from onlookers. Typical situations include <b>eavesdropping</b> and <b>traveling
-        through a crowded/gaurded area without being detected</b>. <ClassificationTerm term="shadowborne"/> are particularly adept at Stealth.
+        through a crowded/gaurded area</b> <i>without being detected</i>.
+      </Typography>
+      <Typography paragraph>
+        <ClassificationTerm term="shadowborne"/> are particularly adept at Stealth.
       </Typography>
     </Section>
     <Section id="int" variant="h1" title="Intelligence" caption="Measures one's mental acuity and memory.">
@@ -151,8 +154,13 @@ export default withStyles(theme => ({
       <Typography paragraph>
         An Investigation check determines how well you can make a deduction or extrapolate information. Typical examples of Investigation checks
         include <b>asking around for the location of a specific landmark</b>, <b>searching for traps</b>, or <b>determining the weak points
-        in a structure</b>. Investigation differs from Perception; Perception is usually considered to be passive (noticing something <b>as it
+        in a structure</b>.
+      </Typography>
+      <Typography paragraph>
+        Investigation differs from Perception. Perception is usually considered to be passive (noticing something <b>as it
         happens</b>), while Investigation is usually prompted when a character makes a conscious decision to search for a specific thing.
+        Investigation also implies <i>active</i> searching over time by moving objects or asking multiple people. The general rule of thumb is
+        "find means Investigation; see/notice means Perception."
       </Typography>
     </Section>
     <Section variant="h2" title="Nature">
@@ -165,7 +173,7 @@ export default withStyles(theme => ({
         The <GameTerm term="gm"/> may call for a Strength when you want to use your raw physical power to accomplish a task.
       </Typography>
     </Section>
-    <Section variant="h2" title="Athletics">
+    <Section variant="h2" title="Athletics" caption="May be contested by: Athletics or Acrobatics">
       <Typography paragraph>
         An Athletics check determines how well you can endure a troubling situation or apply brute force to an object. Common examples
         include <b>treading water for an extended period of time</b>, <b>forcing open a door</b>, <b>moving a heavy object</b>, and <b>standing
