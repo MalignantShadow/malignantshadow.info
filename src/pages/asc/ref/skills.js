@@ -10,7 +10,6 @@ import {
   ConditionTerm,
   ClassificationTerm,
   GameTerm,
-  TableOfContents
  } from '../../../components/asc'
  import { styledTocItem } from '../../../components/asc/util'
 
