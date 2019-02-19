@@ -42,7 +42,7 @@ export default withStyles(theme => ({
     color: theme.asc.term.dice.main,
     fontWeight: 500
   }
-}))(({classes, term, plural}) => {
+}))(({classes, term, plural, ...other}) => {
   const {
     name,
     aspect,
@@ -52,7 +52,6 @@ export default withStyles(theme => ({
     archetypes,
     colors,
     game: {hitDice, prof: {savingThrows, weapons, skills}},
-    ...other
   } = classifications[term]
   return (
     <TermBase
