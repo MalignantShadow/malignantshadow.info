@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-export const slug = (str) => str.toLowerCase().replace(/\s+/, "-")
+export const slug = (str) => str.toLowerCase().replace(/\s+/g, "-")
 
 export const resolve = (parent, path) => !parent || path.startsWith("/") ? path : `${parent}${parent.endsWith("/") ? "" : "/"}${path}`
 
