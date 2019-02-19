@@ -23,7 +23,7 @@ export default withStyles(theme => ({
       borderLeft: `2px solid ${theme.asc.term.dice.main}`
     }
   },
-}))(({classes, dice}) => (
+}))(({classes, dice, ...other}) => (
   <TermBase
     name={dice.toString()}
     category="Dice Expression"
@@ -33,6 +33,7 @@ export default withStyles(theme => ({
       category: classes.category,
       content: classes.content
     }}
+    {...other}
   >
     <Typography className={classes.stat}>
       <b>Range</b>: {dice.rangeString}

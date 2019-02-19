@@ -51,7 +51,8 @@ export default withStyles(theme => ({
     affinity,
     archetypes,
     colors,
-    game: {hitDice, prof: {savingThrows, weapons, skills}}
+    game: {hitDice, prof: {savingThrows, weapons, skills}},
+    ...other
   } = classifications[term]
   return (
     <TermBase
@@ -68,6 +69,7 @@ export default withStyles(theme => ({
       classes={{
         category: classes.category
       }}
+      {...other}
     >
       <div className={classes.statsWrapper}>
         <div className={classNames(classes.statsWrapperRow, classes.rowGutter)}>

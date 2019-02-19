@@ -17,7 +17,7 @@ export default withStyles(theme => {
       paddingLeft: theme.spacing.unit * 3
     }
   }
-})(({classes, term}) => {
+})(({classes, term, ...other}) => {
   const condition = conditions[term]
   return (
     <TermBase
@@ -28,6 +28,7 @@ export default withStyles(theme => {
         term: classes.term,
         category: classes.category
       }}
+      {...other}
     >
       <ConditionText className={classes.ul}>{condition.desc}</ConditionText>
     </TermBase>

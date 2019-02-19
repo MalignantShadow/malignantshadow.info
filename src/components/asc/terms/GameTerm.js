@@ -3,7 +3,7 @@ import React from 'react'
 import TermBase from './TermBase'
 import { dictionary } from '../../../lib/asc/game'
 
-export default ({term: termProp}) => {
+export default ({term: termProp, ...other}) => {
   const term = dictionary[termProp]
   return (
     <TermBase
@@ -13,8 +13,9 @@ export default ({term: termProp}) => {
         classes: {},
         placement: "top",
         TransitionComponent: undefined
-      }} 
+      }}
       href={term.href}
+      {...other}
     />
   )
 }
