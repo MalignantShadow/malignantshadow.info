@@ -19,7 +19,6 @@ const Section = withStyles(theme => ({
   <AscSection className={classes.heading} {...other}>{children}</AscSection>
 ))
 
-
 const SkillTocItem = styledTocItem(theme => theme.asc.abilities)
 
 const toc = <React.Fragment>
@@ -40,6 +39,11 @@ const toc = <React.Fragment>
   <SkillTocItem href="#nature" depth={1}>Nature</SkillTocItem>
   <SkillTocItem href="#str">Strength</SkillTocItem>
   <SkillTocItem href="#athletics" depth={1}>Athletics</SkillTocItem>
+  <SkillTocItem href="#wis">Wisdom</SkillTocItem>
+  <SkillTocItem href="#animal-handling" depth={1}>Animal Handling</SkillTocItem>
+  <SkillTocItem href="#insight" depth={1}>Insight</SkillTocItem>
+  <SkillTocItem href="#medicine" depth={1}>Medicine</SkillTocItem>
+  <SkillTocItem href="#perception" depth={1}>Perception</SkillTocItem>
 </React.Fragment>
 
 export default withStyles(theme => ({
@@ -162,6 +166,43 @@ export default withStyles(theme => ({
         An Athletics check determines how well you can endure a troubling situation or apply brute force to an object. Common examples
         include <b>treading water for an extended period of time</b>, <b>forcing open a door</b>, <b>moving a heavy object</b>, and <b>standing
         you ground while something tries to move you</b>.
+      </Typography>
+    </Section>
+    <Section variant="h1" title="Wisdom" caption="Measures one's worldly experience">
+      <Typography paragraph>
+        The <GameTerm term="gm"/> may call for a Wisdom check when you want to use your social or environmental perceptiveness to solve a problem.
+      </Typography>
+    </Section>
+    <Section variant="h2" title="Animal Handling">
+      <Typography paragraph>
+        An Animal Handling check determines how well you can control or coerce an animal. Common instances of this skill check include <b>training a
+        pet</b>, <b>convicing an animal you are friendly</b>, and <b>determing an animal's intentions</b>.
+      </Typography>
+    </Section>
+    <Section variant="h2" title="Insight" caption="Contested by: Deception or Persuasion">
+      <Typography paragraph>
+        An Insight check determines how well you can deduce a person's intentions based on their body language, speech patterns, and mannerisms.
+        Insight checks typically have a lower <GameTerm term="dc"/> the better you know a person.
+      </Typography>
+    </Section>
+    <Section variant="h2" title="Medicine">
+      <Typography paragraph>
+        A Medicine check determines how well you can use your medical knowledge and experience in a particular situation. The most common examples
+        are <b>diagnosing a disease or infection</b> and <b>applying first aid</b>.
+      </Typography>
+      <Typography paragraph>
+        The <GameTerm term="gm"/> may require you to be proficient in this skill in order to pass certain Medicine checks.
+      </Typography>
+    </Section>
+    <Section variant="h2" title="Perception" caption="Contested by: Stealth">
+      <Typography paragraph>
+        A Perception check determines how well you sense the presence of an object or creature using your senses. Common examples
+        include <b>listening to a conversation through a wall/door</b>, <b>spotting a specific face in a crowd of people</b>,
+        or <b>discerning the identity of an obscured object/creature</b>.
+      </Typography>
+      <Typography paragraph>
+        Perception differs from Investigation. Perception is normally used to notice an event as it is happening, while Investigation implies an
+        active search. The general rule of thumb is "see/notice means Perception; find means Investigation."
       </Typography>
     </Section>
   </AscPage>
