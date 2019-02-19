@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import MuiLink from '@material-ui/core/Link'
 
 export default withStyles(theme => ({
   root: {
@@ -21,8 +22,14 @@ export default withStyles(theme => ({
   depth1: { paddingLeft: theme.spacing.unit * 4 },
   depth2: { paddingLeft: theme.spacing.unit * 6 },
   depth3: { paddingLeft: theme.spacing.unit * 8 }
-}))(({classes, className, title, children, depth = 0, href}) => (
-  <ListItem button className={classNames(classes.root, classes[`depth${depth}`], className)} component={href && Link} to={href}>
+}))(({classes, className, title, children, depth = 0, href, to}) => (
+  <ListItem
+    button
+    className={classNames(classes.root, classes[`depth${depth}`], className)}
+    component={href ? MuiLink : Link} 
+    href={href}
+    to={to}
+  >
     <ListItemText primaryTypographyProps={{variant: "body2", component: "span", className: classNames({
       [classes.title]: title
     })}}>{children}</ListItemText>
