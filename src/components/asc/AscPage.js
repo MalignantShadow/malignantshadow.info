@@ -7,10 +7,14 @@ import { appbarRelativeStyles } from '../../components/common/util'
 import { SiteBreadcrumbs } from '../common/app'
 import Asc from './icons/Asc'
 import routing from '../../lib/asc/routeInfo'
-
 import TableOfContents from './TableOfContents'
 
+
 export default withStyles(theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "row"
+  },
   wrapper: {
     display: "flex",
     flexDirection: "row"
@@ -20,12 +24,15 @@ export default withStyles(theme => ({
   },
   contentWrapper: {
     display: "flex",
-    flexDirection: "row",
-    marginTop: theme.spacing.unit * 2,
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      marginLeft: 275 + theme.spacing.unit * 4
+    }
   },
   content: {
+    marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 16,
-    flexGrow: 1
+    flexGrow: 1,
   },
   toc: {
     marginRight: theme.spacing.unit * 4,
@@ -38,20 +45,19 @@ export default withStyles(theme => ({
     position: "fixed"
   },
 }))(({classes, children, rightContent, toc}) => {
-
   return (
     <div className={classes.root}>
-      <div className={classes.wrapper}>
-        <SiteBreadcrumbs icon={Asc}>{routing}</SiteBreadcrumbs>
-        <div className={classes.stretch}/>
-        <div className={classes.rightContent}>{rightContent}</div>
-      </div>
+      {toc &&
+        <Hidden smDown>
+          <TableOfContents className={classes.toc} children={toc}/>
+        </Hidden>
+      }
       <div className={classes.contentWrapper}>
-        {toc &&
-          <Hidden smDown>
-            <TableOfContents className={classes.toc} children={toc}/>
-          </Hidden>
-        }
+        <div className={classes.wrapper}>
+          <SiteBreadcrumbs icon={Asc}>{routing}</SiteBreadcrumbs>
+          <div className={classes.stretch}/>
+          <div className={classes.rightContent}>{rightContent}</div>
+        </div>
         <div className={classes.content}>
           {children}
         </div>
