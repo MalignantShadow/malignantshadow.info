@@ -46,10 +46,7 @@ const toc = <React.Fragment>
   <SkillTocItem href="#perception" depth={1}>Perception</SkillTocItem>
 </React.Fragment>
 
-export default withStyles(theme => ({
-
-
-}))(({classes}) => (
+export default () => (
   <AscPage toc={toc}>
     <Section id="topContent" variant="title" title="Skills" subtitle="Reference Page">
       <Typography paragraph>
@@ -218,4 +215,4 @@ export default withStyles(theme => ({
       </Typography>
     </Section>
   </AscPage>
-))
+)
