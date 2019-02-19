@@ -54,13 +54,17 @@ export const deception = s(
   "Charisma",
   "Contested with: Insight",
   () => (
-    <Typography paragraph>
-      A Deception check determines how well you can hide the truth. Deception differs from Persuasion - while
-      you may be trying to convince or "persuade" another character, it is considered <b>deception</b> if
-      you are hiding the truth in some way. Most of the time, this is done with vague wording or telling a
-      direct or obvious lie. Common situations include <b>impersonation</b>, <b>giving someone false assurances</b>
-      , and <b>passing misleading information</b>.
-    </Typography>
+    <React.Fragment>
+      <Typography paragraph>
+        A Deception check determines how well you can hide the truth. Most of the time, this is done with vague wording or telling a
+        direct or obvious lie. Common situations include <b>impersonation</b>, <b>giving someone false assurances</b>
+        , and <b>passing misleading information</b>.
+      </Typography>
+      <Typography paragraph>
+        Deception differs from Persuasion - while you may be trying to convince or "persuade" another character, it is considered <i>deception</i> if
+        you are hiding the truth in some way.
+      </Typography>
+    </React.Fragment>
   )
 )
 
