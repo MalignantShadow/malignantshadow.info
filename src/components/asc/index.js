@@ -4,6 +4,8 @@ export { default as AscSection } from './AscSection'
 export { default as ConditionText } from './ConditionText'
 export { default as IndexCard } from './IndexCard'
 export { default as IndexCardContent } from './IndexCardContent'
+export { default as TableOfContents } from './TableOfContents'
+export { default as TocItem } from './TocItem'
 
 // Terms
 export {
