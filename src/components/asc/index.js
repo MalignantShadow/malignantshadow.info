@@ -13,5 +13,6 @@ export {
   ClassificationTerm,
   DiceTerm,
   GameTerm,
+  SkillTerm,
   TermBase
  } from './terms'
