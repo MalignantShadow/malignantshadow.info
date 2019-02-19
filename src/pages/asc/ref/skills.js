@@ -2,6 +2,7 @@ import React from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
 
 import {
   AscPage,
@@ -9,7 +10,9 @@ import {
   ConditionTerm,
   ClassificationTerm,
   GameTerm,
+  TableOfContents
  } from '../../../components/asc'
+ import { styledTocItem } from '../../../components/asc/util'
 
 const Section = withStyles(theme => ({
   heading: { borderColor: theme.asc.abilities.main }
@@ -17,10 +20,41 @@ const Section = withStyles(theme => ({
   <AscSection className={classes.heading} {...other}>{children}</AscSection>
 ))
 
+// const toc = [{
+//   title: "Reference: Skills",
+//   isTitle: true
+// },
+// "divider",
+// {
+//   title: "Charisma",
+//   children: [{
+//     title: "Deception"
+//   }, {
+//     title: "Intimidation"
+//   }, {
+//     title: "Performance"
+//   }, {
+//     title: "Persuasion"
+//   }]
+// }]
+
+const SkillTocItem = styledTocItem(theme => theme.asc.abilities)
+
+const toc = <React.Fragment>
+  <SkillTocItem title>Reference: Skills</SkillTocItem>
+  <Divider/>
+  <SkillTocItem>Charisma</SkillTocItem>
+  <SkillTocItem depth={1}>Deception</SkillTocItem>
+  <SkillTocItem depth={1}>Intimidation</SkillTocItem>
+  <SkillTocItem depth={1}>Performance</SkillTocItem>
+  <SkillTocItem depth={1}>Persuasion</SkillTocItem>
+</React.Fragment>
+
 export default withStyles(theme => ({
 
+
 }))(({classes}) => (
-  <AscPage>
+  <AscPage toc={toc}>
     <Section variant="title" title="Skills" subtitle="Reference Page">
       <Typography paragraph>
         A skill is a pre-defined type of action in the game, associated with one of the six aptitudes (with the exception
