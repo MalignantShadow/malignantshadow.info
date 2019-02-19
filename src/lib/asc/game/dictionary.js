@@ -1,4 +1,4 @@
-const t = (name, desc) => ({name, desc})
+const t = (name, desc, other) => ({name, desc, ...other})
 
 export default {
   gm: t("GM", "Game Master"),
