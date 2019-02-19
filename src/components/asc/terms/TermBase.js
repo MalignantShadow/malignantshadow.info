@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import classNames from 'classnames'
 
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -22,16 +23,18 @@ export default withStyles(theme => ({
     opacity: 1
   },
   term: {
+    display: "initial",
+    fontSize: "inherit"
+  },
+  termText: {
     borderBottom: "1px dotted",
     fontWeight: 500,
-    display: "initial",
     "&:not(a)": {
       cursor: "help"
     },
     "&:hover": {
       textDecoration: "none"
-    },
-    fontSize: "inherit"
+    }
   },
   header: {
     display: "flex",
@@ -61,7 +64,13 @@ export default withStyles(theme => ({
   content: {
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit}px`
   }
-}))(({classes, children, icon: Icon, name, title = name, category, text = name, href, TooltipProps}) => (
+}))(({classes, children, icon: Icon, name, title = name, category, text = name, href, TooltipProps, disableHover}) =>{
+
+  const term = !disableHover && href ?
+    <MuiLink component={Link} to={href} className={classes.term}>{text}</MuiLink>
+    : <Typography className={classNames(classes.term, {[classes.termText]: !disableHover})} component="span">{text}</Typography>
+
+return disableHover ? term :
   <Tooltip
     TransitionComponent={Fade}
     placement="top-start"
@@ -82,9 +91,6 @@ export default withStyles(theme => ({
     }
     {...TooltipProps}
   >
-    {href ?
-      <MuiLink component={Link} to={href} className={classes.term}>{text}</MuiLink>
-      : <Typography className={classes.term} component="span">{text}</Typography>
-    }
+    {term}
   </Tooltip>
-))
+})
