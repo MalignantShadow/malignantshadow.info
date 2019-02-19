@@ -23,6 +23,8 @@ const theme = createMuiTheme({
   }
 })
 
+console.log(theme)
+
 const scrollbarStyle = document.createElement("style")
 scrollbarStyle.innerHTML = `
 ::-webkit-scrollbar {
