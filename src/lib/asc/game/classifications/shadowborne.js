@@ -2,7 +2,7 @@ import React from 'react'
 
 import Typography from '@material-ui/core/Typography'
 
-import icon from '../../../../components/asc/icons/Asc'
+import icon from '../../../../components/asc/icons/Shadowborne'
 import { default as d} from '../dice'
 import { repeatVal as r, auraPointsFeature, alterAppearanceSubFeature, heroStudiesFeature } from './util'
 import {
