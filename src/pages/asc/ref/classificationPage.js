@@ -34,7 +34,7 @@ export default withStyles(theme => ({
 }))(withRouter(({classes, match: {params: {id}}}) => {
   const c = classifications[id]
   if(!c) return "Encountered an uh-oh"
-  const {name, speed = 35, auraMod, resistance, vulnerability, icon: Icon, desc: Desc, traits, intrinsics, features, featureTableExtras} = c
+  const {name, speed = 35, auraMod, icon: Icon, desc: Desc, traits, intrinsics, features, featureTableExtras} = c
 
   const TocItem = styledTocItem(theme => theme.asc.class[id])
 
