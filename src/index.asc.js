@@ -29,16 +29,18 @@ const makeColor = (color) => ({
   dark: color[700]
 })
 
+const primary = {
+  light : colors.grey[800],
+  main: colors.grey[900],
+  dark: "#000"
+}
+
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true
   },
   palette: {
-    primary: {
-      light : colors.grey[800],
-      main: colors.grey[900],
-      dark: "#000"
-    },
+    primary: primary,
     secondary: colors.deepPurple
   },
   asc: {
