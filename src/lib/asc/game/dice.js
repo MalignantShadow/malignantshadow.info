@@ -3,7 +3,9 @@ export default (amount = 1, die = 6, mod = 0) => Object.defineProperties({}, {
   die: { value: die, writable: true },
   mod: { value: mod, writable: true },
   avg: { get: function() { return this.amount * this.die / 2 + this.mod }},
-  range: { get: function() { return [this.amount + this.mod, this.amount * this.die + this.mod] }},
+  min: { get: function() { return this.amount + this.mod } },
+  max: { get: function() { return this.amount * this.die + this.mod } },
+  range: { get: function() { return [this.min, this.max] }},
   rangeString: {
     get: function() {
       const [min, max] = this.range
