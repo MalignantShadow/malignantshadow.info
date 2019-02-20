@@ -15,7 +15,6 @@ import {
   AscPage,
   AscSection
  } from '../../../components/asc'
- import { skillsByAptitude } from '../../../lib/asc/game'
  import { slug } from '../../../lib/routing'
  import { styledTocItem } from '../../../components/asc/util'
  import * as classifications from '../../../lib/asc/game/classifications'
