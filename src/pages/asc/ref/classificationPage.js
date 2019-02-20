@@ -13,7 +13,11 @@ import Paper from '@material-ui/core/Paper'
 
 import {
   AscPage,
-  AscSection
+  AscSection,
+  AscTable,
+  Calc,
+  DiceTerm,
+  RpgTypography
  } from '../../../components/asc'
  import { slug } from '../../../lib/routing'
  import { styledTocItem } from '../../../components/asc/util'
@@ -35,7 +39,7 @@ export default withStyles(theme => ({
 }))(withRouter(({classes, match: {params: {id}}}) => {
   const c = classifications[id]
   if(!c) return "Encountered an uh-oh"
-  const {name, features, featureTableExtras} = c
+  const {name, speed = 35, auraMod, resistance, vulnerability, icon: Icon, desc: Desc, traits, intrinsics, features, featureTableExtras} = c
 
   const TocItem = styledTocItem(theme => theme.asc.class[id])
 
@@ -65,11 +69,50 @@ export default withStyles(theme => ({
     })
   })
 
+  let sortedTraits = [
+    ["Armor Class", <React.Fragment>Your armor class is equal to <Calc>{traits.ac[0]} + your {traits.ac[1]} modifier + your {traits.ac[2]} modifier</Calc>.</React.Fragment>],
+    ["Aptitude Score Increases",traits.scoreIncreases.map(([apt, num], i) =>
+      `${i === 0 ? "Y" : "y"}our ${apt} score is ${num > 0 ? "raised" : "decreased"} by ${Math.abs(num)}
+       ${i === traits.scoreIncreases.length - 1 ? "." : ", "}${i === traits.scoreIncreases.length - 2 ? "and " : ""}`
+    )],
+    ["Aura", `You use ${auraMod} as your Aura modifier.`],
+    ["Speed", `Your base movement speed is ${speed} feet.`],
+    [traits.resistance[0] || `${name} Resillience`, `You are resistant ${traits.resistance[1]} damage`],
+    [traits.vulnerability[0] || `${name} Vulnerabilities`, `You are vulnerabile to ${traits.vulnerability[1]} damage`],
+  ]
+  if(traits.extra)
+    sortedTraits = sortedTraits.concat(traits.extra)
+
+  sortedTraits.sort(([a], [b]) => a - b)
+
   return (
     <AscPage toc={toc} BreadcrumbProps={{extra: [{title: c.name}]}}>
-      <AscSection id="topContent" variant="title" title={name} subtitle="Classification Details">
-
+      <AscSection
+        id="topContent"
+        variant="title"
+        title={<React.Fragment>
+          <Icon className={classes.icon}/>
+          {name}
+        </React.Fragment>}
+        subtitle="Classification Details"
+        classes={{heading: classes.pageTitle}}
+      >
+        <Desc/>
       </AscSection>
+      <AscSection variant="h1" title="Traits">
+        <Typography>As a {name}, you have a number of innate traits:</Typography>
+        {sortedTraits.map(([title, desc], i) => (
+          <RpgTypography key={i} title={title} paragraph={i === sortedTraits.length - 1}>{desc}</RpgTypography>
+        ))}
+      </AscSection>
+      <AscSection variant="h2" title="Hit Dice"/>
+      <Paper className={classes.tablePaper}>
+        <AscTable head={["Hit Dice", "HP at Level 1", "HP After Level 1"]} body={[[
+          <DiceTerm dice={intrinsics.hitDice}/>,
+          <Calc>{intrinsics.hitDice.max} + your Constitution modifier</Calc>,
+          <Calc><DiceTerm dice={intrinsics.hitDice}/> (or {intrinsics.hitDice.avg + 1}) + your Constitution modifier per Level after 1</Calc>
+        ]]}/>
+      </Paper>
       <AscSection variant="h1" title="Features">
         <Typography>You gain the following features as a {name}:</Typography>
         <Table>
