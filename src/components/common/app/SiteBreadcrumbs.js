@@ -41,8 +41,8 @@ const SiteBreadcrumbs = withStyles(theme => ({
       textDecoration: "none"
     }
   }
-}))(withRouter(({classes, className, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, ...other}) => {
-  const breadcrumbs = getBreadcrumbs(includeRoot, children, location.pathname)
+}))(withRouter(({classes, className, children, includeRoot, location, history, staticContext, icon: Icon, PaperProps, IconProps, extra, ...other}) => {
+  const breadcrumbs = getBreadcrumbs(includeRoot, children, location.pathname).concat(extra)
   return (
     <Paper {...PaperProps} className={classNames(classes.paper, className)} >
       <Breadcrumbs separator={<NavigateNext fontSize="small"/>} aria-label="Breadcrumb" {...other}>
