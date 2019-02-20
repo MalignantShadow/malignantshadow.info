@@ -5,10 +5,10 @@ import { withStyles } from '@material-ui/core/styles'
 import AscHeading from './AscHeading'
 
 export default withStyles(theme => ({
-
+  heading: {}
 }))(({classes, children, title, ...other}) => (
   <React.Fragment>
-    <AscHeading {...other}>{title}</AscHeading>
+    <AscHeading className={classes.heading} {...other}>{title}</AscHeading>
     {children}
   </React.Fragment>
 ))
