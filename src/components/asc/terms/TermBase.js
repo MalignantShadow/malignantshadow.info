@@ -28,13 +28,15 @@ export default withStyles(theme => ({
   },
   termText: {
     borderBottom: "1px dotted",
-    fontWeight: 500,
     "&:not(a)": {
       cursor: "help"
     },
     "&:hover": {
       textDecoration: "none"
     }
+  },
+  termBold: {
+    fontWeight: 500,
   },
   header: {
     display: "flex",
@@ -64,9 +66,9 @@ export default withStyles(theme => ({
   content: {
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit}px`
   }
-}))(({classes, children, icon: Icon, name, title = name, category, text = name, href, TooltipProps, disableHover}) =>{
+}))(({classes, children, icon: Icon, name, title = name, category, text = name, href, TooltipProps, disable, disableHover = disable, disableBold = disable}) =>{
 
-  const className = classNames(classes.term, {[classes.termText]: !disableHover})
+  const className = classNames(classes.term, {[classes.termText]: !(disableHover), [classes.termBold]: !disableBold})
   const term = href ?
     <MuiLink component={Link} to={href} className={className}>{text}</MuiLink>
     : <Typography className={className} component="span">{text}</Typography>

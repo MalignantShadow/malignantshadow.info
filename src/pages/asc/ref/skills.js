@@ -58,7 +58,7 @@ export default () => (
         This page does explain how to roll skill checks. It is only a reference page for the appropriate times a certain skill may be used.
       </Typography>
       <Typography paragraph>
-        This page is more of a guide for <GameTerm term="gm" disableHover plural/>, as they are the ones theat typically decide which check to call for based on the
+        This page is more of a guide for <GameTerm term="gm" disable plural/>, as they are the ones theat typically decide which check to call for based on the
         situation.
       </Typography>
     </Section>
