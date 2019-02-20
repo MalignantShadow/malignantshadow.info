@@ -54,6 +54,9 @@ const theme = createMuiTheme({
       place: makeColor(colors.blue),
       monster: makeColor(colors.red),
       dice: makeColor(colors.indigo)
+    },
+    class: {
+      shadowborne: primary
     }
   }
 })
