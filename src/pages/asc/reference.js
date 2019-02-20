@@ -8,12 +8,15 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 import { AscPage, IndexCard, IndexCardContent } from '../../components/asc'
-import { classifications, skillsByAptitude } from "../../lib/asc/game"
+import { skillsByAptitude } from "../../lib/asc/game"
+import * as classifications from '../../lib/asc/game/classifications'
 
 const changeHeaderColors = (theme, color) => ({
   backgroundColor: theme.asc[color].main,
   color: theme.palette.getContrastText(theme.asc[color].main)
 })
+
+const sortedClassNames = Object.entries(classifications).sort((a, b) => a.name - b.name)
 
 export default withStyles(theme => ({
   card: {
@@ -76,10 +79,10 @@ export default withStyles(theme => ({
     <IndexCard title="Classifications" classes={{title: classes.classWrapper}}>
       <IndexCardContent>
         <Grid container spacing={8}>
-          {classifications.map((e, i) => (
+          {sortedClassNames.map((e, i) => (
             <Grid key={i} className={classes.classImgWrapper} item md={2} sm={4} xs={6}>
               <img alt="" src="//placehold.it/64x64" className={classes.classImg}/>
-              <Typography>{e.name}</Typography>
+              <Typography>{classifications[e].name}</Typography>
             </Grid>
           ))}
         </Grid>

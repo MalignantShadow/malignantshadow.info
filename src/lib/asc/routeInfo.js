@@ -25,19 +25,9 @@ export default makeRoutes([{
     title: "Skills"
   }, {
     title: "Classifications",
-    children: [{
-      title: "Aurora"
-    }, {
-      title: "Golem"
-    }, {
-      title: "Maelstrom"
-    }, {
-      title: "Salamander"
-    }, {
-      title: "Shadowborne"
-    }, {
-      title: "Tempest"
-    }]
+    children: [
+      {title: "ClassificationPage", page: "byId", path: ":id"}
+    ]
   }, {
     title: "Feats"
   }]

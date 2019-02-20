@@ -1,6 +1,7 @@
 import Home from '../../pages/asc/home'
 import Reference from '../../pages/asc/reference'
 import Skills from '../../pages/asc/ref/skills'
+import ClassificationPage from '../../pages/asc/ref/classificationPage'
 
 const empty = () => null
 
@@ -21,12 +22,7 @@ export default {
       classifications: {
         page: empty,
         children: {
-          aurora: empty,
-          golem: empty,
-          maelstrom: empty,
-          salamander: empty,
-          shadowborne: empty,
-          tempest: empty
+          byId: ClassificationPage
         }
       },
       skills: Skills,
