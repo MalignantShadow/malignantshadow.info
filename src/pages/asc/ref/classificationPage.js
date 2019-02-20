@@ -21,7 +21,18 @@ import {
  import * as classifications from '../../../lib/asc/game/classifications'
 
 export default withStyles(theme => ({
-
+  tablePaper: {
+    margin: theme.spacing.unit * 2
+  },
+  icon: {
+    fontSize: "2.25rem",
+    marginRight: theme.spacing.unit
+  },
+  pageTitle: {
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column"
+    }
+  }
 }))(withRouter(({classes, match: {params: {id}}}) => {
   const c = classifications[id]
   if(!c) return "Encountered an uh-oh"
