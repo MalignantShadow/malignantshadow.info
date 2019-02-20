@@ -25,6 +25,7 @@ export default withStyles(theme => ({
   contentWrapper: {
     display: "flex",
     flexDirection: "column",
+    flexGrow: 1,
     [theme.breakpoints.up("md")]: {
       marginLeft: 275 + theme.spacing.unit * 4
     }
@@ -44,7 +45,7 @@ export default withStyles(theme => ({
     overflowY: "auto",
     position: "fixed"
   },
-}))(({classes, children, rightContent, toc}) => {
+}))(({classes, children, rightContent, toc, BreadcrumbProps}) => {
   return (
     <div className={classes.root}>
       {toc &&
@@ -54,7 +55,7 @@ export default withStyles(theme => ({
       }
       <div className={classes.contentWrapper}>
         <div className={classes.wrapper}>
-          <SiteBreadcrumbs icon={Asc}>{routing}</SiteBreadcrumbs>
+          <SiteBreadcrumbs icon={Asc} {...BreadcrumbProps}>{routing}</SiteBreadcrumbs>
           <div className={classes.stretch}/>
           <div className={classes.rightContent}>{rightContent}</div>
         </div>
