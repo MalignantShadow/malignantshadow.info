@@ -9,6 +9,7 @@ import Asc from './icons/Asc'
 import routing from '../../lib/asc/routeInfo'
 import TableOfContents from './TableOfContents'
 
+const tocWidth = 320
 
 export default withStyles(theme => ({
   root: {
@@ -30,7 +31,7 @@ export default withStyles(theme => ({
     flexDirection: "column",
     flexGrow: 1,
     [theme.breakpoints.up("md")]: {
-      marginLeft: 275 + theme.spacing.unit * 4
+      marginLeft: tocWidth + theme.spacing.unit * 4
     }
   },
   content: {
@@ -42,8 +43,7 @@ export default withStyles(theme => ({
     }
   },
   toc: {
-    marginRight: theme.spacing.unit * 4,
-    minWidth: 275,
+    width: tocWidth,
     ...appbarRelativeStyles(theme, height => ({
       // 100vh - padding - appbar
       maxHeight: `calc(100vh - ${theme.spacing.unit * 4}px - ${height}px)`
