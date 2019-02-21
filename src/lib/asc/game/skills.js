@@ -17,8 +17,8 @@ export const acrobatics = s(
   ({disableTerms}) => (
     <Typography paragraph>
       An Acrobatics check determines how well you can keep your balance or footing during a task. Common situations typically encompass
-      slippery or unstable areas; such as walking across ice or a narrow walkway/bridge. The <GameTerm disableHover={disableTerms} term="gm"/>
-      may also ask for this check when you want to make a precise adjustment while running, like jumping over a table. A critical fail on
+      slippery or unstable areas; such as walking across ice or a narrow walkway/bridge. The <GameTerm disableHover={disableTerms} term="gm"/> may
+      also ask for this check when you want to make a precise adjustment while running, like jumping over a table. A critical fail on
       an Acrobatics check may cause your character to become <ConditionTerm disableHover={disableTerms} term="prone"/>.
     </Typography>
   )
