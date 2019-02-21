@@ -31,7 +31,7 @@ export const auraPointsFeature = (features) => ({
 
 export const alterAppearanceSubFeature = () => ({
   title: "Alter Appearance",
-  desc: (
+  desc: () => (
     <React.Fragment>
       <Typography paragraph>
         As a bonus action, you spend 2 Aura points to alter your appearance in a combination of any of the following
@@ -59,7 +59,7 @@ export const heroStudiesFeature = () => ({
   title: "Hero Studies",
   titleAfterFirst: "Hero Studies Feature",
   levels: [3, 6, 11, 17],
-  desc: (
+  desc: () => (
     <Typography>
       At Level 3, you undergo studying a Hero from the past to learn their tactics. Your chosen Hero Study grants you
       features at Level 3 and again at Level 6, 11, and 17. You may also choose to learn that Hero’s abilities. You can only
