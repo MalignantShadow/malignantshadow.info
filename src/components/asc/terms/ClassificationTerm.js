@@ -59,7 +59,6 @@ export default withStyles(theme => ({
     icon,
     affinity,
     archetypes,
-    colors,
     intrinsics: {hitDice, prof: {savingThrows, weapons, skills}},
   } = classifications[term]
   const Span = classSpan(term)
