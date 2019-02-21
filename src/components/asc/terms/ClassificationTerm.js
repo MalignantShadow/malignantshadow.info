@@ -9,6 +9,15 @@ import TermBase from './TermBase'
 import * as classifications from '../../../lib/asc/game/classifications'
 import { styleCategory } from './util'
 
+const classSpan = (id) => withStyles(theme => ({
+  root: { color: theme.asc.class[id].main },
+  bold: { fontWeight: 500 }
+}))(({classes, children, bold}) =>
+ <span className={classNames(classes.root, {[classes.bold]: bold})}>
+   {children}
+ </span>
+)
+
 export default withStyles(theme => ({
   aspect: {
     marginLeft: theme.spacing.unit,
@@ -51,8 +60,9 @@ export default withStyles(theme => ({
     affinity,
     archetypes,
     colors,
-    game: {hitDice, prof: {savingThrows, weapons, skills}},
+    intrinsics: {hitDice, prof: {savingThrows, weapons, skills}},
   } = classifications[term]
+  const Span = classSpan(term)
   return (
     <TermBase
       icon={icon}
@@ -73,7 +83,7 @@ export default withStyles(theme => ({
       <div className={classes.statsWrapper}>
         <div className={classNames(classes.statsWrapperRow, classes.rowGutter)}>
           <Typography className={classes.stat}>
-            <b>Elemental Affinity</b>: <span style={{color: colors.text || colors.main, fontWeight: 500}}>{affinity}</span>
+            <b>Elemental Affinity</b>: <Span>{affinity}</Span>
           </Typography>
           <Typography className={classes.stat}>
             <b>Archetypes</b>: {archetypes.join(", ")}
