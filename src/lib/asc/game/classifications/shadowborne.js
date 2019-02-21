@@ -34,6 +34,17 @@ const featureMap = {
       )
     }
   ]),
+  darkvision: {
+    title: "Darkvision",
+    levels: [1],
+    desc: ({noParagraph}) => (
+      <Typography paragraph={!noParagraph}>
+        As a Shadowborne, your affinity to darkness has given you the ability to see in dark farther than others. At Level 1,
+        you have a Darkvision distance of 60 feet. This distance increases as you gain levels, as shown in the <i>Darkvision Distance</i> column
+        in the Shadowborne table.
+      </Typography>
+    )
+  },
   fromShadows: {
     title: "From Shadows",
     levels: [1],
@@ -112,6 +123,7 @@ export default {
   }],
   f: featureMap,
   features: [
+    featureMap.darkvision,
     featureMap.fromShadows,
     featureMap.auraPoints, featureMap.heroStudies
   ]
