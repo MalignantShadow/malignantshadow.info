@@ -8,11 +8,12 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
-const Cell = ({children, className}) => typeof children.type === "function" || typeof children === "string" || typeof children === "number" ? (
-  <TableCell className={className}>{children}</TableCell>
-) : (
-  <TableCell align={children.align} className={className}>{children.text}</TableCell>
-)
+const Cell = ({children, className}) =>
+  typeof children.type === "function" || typeof children === "string" || typeof children === "number" || React.isValidElement(children) ? (
+    <TableCell className={className}>{children}</TableCell>
+  ) : (
+    <TableCell align={children.align} className={className}>{children.text}</TableCell>
+  )
 
 
 export default withStyles(theme => ({
