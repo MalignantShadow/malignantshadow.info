@@ -34,7 +34,7 @@ export default withStyles(theme => ({
     </TableHead>
     <TableBody>
       {body && body.map((e, i) => (
-        <TableRow key={"row" + i}>
+        <TableRow key={"row" + i} className={classes.row}>
           {e.map((e, j) => (
             <Cell key={"row" + i + "item" + j} className={classNames(classes.cell, classes.bodyCell)}>{e}</Cell>
           ))}
