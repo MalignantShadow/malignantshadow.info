@@ -4,9 +4,17 @@ import Typography from '@material-ui/core/Typography'
 
 import icon from '../../../../components/asc/icons/Shadowborne'
 import { default as d} from '../dice'
-import { repeatVal as r, auraPointsFeature, alterAppearanceSubFeature, heroStudiesFeature } from './util'
 import {
-  DiceTerm
+  repeatVal as r,
+  auraPointsFeature,
+  alterAppearanceSubFeature,
+  heroStudiesFeature,
+  extraAttackFeature,
+  scoreImprovementFeature
+} from './util'
+import {
+  DiceTerm,
+  RpgTypography
 } from '../../../../components/asc/'
 
 // repeat from shadows dice a number of times
@@ -34,6 +42,30 @@ const featureMap = {
       )
     }
   ]),
+  banishSummon: {
+    title: "Banish/Summon",
+    levels: [9],
+    desc: ({noParagraph}) => (
+      <React.Fragment>
+        <Typography paragraph>Once you reach Level 9, you learn how to turn objects into Shade and re-form them later.</Typography>
+        <RpgTypography title="Banish"paragraph>
+          You can use your Action to spend 3 Aura points to touch an inanimate object no larger than 5 feet in any dimension and weighing
+          no more than twice the weight you can normally carry. The object vanishes and leaves behind a puff of black smoke that dissipates
+          after a couple seconds. If the object was on a person (such as in a bag or in their hands), they are aware that the object is missing
+          if the object weighed more than 5 pounds, they can see the smoke left behind, or they were watching the object as it disappeared. You
+          can add the item to your inventory; it has a weight of 0.
+        </RpgTypography>
+        <RpgTypography paragraph>
+          You do not gain the Aura point back until you Summon the object. You cannot have more than 2 items Banished. If the item is
+          affected by an ability (such as Light or Gloom), then the effect(s) end.
+        </RpgTypography>
+        <RpgTypography title="Summon" paragraph={!noParagraph}>
+          You can use your action to make the object reappear in a similar position in which you made it vanish (you are touching the object
+          when it appears). You regain the Aura points you expended to Banish it.
+        </RpgTypography>
+      </React.Fragment>
+    )
+  },
   blink: {
     title: "Blink",
     levels: [4],
@@ -55,6 +87,17 @@ const featureMap = {
       </React.Fragment>
     )
   },
+  chaoticLuck: {
+    title: "Chaotic Luck",
+    levels: [7],
+    desc: ({noParagraph}) => (
+      <Typography paragraph={!noParagraph}>
+        When you reach Level 7, your affinity with Darkness allows you to affect the luck of others. When a unit you can see makes an attack roll,
+        aptitude check, or saving throw, you can spend 2 Aura points to roll <DiceTerm dice={d(1, 4)}/> and apply it to the roll as a bonus or
+        penalty (of your choice). You can do so after the roll is made but before the outcome is determined.
+      </Typography>
+    )
+  },
   darkvision: {
     title: "Darkvision",
     levels: [1],
@@ -66,6 +109,7 @@ const featureMap = {
       </Typography>
     )
   },
+  extraAttack: extraAttackFeature(),
   fromShadows: {
     title: "From Shadows",
     levels: [1],
@@ -86,7 +130,8 @@ const featureMap = {
       </React.Fragment>
     )
   },
-  heroStudies: heroStudiesFeature()
+  heroStudies: heroStudiesFeature(),
+  scoreImprovement: scoreImprovementFeature()
 }
 
 export default {
@@ -147,7 +192,10 @@ export default {
     featureMap.darkvision, featureMap.fromShadows,
     featureMap.auraPoints,
     featureMap.heroStudies,
-    featureMap.blink
+    featureMap.scoreImprovement, featureMap.blink,
+    featureMap.extraAttack,
+    featureMap.chaoticLuck,
+    featureMap.banishSummon
   ]
 }
 
