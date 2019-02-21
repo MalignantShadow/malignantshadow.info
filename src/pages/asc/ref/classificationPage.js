@@ -19,6 +19,23 @@ import {
  import { styledTocItem } from '../../../components/asc/util'
  import * as classifications from '../../../lib/asc/game/classifications'
 
+const Features = ({children}) => (
+  <React.Fragment>
+    {children.map(({title, desc: Desc, levels: [level], subFeatures}, i) => (
+      <React.Fragment key={i}>
+        <AscSection variant="h2" title={title} caption={`Level ${level} feature`}>
+          <Desc/>
+        </AscSection>
+        {subFeatures && subFeatures.map(({title: subTitle, desc: SubDesc}, j) =>(
+          <AscSection key={j} variant="h3" title={subTitle}>
+            <SubDesc/>
+          </AscSection>
+        ))}
+      </React.Fragment>
+    ))}
+  </React.Fragment>
+)
+
 export default withStyles(theme => ({
   tablePaper: {
     margin: theme.spacing.unit * 2
@@ -173,6 +190,7 @@ export default withStyles(theme => ({
           ])}
         />
       </Paper>
+      <Features>{features}</Features>
     </AscPage>
   )
 }))
