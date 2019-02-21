@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 export default withStyles(theme => ({
   root: {
     color: theme.asc.term.dice.main,
-    display: "inline-block",
+    display: "inline",
     fontFamily: "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
     fontSize: "inherit"
   }
