@@ -113,7 +113,7 @@ export default withStyles(theme => ({
         </Typography>
       </div>
       <div className={classes.desc}>
-        <Desc disableTerms/>
+        <Desc disableTerms noParagraph/>
       </div>
     </TermBase>
   )

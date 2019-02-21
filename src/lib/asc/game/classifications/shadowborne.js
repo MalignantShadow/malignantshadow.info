@@ -33,14 +33,14 @@ const featureMap = {
 
 export default {
   name: "Shadowborne",
-  desc: () => (
+  desc: ({noParagraph}) => (
     <React.Fragment>
       <Typography paragraph>
         Shadowborne are naturally introverted and will often avoid large social gatherings and events. Most Shadowborne do not have large groups
         of friends, they opt for smaller groups of very close friends instead. They are known to prefer the dark of the night, leading some to use
         their Affinity for late-night criminal activity.
       </Typography>
-      <Typography paragraph>
+      <Typography paragraph={!noParagraph}>
         The cultural colors for Shadowborne are black, dark grey, and dark shades of purple. Many children are named after the colors and wear them
         proudly. While almost all Shadowborne are born with black hair, it is common to see parts of their hair dyed a different color.
         This trend also applies to other areas of dress, the most common areas being shoelaces and shirt accents.

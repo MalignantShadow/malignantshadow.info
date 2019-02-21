@@ -8,7 +8,7 @@ export const repeatVal = (val, amount) => new Array(amount).fill(val)
 export const auraPointsFeature = (features) => ({
   title: "Aura Points",
   levels: [2],
-  desc: () => (
+  desc: ({noParagraph}) => (
     <React.Fragment>
       <Typography paragraph>
         Beginning at Level 2, you have a number of Aura points equal to your Level. Aura points can be used to add extra
@@ -20,7 +20,7 @@ export const auraPointsFeature = (features) => ({
         When you spend an Aura point, you do not regain it until you finish a short or long rest, at the end of which you regain
         all of your expended Aura points.
       </Typography>
-      <Typography paragraph>
+      <Typography paragraph={!noParagraph}>
         When making exhaustion checks, you have advantage if your Aura points are full, and disadvantage if they are empty.
         At Level 1, since you have no Aura points, the roll is done normally.
       </Typography>
