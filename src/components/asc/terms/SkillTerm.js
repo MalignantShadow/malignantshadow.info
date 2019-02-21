@@ -39,7 +39,6 @@ export default withStyles(theme => {
       category="Skill"
       href={`/ref/skills#${slug(name)}`}
       classes={{
-        root: classes.root,
         term: classes.term,
         category: classes.category
       }}
