@@ -71,8 +71,8 @@ export const heroStudiesFeature = () => ({
   title: "Hero Studies",
   titleAfterFirst: "Hero Studies Feature",
   levels: [3, 6, 11, 17],
-  desc: () => (
-    <Typography>
+  desc: ({noParagraph}) => (
+    <Typography paragraph={!noParagraph}>
       At Level 3, you undergo studying a Hero from the past to learn their tactics. Your chosen Hero Study grants you
       features at Level 3 and again at Level 6, 11, and 17. You may also choose to learn that Hero’s abilities. You can only
       do so if you have chosen that Hero.
