@@ -45,6 +45,8 @@ export default withStyles(theme => ({
     <TocItem title href="#topContent">Classification: {name}</TocItem>
     <Divider/>
     <TocItem href="#traits">Traits</TocItem>
+    <TocItem href="#hit-dice" depth={1}>Hit Dice</TocItem>
+    <TocItem href="#proficiencies" depth={1}>Proficiencies</TocItem>
     <TocItem href="#features">Features</TocItem>
     {features.map((e, i) => (
       <React.Fragment key={"frag" + i}>
