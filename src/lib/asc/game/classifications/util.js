@@ -42,18 +42,26 @@ export const alterAppearanceSubFeature = () => ({
         (effects last until you fall asleep, are knocked unconscious, die, or the listed actions occurs):
       </Typography>
       <ul>
-        <li>
+        <li><Typography>
           You can change the color of any parts of your clothing, but you cannot change the size, trim, or material of the clothing
           (the effect on the clothing reverts to its original coloring if you remove them and are no longer making contact with them).
-        </li>
-        <li>
+        </Typography></li>
+        <li><Typography>
           You can change the color of your hair, but you cannot change the length or style of your hair as part of this effect (your
           hair reverts to its natural color if it is removed from your body).
-        </li>
-        <li>You can change the color of your eyes (they revert to its natural color if they are removed from your head).</li>
-        <li>You cannot change your height, weight, or facial features/structure.</li>
-        <li>You cannot hide or remove tattoos, birthmarks, scars, cuts, bruises, burns, or any other imperfections in the skin.</li>
-        <li>You cannot change the color of your skin in any capacity.</li>
+        </Typography></li>
+        <li><Typography>
+          You can change the color of your eyes (they revert to its natural color if they are removed from your head).
+        </Typography></li>
+        <li><Typography>
+          You cannot change your height, weight, or facial features/structure.
+        </Typography></li>
+        <li><Typography>
+          You cannot hide or remove tattoos, birthmarks, scars, cuts, bruises, burns, or any other imperfections in the skin.
+        </Typography></li>
+        <li><Typography>
+          You cannot change the color of your skin in any capacity.
+        </Typography></li>
       </ul>
     </React.Fragment>
   )
