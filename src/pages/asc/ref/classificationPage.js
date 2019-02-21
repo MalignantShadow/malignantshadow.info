@@ -135,7 +135,7 @@ export default withStyles(theme => ({
       </AscSection>
       <AscSection variant="h2" title="Hit Dice"/>
       <Paper className={classes.tablePaper}>
-        <Table head={["Hit Dice", "HP at Level 1", "HP After Level 1"]} body={[[
+        <Table head={[{text: "Hit Dice", style: {width: 150}}, "HP at Level 1", "HP After Level 1"]} body={[[
           <DiceTerm dice={intrinsics.hitDice}/>,
           <Calc>{intrinsics.hitDice.max} + your Constitution modifier</Calc>,
           <Calc><DiceTerm dice={intrinsics.hitDice}/> (or {intrinsics.hitDice.avg + 1}) + your Constitution modifier per Level after 1</Calc>
