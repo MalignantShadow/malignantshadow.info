@@ -15,6 +15,7 @@ const mapping = {
   subtitle: "h6",
   h1: "h4",
   h2: "h5",
+  h3: "h6"
 }
 
 const styles = theme => ({
