@@ -13,6 +13,7 @@ import {
   scoreImprovementFeature
 } from './util'
 import {
+  Calc,
   DiceTerm,
   RpgTypography
 } from '../../../../components/asc/'
@@ -98,6 +99,46 @@ const featureMap = {
       </Typography>
     )
   },
+  curseImprovement: {
+    title: "Curse Improvement",
+    levels: [10],
+    desc: ({noParagraph}) => (
+      <Typography paragraph={!noParagraph}>
+        When you reach Level 10, you add Charisma to the list of aptitudes you can affect with Curse.
+        (Curse can now affect Charisma, Dexterity, or Strength)
+      </Typography>
+    )
+  },
+  darkConsumption: {
+    title: "Dark Consumption",
+    levels: [20],
+    desc: ({noParagraph}) => (
+      <Typography paragraph={!noParagraph}>
+        At Level 20, when you roll for initiative and you are in a space of dim light or darkness with less than half your hit points left, you
+        regain hit points equal to <Calc><DiceTerm dice={d(5, 8)}/> + your Intelligence modifier</Calc>.
+      </Typography>
+    )
+  },
+  darkSelf: {
+    title: "Dark Self",
+    levels: [18],
+    desc: ({noParagraph}) => (
+      <Typography paragraph={!noParagraph}>
+        Beginning at Level 18, when you roll for initiative and have no Aura points remaining, you regain Aura points equal
+        to <Calc><DiceTerm dice={d(1, 4)}/> + your Intelligence modifier</Calc>.
+      </Typography>
+    )
+  },
+  darksense: {
+    title: "Darksense",
+    levels: [13],
+    desc: ({noParagraph}) => (
+      <Typography paragraph={!noParagraph}>
+        Upon reaching Level 13, your experience in the dark gives you the ability to sense the unseen. If you are able to hear,
+        you can sense the presence of Invisible or hidden units within 10 feet of you.
+      </Typography>
+    )
+  },
   darkvision: {
     title: "Darkvision",
     levels: [1],
@@ -131,6 +172,26 @@ const featureMap = {
     )
   },
   heroStudies: heroStudiesFeature(),
+  malignantShadows: {
+    title: "Malignant Shadows",
+    levels: [14],
+    desc: ({noParagraph}) => (
+      <Typography paragraph={!noParagraph}>
+        When you reach Level 14, you are more skilled in dealing damage with From Shadows. You can spend 2 Aura points to reroll any die.
+        You must use the new roll, and you can only reroll a die once. You can roll a maximum of 3 dice in the duration of your turn.
+      </Typography>
+    )
+  },
+  perfectCurse: {
+    title: "Perfect Curse",
+    levels: [15],
+    desc: ({noParagraph}) => (
+      <Typography paragraph={!noParagraph}>
+        When you reach Level 15, you add Wisdom to the list of aptitudes you can affect with Curse.
+        (Curse can now affect Charisma, Dexterity, Strength, or Wisdom)
+      </Typography>
+    )
+  },
   scoreImprovement: scoreImprovementFeature()
 }
 
@@ -195,7 +256,13 @@ export default {
     featureMap.scoreImprovement, featureMap.blink,
     featureMap.extraAttack,
     featureMap.chaoticLuck,
-    featureMap.banishSummon
+    featureMap.banishSummon,
+    featureMap.curseImprovement,
+    featureMap.darksense,
+    featureMap.malignantShadows,
+    featureMap.perfectCurse,
+    featureMap.darkSelf,
+    featureMap.darkConsumption
   ]
 }
 
