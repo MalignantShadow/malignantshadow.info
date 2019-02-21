@@ -55,7 +55,7 @@ export default withStyles(theme => ({
   const {
     name,
     aspect,
-    termDesc,
+    desc: Desc,
     icon,
     affinity,
     archetypes,
@@ -113,7 +113,7 @@ export default withStyles(theme => ({
         </Typography>
       </div>
       <div className={classes.desc}>
-        <Typography>{termDesc}</Typography>
+        <Desc disableTerms/>
       </div>
     </TermBase>
   )

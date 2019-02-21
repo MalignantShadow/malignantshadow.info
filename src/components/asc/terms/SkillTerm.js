@@ -50,7 +50,7 @@ export default withStyles(theme => {
           <Typography className={classes.stat}><i>{caption}</i></Typography>
         }
       </div>
-      <Desc/>
+      <Desc disableTerms/>
     </TermBase>
   )
 })

@@ -14,12 +14,12 @@ export const acrobatics = s(
   "Acrobatics",
   "Dexterity",
   "",
-  () => (
+  ({disableTerms}) => (
     <Typography paragraph>
       An Acrobatics check determines how well you can keep your balance or footing during a task. Common situations typically encompass
-      slippery or unstable areas; such as walking across ice or a narrow walkway/bridge. The <GameTerm term="gm"/> may also ask for this check when
-      you want to make a precise adjustment while running, like jumping over a table. A critical fail on an Acrobatics check may cause your
-      character to become <ConditionTerm term="prone"/>.
+      slippery or unstable areas; such as walking across ice or a narrow walkway/bridge. The <GameTerm disableHover={disableTerms} term="gm"/>
+      may also ask for this check when you want to make a precise adjustment while running, like jumping over a table. A critical fail on
+      an Acrobatics check may cause your character to become <ConditionTerm disableHover={disableTerms} term="prone"/>.
     </Typography>
   )
 )
@@ -85,10 +85,10 @@ export const insight = s(
   "Insight",
   "Wisdom",
   "Contested by: Deception or Persuasion",
-  () => (
+  ({disableTerms}) => (
     <Typography paragraph>
       An Insight check determines how well you can deduce a person's intentions based on their body language, speech patterns, and mannerisms.
-      Insight checks typically have a lower <GameTerm term="dc"/> the better you know a person.
+      Insight checks typically have a lower <GameTerm disableHover={disableTerms} term="dc"/> the better you know a person.
     </Typography>
   )
 )
@@ -131,14 +131,14 @@ export const medicine = s(
   "Medicine",
   "Wisdom",
   "",
-  () => (
+  ({disableTerms}) => (
     <React.Fragment>
       <Typography paragraph>
         A Medicine check determines how well you can use your medical knowledge and experience in a particular situation. The most common examples
         are <b>diagnosing a disease or infection</b> and <b>applying first aid</b>.
       </Typography>
       <Typography paragraph>
-        The <GameTerm term="gm"/> may require you to be proficient in this skill in order to pass certain Medicine checks.
+        The <GameTerm disableHover={disableTerms} term="gm"/> may require you to be proficient in this skill in order to pass certain Medicine checks.
       </Typography>
     </React.Fragment>
   )
@@ -215,14 +215,14 @@ export const stealth = s(
   "Stealth",
   "Dexterity",
   "Contested with: Perception",
-  () => (
+  ({disableTerms}) => (
     <React.Fragment>
       <Typography paragraph>
         A Stealth check detmines how well you can stay out of sight from onlookers. Typical situations include <b>eavesdropping</b> and <b>traveling
         through a crowded/gaurded area</b> <i>without being detected</i>.
       </Typography>
       <Typography paragraph>
-        <ClassificationTerm term="shadowborne"/> are particularly adept at Stealth.
+        <ClassificationTerm disableHover={disableTerms} term="shadowborne"/> are particularly adept at Stealth.
       </Typography>
     </React.Fragment>
   )
