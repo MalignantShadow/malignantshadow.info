@@ -62,8 +62,9 @@ export default withStyles(theme => ({
   const featureNames = []
   features.forEach((e) => {
     e.levels.forEach((level, i) => {
-      if(!featureNames[level]) featureNames[level] = []
-      featureNames[level].push(i > 0 ? e.titleAfterFirst || e.title : e.title)
+      const index = level - 1
+      if(!featureNames[index]) featureNames[index] = []
+      featureNames[index].push(i > 0 ? e.titleAfterFirst || e.title : e.title)
     })
   })
 
