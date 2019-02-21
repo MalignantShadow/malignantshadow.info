@@ -65,15 +65,6 @@ export default withStyles(theme => ({
     <TocItem href="#hit-dice" depth={1}>Hit Dice</TocItem>
     <TocItem href="#proficiencies" depth={1}>Proficiencies</TocItem>
     <TocItem href="#features">Features</TocItem>
-    {features.map((e, i) => (
-      <React.Fragment key={"frag" + i}>
-        <TocItem key={"feature" + i} href={`#${slug(e.title)}`} depth={1}>{e.title}</TocItem>
-        {e.subFeatures && e.subFeatures.map((sub, j) => (
-          <TocItem key={"feature" + i + "sub" + j} href={`#${slug(e.title)}.${slug(sub.title)}`} depth={2}>{sub.title}</TocItem>
-        ))}
-      </React.Fragment>
-
-    ))}
   </React.Fragment>
 
   const featureNames = []
