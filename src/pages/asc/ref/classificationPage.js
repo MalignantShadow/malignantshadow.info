@@ -13,8 +13,7 @@ import {
   AscTable,
   Calc,
   DiceTerm,
-  SkillTerm,
-  RpgTypography
+  SkillTerm
  } from '../../../components/asc'
  import { slug } from '../../../lib/routing'
  import { styledTocItem } from '../../../components/asc/util'
