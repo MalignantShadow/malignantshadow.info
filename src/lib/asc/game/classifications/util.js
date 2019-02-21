@@ -67,6 +67,26 @@ export const alterAppearanceSubFeature = () => ({
   )
 })
 
+export const scoreImprovementFeature = () => ({
+  title: "Aptitude Score Improvement",
+  levels: [4, 8, 12, 16, 19],
+  desc: ({noParagraph}) => (
+    <Typography paragraph={!noParagraph}>
+      When you reach Levels 4, 8, 12, 16, and 19, you may raise two Aptitude Scores by 1 or two Aptitude scores by 1. You may instead choose a feat.
+    </Typography>
+  )
+})
+
+export const extraAttackFeature = () => ({
+  title: "Extra Attack",
+  levels: [5],
+  desc: ({noParagraph}) => (
+    <Typography paragraph={!noParagraph}>
+      When you reach Level 5, you may attack twice, instead of once, when you take the Attack action on your turn.
+    </Typography>
+  )
+})
+
 export const heroStudiesFeature = () => ({
   title: "Hero Studies",
   titleAfterFirst: "Hero Studies Feature",
