@@ -17,6 +17,7 @@ import {
   DiceTerm,
   RpgTypography
 } from '../../../../components/asc/'
+import { spectre } from '../heroes'
 
 // repeat from shadows dice a number of times
 const rd = (diceAmount, repeatAmount = 3) => r(() => <DiceTerm dice={d(diceAmount, 6)}/>, repeatAmount)
@@ -263,17 +264,7 @@ export default {
     featureMap.perfectCurse,
     featureMap.darkSelf,
     featureMap.darkConsumption
-  ]
+  ],
+
+  heroes: [spectre]
 }
-
-/*
-heroes[3+]:
-  name, epithet, icon, image?
-  qoute: (quotes have their own component)
-    text, author
-  desc
-  features[] (see above)
-  abilities (term name)
-
-
-*/
