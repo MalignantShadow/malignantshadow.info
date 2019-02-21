@@ -12,7 +12,7 @@ const Cell = ({children, className}) =>
   typeof children.type === "function" || typeof children === "string" || typeof children === "number" || React.isValidElement(children) ? (
     <TableCell className={className}>{children}</TableCell>
   ) : (
-    <TableCell align={children.align} className={className}>{children.text}</TableCell>
+    <TableCell align={children.align} className={classNames(className, children.className)} style={children.style}>{children.text}</TableCell>
   )
 
 
