@@ -23,7 +23,7 @@ const Features = ({children}) => (
   <React.Fragment>
     {children.map(({title, desc: Desc, levels: [level], subFeatures}, i) => (
       <React.Fragment key={i}>
-        <AscSection variant="h2" title={title} caption={`Level ${level} feature`}>
+        <AscSection variant="h2" title={title} caption={`Level ${level} Feature`}>
           <Desc/>
         </AscSection>
         {subFeatures && subFeatures.map(({title: subTitle, desc: SubDesc}, j) =>(
