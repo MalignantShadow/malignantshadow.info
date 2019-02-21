@@ -34,6 +34,27 @@ const featureMap = {
       )
     }
   ]),
+  blink: {
+    title: "Blink",
+    levels: [4],
+    desc: ({noParagraph}) => (
+      <React.Fragment>
+        <Typography paragraph>
+          At Level 4, you learn how to quickly move through shadows to teleport short distances. While in dim light or darkness,
+          you may spend 1 Aura point to teleport 30 feet to an unoccupied space that is also in dim light or darkness as a bonus action.
+          You have advantage on the next attack you make before the end of your turn. Blink does not trigger attacks of opportunity.
+          You reappear in the same posture you disappeared, rotated on any axis. You may use Blink while prone; you will be prone when you reappear.
+          Only you and your equipment are teleported with you. You may spend up to 2 Aura Points to extend the range by 5 feet for each point expended.
+        </Typography>
+        <Typography paragraph={!noParagraph}>
+          At Level 11, you can spend 2 additional Aura points to touch one unit of your size or smaller and take them with you. They appear in a
+          space relative to you from when you first touched them. Upon reappearing, the unit feels cold, as if they just walked into a large freezer;
+          this feeling subsides after a few seconds. A unit that does not expect the Blink (such as an unwilling one) must also make a Constitution
+          check (DC 15). On a failure, the sudden jump from one location to another stuns them until the end of their next turn.
+        </Typography>
+      </React.Fragment>
+    )
+  },
   darkvision: {
     title: "Darkvision",
     levels: [1],
@@ -123,9 +144,10 @@ export default {
   }],
   f: featureMap,
   features: [
-    featureMap.darkvision,
-    featureMap.fromShadows,
-    featureMap.auraPoints, featureMap.heroStudies
+    featureMap.darkvision, featureMap.fromShadows,
+    featureMap.auraPoints,
+    featureMap.heroStudies,
+    featureMap.blink
   ]
 }
 
