@@ -19,11 +19,19 @@ const featureMap = {
   fromShadows: {
     title: "From Shadows",
     levels: [1],
-    desc: () => (
+    desc: ({disableTerms, noParagraph}) => (
       <React.Fragment>
         <Typography paragraph>
-          At level 1, you know how to strike swift and subtly in low light. Once per turn, you can deal an extra <DiceTerm dice={d(1, 6)}/> dark damage
-          to a unit you hit with an attack if you are within a space of darkness or have advantage on the attack roll.
+          At Level 1, you know how to strike swift and subtly in low light. Once per turn, you can deal an
+          extra <DiceTerm disableHover={disableTerms} dice={d(1, 6)}/> dark damage to a unit you hit with an attack if you are within a space of
+          darkness or have advantage on the attack roll.
+        </Typography>
+        <Typography paragraph>
+          You don’t need advantage on the attack roll if another enemy of the unit is within 5 feet of it, the unit isn’t incapacitated,
+          and you don’t have disadvantage on the attack roll.
+        </Typography>
+        <Typography paragraph={!noParagraph}>
+          The extra damage increases as you gain levels, as shown in the <i>From Shadows</i> column on the Shadowborne table.
         </Typography>
       </React.Fragment>
     )
