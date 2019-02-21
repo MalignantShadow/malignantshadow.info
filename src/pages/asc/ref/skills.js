@@ -1,25 +1,19 @@
 import React from 'react'
 
-import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 
 import {
   AscPage,
-  AscSection,
   GameTerm,
  } from '../../../components/asc'
  import { skillsByAptitude } from '../../../lib/asc/game'
  import { slug } from '../../../lib/routing'
- import { styledTocItem } from '../../../components/asc/util'
+ import { styledTocItem, styledSection } from '../../../components/asc/util'
 
-const Section = withStyles(theme => ({
-  heading: { borderColor: theme.asc.skills.main }
-}))(({classes, children, ...other}) => (
-  <AscSection className={classes.heading} {...other}>{children}</AscSection>
-))
-
-const SkillTocItem = styledTocItem(theme => theme.asc.skills)
+const colorSelector = theme => theme.asc.skills
+const Section = styledSection(colorSelector)
+const SkillTocItem = styledTocItem(colorSelector)
 
 const getTocItems = (key) => skillsByAptitude[key].map((e, i) => (
   <SkillTocItem key={key + i} href={`#${slug(e.name)}`} depth={1}>{e.name}</SkillTocItem>
