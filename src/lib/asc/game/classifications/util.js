@@ -12,9 +12,13 @@ export const auraPointsFeature = (features) => ({
     <React.Fragment>
       <Typography paragraph>
         Beginning at Level 2, you have a number of Aura points equal to your Level. Aura points can be used to add extra
-        effects to your Classification Features. You start by knowing {features.length} such features: { features.map(({name}, i) => (
-          <React.Fragment><b key={i}>{name}</b>{i < features.length - 1 ? ", " : ""}</React.Fragment>
-        ))}.
+        effects to your Classification Features.
+        {features &&
+          <span> You start by knowing {features.length} such feature{features.length === 1 ? "" : "s"}{": "}
+          {features.map(({title}, i) => (
+            <React.Fragment key={i}><b>{title}</b>{i < features.length - 1 ? ", " : ""}{i === features.length - 2 ? "and ": ""}</React.Fragment>
+          ))}.</span>
+        }
       </Typography>
       <Typography paragraph>
         When you spend an Aura point, you do not regain it until you finish a short or long rest, at the end of which you regain
