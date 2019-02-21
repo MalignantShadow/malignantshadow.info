@@ -47,9 +47,11 @@ export default {
       </Typography>
     </React.Fragment>
   ),
+  archetypes: ["Assassin", "Marksman"],
+  affinity: "Darkness",
+  auraMod: "Intelligence",
   aspect: "Dusk",
   icon,
-  auraMod: "Intelligence",
   traits: {
     ac: [8, "Dexterity", "Intelligence"],
     scoreIncreases: [
@@ -65,7 +67,7 @@ export default {
   intrinsics: {
     hitDice: d(1, 8),
     prof: {
-      weapons: [],
+      weapons: ["Automatic rifles", "precision weapons", "simple melee weapons", "sidearms"],
       savingThrows: ["Dexterity", "Intelligence"],
       skills: ["acrobatics", "insight", "investigation", "perception", "sleightOfHand", "stealth"]
     },
