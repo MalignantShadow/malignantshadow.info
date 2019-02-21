@@ -47,11 +47,16 @@ export default withStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column"
     }
+  },
+  heroHeading: {
+    "& > h6": {
+      fontSize: "1rem"
+    }
   }
 }))(withRouter(({classes, match: {params: {id}}}) => {
   const c = classifications[id]
   if(!c) return "Encountered an uh-oh"
-  const {name, speed = 35, auraMod, icon: Icon, desc: Desc, traits, intrinsics, features, featureTableExtras} = c
+  const {name, speed = 35, auraMod, icon: Icon, desc: Desc, traits, intrinsics, features, featureTableExtras, heroes} = c
 
   const colorSelector = theme => theme.asc.class[id]
   const Section = styledSection(colorSelector)
@@ -66,6 +71,12 @@ export default withStyles(theme => ({
     <TocItem href="#hit-dice" depth={1}>Hit Dice</TocItem>
     <TocItem href="#proficiencies" depth={1}>Proficiencies</TocItem>
     <TocItem href="#features">Features</TocItem>
+    <Divider/>
+    <TocItem title href="#heroes">Hero Studies</TocItem>
+    <Divider/>
+    {heroes && heroes.map(({name}, i) => (
+      <TocItem key={"hero" + i} href={`#hero-${slug(name)}`}>{name}</TocItem>
+    ))}
   </React.Fragment>
 
   const featureNames = []
@@ -109,6 +120,7 @@ export default withStyles(theme => ({
       row: classNames({[classes.row]: features})
     }} {...other}/>
   ))
+
 
   return (
     <AscPage toc={toc} BreadcrumbProps={{extra: [{title: c.name}]}}>
@@ -182,7 +194,40 @@ export default withStyles(theme => ({
           ])}
         />
       </Paper>
-      <Features>{features}</Features>
+      <Features Section={Section}>{features}</Features>
+      <Section variant="title" title={`${name} Hero Studies`}>
+        <Typography paragraph>
+          At Level 3, you choose to study one of the Heroes shown below. You gain the features shown in the description of your chosen Hero, and you
+          can choose to learn the abilities shown in that Hero's description.
+        </Typography>
+      </Section>
+      {heroes.map(({name, epithet, quote, desc: Desc, abilities, features}, i) => {
+        const heroSlug = `#hero-${slug(name)}`
+        return (
+          <React.Fragment key={"hero-" + name}>
+            <Section id={heroSlug} variant="h1" title={name} subtitle={epithet} className={classes.heroHeading}>
+              <Typography align="center"><i>"{quote.text}"</i></Typography>
+              <Typography align="center" paragraph>― {quote.author}</Typography>
+              <Desc/>
+            </Section>
+            { abilities &&
+              <Section id={`${heroSlug}-abilities`} variant="h2" title="Abilities">
+
+              </Section>
+            }
+            <Section id={`${heroSlug}-features`} variant="h2" title="Features"/>
+            <Paper className={classes.tablePaper}>
+              <Table
+                head={["Level", "Feature"]}
+                body={[
+                  ...features.map(({levels: [level], title}, i) => [level, title])
+                ]}
+              />
+            </Paper>
+            <Features Section={Section}>{features}</Features>
+          </React.Fragment>
+        )
+      })}
     </AscPage>
   )
 }))
