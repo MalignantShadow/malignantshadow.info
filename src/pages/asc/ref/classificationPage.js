@@ -159,17 +159,15 @@ export default withStyles(theme => ({
             text: "Feature",
             align: "center"
           }]}
-          body={
-            upTo20.map((e, i) => [
-              {text: i + 1, align: "center"},
-              ...(!featureTableExtras ? [] : featureTableExtras.map(({values}) => {
-                const Val = values[i]
-                const render = typeof Val === "function" ? <Val/> : Val
-                return { text: render, align: "center" }
-              })),
-              featureNames[i] ? featureNames[i].join(", ") : "---"
-            ])
-          }
+          body={upTo20.map((e, i) => [
+            {text: i + 1, align: "center"},
+            ...(!featureTableExtras ? [] : featureTableExtras.map(({values}) => {
+              const Val = values[i]
+              const render = typeof Val === "function" ? <Val/> : Val
+              return { text: render, align: "center" }
+            })),
+            featureNames[i] ? featureNames[i].join(", ") : "---"
+          ])}
         />
       </Paper>
     </AscPage>
