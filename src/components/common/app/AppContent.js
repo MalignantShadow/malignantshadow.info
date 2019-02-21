@@ -8,6 +8,9 @@ export default withStyles(theme => ({
     ...appbarRelativeStyles(theme, height => ({
       marginTop: height
     })),
+    "@media print": {
+      marginTop: 0
+    },
     [theme.breakpoints.up("lg")]: {
       marginLeft: 240
     }

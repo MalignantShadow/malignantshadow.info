@@ -13,6 +13,11 @@ import MenuIcon from '@material-ui/icons/Menu'
 import { getTitle } from '../../../lib/routing'
 
 const styles = theme => ({
+  root: {
+    "@media print": {
+      display: "none"
+    }
+  },
   bar: {
     display: "flex",
     [theme.breakpoints.up("lg")]: {
@@ -24,7 +29,7 @@ const styles = theme => ({
 })
 
 export default withRouter(withStyles(styles)(({classes, children, buttons, toolbarClassName, routing, onDrawerOpen, location,  history, match, staticContext, ...other}) => (
-  <MuiBar {...other}>
+  <MuiBar className={classes.root} {...other}>
     <Toolbar className={classNames(classes.bar, toolbarClassName)}>
       <Hidden lgUp implementation="css">
         <IconButton onClick={onDrawerOpen} className={classes.menuButton}>

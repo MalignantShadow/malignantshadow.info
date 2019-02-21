@@ -17,7 +17,10 @@ export default withStyles(theme => ({
   },
   wrapper: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    "@media print": {
+      display: "none"
+    }
   },
   stretch: {
     flexGrow: 1
@@ -34,6 +37,9 @@ export default withStyles(theme => ({
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 16,
     flexGrow: 1,
+    "@media print": {
+      marginTop: 0
+    }
   },
   toc: {
     marginRight: theme.spacing.unit * 4,
