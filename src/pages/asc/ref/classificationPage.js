@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { withRouter } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -12,6 +13,7 @@ import {
   AscTable,
   Calc,
   DiceTerm,
+  SkillTerm,
   RpgTypography
  } from '../../../components/asc'
  import { slug } from '../../../lib/routing'
@@ -65,20 +67,37 @@ export default withStyles(theme => ({
   })
 
   let sortedTraits = [
-    ["Armor Class", <React.Fragment>Your armor class is equal to <Calc>{traits.ac[0]} + your {traits.ac[1]} modifier + your {traits.ac[2]} modifier</Calc>.</React.Fragment>],
-    ["Aptitude Score Increases",traits.scoreIncreases.map(([apt, num], i) =>
-      `${i === 0 ? "Y" : "y"}our ${apt} score is ${num > 0 ? "raised" : "decreased"} by ${Math.abs(num)}
-       ${i === traits.scoreIncreases.length - 1 ? "." : ", "}${i === traits.scoreIncreases.length - 2 ? "and " : ""}`
-    )],
-    ["Aura", `You use ${auraMod} as your Aura modifier.`],
-    ["Speed", `Your base movement speed is ${speed} feet.`],
-    [traits.resistance[0] || `${name} Resillience`, `You are resistant ${traits.resistance[1]} damage`],
-    [traits.vulnerability[0] || `${name} Vulnerabilities`, `You are vulnerabile to ${traits.vulnerability[1]} damage`],
+    ["Armor Class", <Calc>{traits.ac[0]} + your {traits.ac[1]} modifier + your {traits.ac[2]} modifier</Calc>],
+    ["Aptitude Score Increases", traits.scoreIncreases.map(([apt, increase], i) => (
+      `${apt} ${increase > 0 ? "+" : "-"} ${Math.abs(increase)}`
+    )).join(", ")],
+    ["Aura Modifier", auraMod],
+    ["Speed", ` ${speed} feet`],
+    [traits.resistance[0] || `${name} Resillience`, `You are resistant ${traits.resistance[1]} damage.`],
+    [traits.vulnerability[0] || `${name} Vulnerabilities`, `You are vulnerabile to ${traits.vulnerability[1]} damage.`],
   ]
   if(traits.extra)
     sortedTraits = sortedTraits.concat(traits.extra)
 
   sortedTraits.sort(([a], [b]) => a - b)
+
+  const Table = withStyles(theme  => ({
+    headCell: {
+      backgroundColor: theme.asc.class[id].main,
+      color: theme.palette.getContrastText(theme.asc.class[id].main)
+    },
+    row: {
+      "&:nth-child(4n+5) td:first-child": {
+          backgroundColor: theme.asc.class[id].main,
+          color: theme.palette.getContrastText(theme.asc.class[id].main)
+      }
+    }
+  }))(({classes, features, ...other}) => (
+    <AscTable classes={{
+      headCell: classes.headCell,
+      row: classNames({[classes.row]: features})
+    }} {...other}/>
+  ))
 
   return (
     <AscPage toc={toc} BreadcrumbProps={{extra: [{title: c.name}]}}>
@@ -95,24 +114,40 @@ export default withStyles(theme => ({
         <Desc/>
       </AscSection>
       <AscSection variant="h1" title="Traits">
-        <Typography>As a {name}, you have a number of innate traits:</Typography>
-        {sortedTraits.map(([title, desc], i) => (
-          <RpgTypography key={i} title={title} paragraph={i === sortedTraits.length - 1}>{desc}</RpgTypography>
-        ))}
+        <Paper className={classes.tablePaper}>
+          <Table
+            head={["Name", "Effect"]}
+            body={[
+              ...sortedTraits.map((e) => e)
+            ]}
+          />
+        </Paper>
       </AscSection>
       <AscSection variant="h2" title="Hit Dice"/>
       <Paper className={classes.tablePaper}>
-        <AscTable head={["Hit Dice", "HP at Level 1", "HP After Level 1"]} body={[[
+        <Table head={["Hit Dice", "HP at Level 1", "HP After Level 1"]} body={[[
           <DiceTerm dice={intrinsics.hitDice}/>,
           <Calc>{intrinsics.hitDice.max} + your Constitution modifier</Calc>,
           <Calc><DiceTerm dice={intrinsics.hitDice}/> (or {intrinsics.hitDice.avg + 1}) + your Constitution modifier per Level after 1</Calc>
         ]]}/>
       </Paper>
-      <AscSection variant="h1" title="Features">
-        <Typography paragraph>You gain the following features as a {name}:</Typography>
+      <AscSection variant="h2" title="Proficiencies">
+        <Typography>
+            <b>Weapons</b>: {intrinsics.prof.weapons.join(", ")}
+        </Typography>
+        <Typography>
+          <b>Saving Throws</b>: {intrinsics.prof.savingThrows.join(", ")}
+        </Typography>
+        <Typography paragraph>
+          <b>Skills</b>: Choose 3 from {intrinsics.prof.skills.map((e, i) => (
+            <React.Fragment key={i}><SkillTerm term={e}/>{i < intrinsics.prof.skills.length - 1 ? ", " : ""}</React.Fragment>
+          ))}
+        </Typography>
       </AscSection>
+      <AscSection variant="h1" title="Features"/>
       <Paper className={classes.tablePaper}>
-        <AscTable
+        <Table
+          features
           head={[{
             text: "Level",
             align: "center"
@@ -127,7 +162,7 @@ export default withStyles(theme => ({
           }]}
           body={
             upTo20.map((e, i) => [
-              i + 1,
+              {text: i + 1, align: "center"},
               ...(!featureTableExtras ? [] : featureTableExtras.map(({values}) => {
                 const Val = values[i]
                 const render = typeof Val === "function" ? <Val/> : Val
