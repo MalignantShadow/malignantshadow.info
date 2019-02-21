@@ -9,27 +9,26 @@ import Paper from '@material-ui/core/Paper'
 
 import {
   AscPage,
-  AscSection,
   AscTable,
   Calc,
   DiceTerm,
   SkillTerm
  } from '../../../components/asc'
  import { slug } from '../../../lib/routing'
- import { styledTocItem } from '../../../components/asc/util'
+ import { styledTocItem, styledSection } from '../../../components/asc/util'
  import * as classifications from '../../../lib/asc/game/classifications'
 
-const Features = ({children}) => (
+const Features = ({children, Section}) => (
   <React.Fragment>
     {children.map(({title, desc: Desc, levels: [level], subFeatures}, i) => (
       <React.Fragment key={i}>
-        <AscSection variant="h2" title={title} caption={`Level ${level} Feature`}>
+        <Section variant="h2" title={title} caption={`Level ${level} Feature`}>
           <Desc/>
-        </AscSection>
+        </Section>
         {subFeatures && subFeatures.map(({title: subTitle, desc: SubDesc}, j) =>(
-          <AscSection key={j} variant="h3" title={subTitle}>
+          <Section key={j} variant="h3" title={subTitle}>
             <SubDesc/>
-          </AscSection>
+          </Section>
         ))}
       </React.Fragment>
     ))}
@@ -54,7 +53,9 @@ export default withStyles(theme => ({
   if(!c) return "Encountered an uh-oh"
   const {name, speed = 35, auraMod, icon: Icon, desc: Desc, traits, intrinsics, features, featureTableExtras} = c
 
-  const TocItem = styledTocItem(theme => theme.asc.class[id])
+  const colorSelector = theme => theme.asc.class[id]
+  const Section = styledSection(colorSelector)
+  const TocItem = styledTocItem(colorSelector)
 
   const upTo20 = new Array(20).fill(0)
 
@@ -111,7 +112,7 @@ export default withStyles(theme => ({
 
   return (
     <AscPage toc={toc} BreadcrumbProps={{extra: [{title: c.name}]}}>
-      <AscSection
+      <Section
         id="topContent"
         variant="title"
         title={<React.Fragment>
@@ -122,8 +123,8 @@ export default withStyles(theme => ({
         classes={{heading: classes.pageTitle}}
       >
         <Desc/>
-      </AscSection>
-      <AscSection variant="h1" title="Traits">
+      </Section>
+      <Section variant="h1" title="Traits">
         <Paper className={classes.tablePaper}>
           <Table
             head={["Name", "Effect"]}
@@ -132,8 +133,8 @@ export default withStyles(theme => ({
             ]}
           />
         </Paper>
-      </AscSection>
-      <AscSection variant="h2" title="Hit Dice"/>
+      </Section>
+      <Section variant="h2" title="Hit Dice"/>
       <Paper className={classes.tablePaper}>
         <Table head={[{text: "Hit Dice", style: {width: 150}}, "HP at Level 1", "HP After Level 1"]} body={[[
           <DiceTerm dice={intrinsics.hitDice}/>,
@@ -141,7 +142,7 @@ export default withStyles(theme => ({
           <Calc><DiceTerm dice={intrinsics.hitDice}/> (or {intrinsics.hitDice.avg + 1}) + your Constitution modifier per Level after 1</Calc>
         ]]}/>
       </Paper>
-      <AscSection variant="h2" title="Proficiencies">
+      <Section variant="h2" title="Proficiencies">
         <Typography>
             <b>Weapons</b>: {intrinsics.prof.weapons.join(", ")}
         </Typography>
@@ -153,8 +154,8 @@ export default withStyles(theme => ({
             <React.Fragment key={i}><SkillTerm term={e}/>{i < intrinsics.prof.skills.length - 1 ? ", " : ""}</React.Fragment>
           ))}
         </Typography>
-      </AscSection>
-      <AscSection variant="h1" title="Features"/>
+      </Section>
+      <Section variant="h1" title="Features"/>
       <Paper className={classes.tablePaper}>
         <Table
           features
