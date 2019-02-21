@@ -31,7 +31,7 @@ export default withStyles(theme => ({
     flexDirection: "column",
     flexGrow: 1,
     [theme.breakpoints.up("md")]: {
-      marginLeft: tocWidth + theme.spacing.unit * 4
+      marginLeft: tocWidth + theme.spacing.unit * 3
     }
   },
   content: {
