@@ -83,7 +83,7 @@ class AscHeading extends React.Component {
           [classes.h2]: variant === "h2"
         }, className)} {...other} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
           <Typography variant={mapping[variant]}>{children}</Typography>
-          {variant === "title" && subtitle &&
+          {subtitle &&
             <Typography variant={mapping.subtitle} className={classes.subtitle}>{subtitle}</Typography>
           }
           {showHash && variant !== "title" &&
