@@ -3,7 +3,7 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
 import icon from '../../../../components/asc/icons/Shadowborne'
-import { default as d} from '../dice'
+import { default as d } from '../dice'
 import {
   repeatVal as r,
   auraPointsFeature,
@@ -21,14 +21,14 @@ import {
 import { spectre, deathAngel } from '../heroes'
 
 // repeat from shadows dice a number of times
-const rd = (diceAmount, repeatAmount = 3) => r(() => <DiceTerm dice={d(diceAmount, 6)}/>, repeatAmount)
+const rd = (diceAmount, repeatAmount = 3) => r(() => <DiceTerm dice={d(diceAmount, 6)} />, repeatAmount)
 
 const featureMap = {
   auraPoints: auraPointsFeature([
     alterAppearanceSubFeature(), {
       title: "Curse",
       key: "curse",
-      desc: ({noParagraph}) => (
+      desc: ({ noParagraph }) => (
         <Typography paragraph={!noParagraph}>
           Immediately after a weapon attack during your Attack action, you spend 1 Aura point to attempt to curse the target’s fate.
           The target must succeed on a Constitution saving throw or have disadvantage on the first saving throw
@@ -40,7 +40,7 @@ const featureMap = {
     }, {
       title: "Interlude",
       key: "interlude",
-      desc: ({noParagraph}) => (
+      desc: ({ noParagraph }) => (
         <Typography paragraph={!noParagraph}>
           You spend 1 Aura point to take the Dodge action as a bonus action.
         </Typography>
@@ -50,10 +50,10 @@ const featureMap = {
   banishSummon: {
     title: "Banish/Summon",
     levels: [9],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <React.Fragment>
         <Typography paragraph>Once you reach Level 9, you learn how to turn objects into Shade and re-form them later.</Typography>
-        <RpgTypography title="Banish"paragraph>
+        <RpgTypography title="Banish" paragraph>
           You can use your Action to spend 3 Aura points to touch an inanimate object no larger than 5 feet in any dimension and weighing
           no more than twice the weight you can normally carry. The object vanishes and leaves behind a puff of black smoke that dissipates
           after a couple seconds. If the object was on a person (such as in a bag or in their hands), they are aware that the object is missing
@@ -74,7 +74,7 @@ const featureMap = {
   blink: {
     title: "Blink",
     levels: [4],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <React.Fragment>
         <Typography paragraph>
           At Level 4, you learn how to quickly move through shadows to teleport short distances. While in dim light or darkness,
@@ -95,10 +95,10 @@ const featureMap = {
   chaoticLuck: {
     title: "Chaotic Luck",
     levels: [7],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <Typography paragraph={!noParagraph}>
         When you reach Level 7, your affinity with Darkness allows you to affect the luck of others. When a unit you can see makes an attack roll,
-        aptitude check, or saving throw, you can spend 2 Aura points to roll <DiceTerm dice={d(1, 4)}/> and apply it to the roll as a bonus or
+        aptitude check, or saving throw, you can spend 2 Aura points to roll <DiceTerm dice={d(1, 4)} /> and apply it to the roll as a bonus or
         penalty (of your choice). You can do so after the roll is made but before the outcome is determined.
       </Typography>
     )
@@ -106,7 +106,7 @@ const featureMap = {
   curseImprovement: {
     title: "Curse Improvement",
     levels: [10],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <Typography paragraph={!noParagraph}>
         When you reach Level 10, you add Charisma to the list of aptitudes you can affect with Curse.
         (Curse can now affect Charisma, Dexterity, or Strength)
@@ -116,27 +116,27 @@ const featureMap = {
   darkConsumption: {
     title: "Dark Consumption",
     levels: [20],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <Typography paragraph={!noParagraph}>
         At Level 20, when you roll for initiative and you are in a space of dim light or darkness with less than half your hit points left, you
-        regain hit points equal to <Calc><DiceTerm dice={d(5, 8)}/> + your Intelligence modifier</Calc>.
+        regain hit points equal to <Calc><DiceTerm dice={d(5, 8)} /> + your Intelligence modifier</Calc>.
       </Typography>
     )
   },
   darkSelf: {
     title: "Dark Self",
     levels: [18],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <Typography paragraph={!noParagraph}>
         Beginning at Level 18, when you roll for initiative and have no Aura points remaining, you regain Aura points equal
-        to <Calc><DiceTerm dice={d(1, 4)}/> + your Intelligence modifier</Calc>.
+        to <Calc><DiceTerm dice={d(1, 4)} /> + your Intelligence modifier</Calc>.
       </Typography>
     )
   },
   darksense: {
     title: "Darksense",
     levels: [13],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <Typography paragraph={!noParagraph}>
         Upon reaching Level 13, your experience in the dark gives you the ability to sense the unseen. If you are able to hear,
         you can sense the presence of Invisible or hidden units within 10 feet of you.
@@ -146,7 +146,7 @@ const featureMap = {
   darkvision: {
     title: "Darkvision",
     levels: [1],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <Typography paragraph={!noParagraph}>
         As a Shadowborne, your affinity to darkness has given you the ability to see in dark farther than others. At Level 1,
         you have a Darkvision distance of 60 feet. This distance increases as you gain levels, as shown in the <i>Darkvision Distance</i> column
@@ -158,11 +158,11 @@ const featureMap = {
   fromShadows: {
     title: "From Shadows",
     levels: [1],
-    desc: ({disableTerms, noParagraph}) => (
+    desc: ({ disableTerms, noParagraph }) => (
       <React.Fragment>
         <Typography paragraph>
           At Level 1, you know how to strike swift and subtly in low light. Once per turn, you can deal an
-          extra <DiceTerm disableHover={disableTerms} dice={d(1, 6)}/> dark damage to a unit you hit with an attack if you are within a space of
+          extra <DiceTerm disableHover={disableTerms} dice={d(1, 6)} /> dark damage to a unit you hit with an attack if you are within a space of
           darkness or have advantage on the attack roll.
         </Typography>
         <Typography paragraph>
@@ -179,7 +179,7 @@ const featureMap = {
   malignantShadows: {
     title: "Malignant Shadows",
     levels: [14],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <Typography paragraph={!noParagraph}>
         When you reach Level 14, you are more skilled in dealing damage with From Shadows. You can spend 2 Aura points to reroll any die.
         You must use the new roll, and you can only reroll a die once. You can roll a maximum of 3 dice in the duration of your turn.
@@ -189,7 +189,7 @@ const featureMap = {
   perfectCurse: {
     title: "Perfect Curse",
     levels: [15],
-    desc: ({noParagraph}) => (
+    desc: ({ noParagraph }) => (
       <Typography paragraph={!noParagraph}>
         When you reach Level 15, you add Wisdom to the list of aptitudes you can affect with Curse.
         (Curse can now affect Charisma, Dexterity, Strength, or Wisdom)
@@ -201,7 +201,7 @@ const featureMap = {
 
 export default {
   name: "Shadowborne",
-  desc: ({noParagraph}) => (
+  desc: ({ noParagraph }) => (
     <React.Fragment>
       <Typography paragraph>
         Shadowborne are naturally introverted and will often avoid large social gatherings and events. Most Shadowborne do not have large groups
