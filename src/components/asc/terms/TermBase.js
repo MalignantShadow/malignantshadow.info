@@ -1,14 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
-import MuiLink from '@material-ui/core/Link'
 import Fade from '@material-ui/core/Fade'
 
 import TermTitle from './TermTitle'
+import AscLink from '../AscLink'
 
 export default withStyles(theme => ({
   tooltip: {
@@ -72,7 +71,7 @@ export default withStyles(theme => ({
 
   const className = classNames(classes.term, {[classes.termText]: !(disableHover), [classes.termBold]: !disableBold})
   const term = href ?
-    <MuiLink component={Link} to={href} className={className}>{text}</MuiLink>
+    <AscLink href={href} className={className}>{text}</AscLink>
     : <Typography className={className} component="span">{text}</Typography>
 
 return disableHover ? term :
