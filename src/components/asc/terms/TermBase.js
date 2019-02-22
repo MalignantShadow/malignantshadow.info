@@ -8,6 +8,8 @@ import Tooltip from '@material-ui/core/Tooltip'
 import MuiLink from '@material-ui/core/Link'
 import Fade from '@material-ui/core/Fade'
 
+import TermTitle from './TermTitle'
+
 export default withStyles(theme => ({
   tooltip: {
     backgroundColor: theme.palette.background.default,
@@ -66,7 +68,7 @@ export default withStyles(theme => ({
   content: {
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit}px`
   }
-}))(({classes, children, icon: Icon, name, title = name, category, text = name, href, TooltipProps, disable, disableHover = disable, disableBold = disable}) =>{
+}))(({classes, children, icon: Icon, name, title = name, subtitle, category, text = name, href, TooltipProps, disable, disableHover = disable, disableBold = disable}) =>{
 
   const className = classNames(classes.term, {[classes.termText]: !(disableHover), [classes.termBold]: !disableBold})
   const term = href ?
@@ -82,7 +84,9 @@ return disableHover ? term :
       <React.Fragment>
         <div className={classes.header}>
           { Icon && <Icon className={classes.icon}/>}
-          <Typography variant="h5" className={classes.name}>{title}</Typography>
+          <Typography variant="h5" className={classes.name}>
+            <TermTitle subtitle={subtitle}>{title}</TermTitle>
+          </Typography>
           {category &&
             <Typography component="span" className={classes.category}>{category}</Typography>
           }
