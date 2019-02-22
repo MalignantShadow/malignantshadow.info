@@ -35,6 +35,7 @@ export const auraPointsFeature = (features) => ({
 
 export const alterAppearanceSubFeature = () => ({
   title: "Alter Appearance",
+  key: "alterAppearance",
   desc: () => (
     <React.Fragment>
       <Typography paragraph>

@@ -26,6 +26,7 @@ const featureMap = {
   auraPoints: auraPointsFeature([
     alterAppearanceSubFeature(), {
       title: "Curse",
+      key: "curse",
       desc: ({noParagraph}) => (
         <Typography paragraph={!noParagraph}>
           Immediately after a weapon attack during your Attack action, you spend 1 Aura point to attempt to curse the target’s fate.
@@ -37,6 +38,7 @@ const featureMap = {
       )
     }, {
       title: "Interlude",
+      key: "interlude",
       desc: ({noParagraph}) => (
         <Typography paragraph={!noParagraph}>
           You spend 1 Aura point to take the Dodge action as a bonus action.
