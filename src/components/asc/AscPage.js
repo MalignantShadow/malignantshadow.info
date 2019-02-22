@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import Hidden from '@material-ui/core/Hidden'
@@ -51,7 +52,13 @@ export default withStyles(theme => ({
     position: "fixed",
     padding: 4
   },
-}))(({classes, children, rightContent, toc, BreadcrumbProps}) => {
+}))(withRouter(({classes, children, location, rightContent, toc, BreadcrumbProps}) => {
+  React.useEffect(() => {
+    if(!location.hash) return
+    const el = document.querySelector(location.hash)
+    if(el) el.scrollIntoView({behavior: "smooth", block: "start"})
+  })
+
   return (
     <div className={classes.root}>
       {toc &&
@@ -71,4 +78,4 @@ export default withStyles(theme => ({
       </div>
     </div>
   )
-})
+}))
