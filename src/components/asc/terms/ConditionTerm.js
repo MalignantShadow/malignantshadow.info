@@ -2,7 +2,6 @@ import React from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import ConditionText from '../ConditionText'
 import TermBase from './TermBase'
 import * as conditions from '../../../lib/asc/game/conditions'
 import { styleTerm, styleCategory } from './util'
@@ -12,13 +11,16 @@ export default withStyles(theme => {
   return {
     ...styleTerm(color),
     ...styleCategory(color, { color: "#FFF" }),
-    ul: {
-      margin: 0,
-      paddingLeft: theme.spacing.unit * 3
+    root: {
+      "& > ul": {
+        margin: 0,
+        paddingLeft: theme.spacing.unit * 3
+      }
     }
   }
 })(({classes, term, ...other}) => {
   const condition = conditions[term]
+  const Desc = condition.desc
   return (
     <TermBase
       name={condition.name}
@@ -30,7 +32,9 @@ export default withStyles(theme => {
       }}
       {...other}
     >
-      <ConditionText className={classes.ul}>{condition.desc}</ConditionText>
+      <div className={classes.root}>
+        <Desc disableTerms/>
+      </div>
     </TermBase>
   )
 })
