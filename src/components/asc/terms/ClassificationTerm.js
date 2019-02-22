@@ -61,7 +61,7 @@ export default withStyles(theme => ({
       }}
       {...other}
     >
-      <div class={classes.topContent}>
+      <div className={classes.topContent}>
         <ClassStats classes={{root: classes.statsWrapper}}>
           <React.Fragment>
             <b>Elemental Affinity</b>: <Span>{affinity}</Span>
