@@ -19,20 +19,23 @@ import {
  import { styledTocItem, styledSection } from '../../../components/asc/util'
  import * as classifications from '../../../lib/asc/game/classifications'
 
-const Features = ({children, Section}) => (
+const Features = ({children, idPrefix, Section}) => (
   <React.Fragment>
-    {children.map(({title, desc: Desc, levels: [level], subFeatures}, i) => (
-      <React.Fragment key={i}>
-        <Section variant="h2" title={title} caption={`Level ${level} Feature`}>
-          <Desc/>
-        </Section>
-        {subFeatures && subFeatures.map(({title: subTitle, desc: SubDesc}, j) =>(
-          <Section key={j} variant="h3" title={subTitle}>
-            <SubDesc/>
+    {children.map(({title, desc: Desc, levels: [level], subFeatures}, i) => {
+      const id = idPrefix && `${idPrefix}${slug(title)}`
+      return (
+        <React.Fragment key={i}>
+          <Section id={id} variant="h2" title={title} caption={`Level ${level} Feature`}>
+            <Desc/>
           </Section>
-        ))}
-      </React.Fragment>
-    ))}
+          {subFeatures && subFeatures.map(({title: subTitle, desc: SubDesc}, j) =>(
+            <Section id={`${id}.${slug(subTitle)}`} key={j} variant="h3" title={subTitle}>
+              <SubDesc/>
+            </Section>
+          ))}
+        </React.Fragment>
+      )
+    })}
   </React.Fragment>
 )
 
@@ -211,7 +214,7 @@ export default withStyles(theme => ({
         </Typography>
       </Section>
       {heroes.map(({name, epithet, quote, desc: Desc, abilities, features}, i) => {
-        const heroSlug = `#hero-${slug(name)}`
+        const heroSlug = `hero.${slug(name)}`
         return (
           <React.Fragment key={"hero-" + name}>
             <Section id={heroSlug} variant="h1" title={name} subtitle={epithet} className={classes.heroHeading}>
@@ -220,11 +223,11 @@ export default withStyles(theme => ({
               <Desc/>
             </Section>
             { abilities &&
-              <Section id={`${heroSlug}-abilities`} variant="h2" title="Abilities">
+              <Section id={`${heroSlug}.abilities`} variant="h2" title="Abilities">
 
               </Section>
             }
-            <Section id={`${heroSlug}-features`} variant="h2" title="Features"/>
+            <Section id={`${heroSlug}.features`} variant="h2" title="Features"/>
             <Paper className={classes.tablePaper}>
               <Table
                 head={["Level", "Feature"]}
@@ -233,7 +236,7 @@ export default withStyles(theme => ({
                 ]}
               />
             </Paper>
-            <Features Section={Section}>{features}</Features>
+            <Features Section={Section} idPrefix={`${heroSlug}.`}>{features}</Features>
           </React.Fragment>
         )
       })}
