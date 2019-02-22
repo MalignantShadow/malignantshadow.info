@@ -113,6 +113,7 @@ export default withStyles(theme => ({
       `${apt} ${increase > 0 ? "+" : "-"} ${Math.abs(increase)}`
     )).join(", ")],
     ["Aura Modifier", auraMod],
+    ["Aura Save DC", <Calc>8 + your proficiency modifier + your {auraMod} modifier</Calc>],
     ["Speed", ` ${speed} feet`],
     [traits.resistance[0] || `${name} Resillience`, <React.Fragment>
       You are <GameTerm term="resistance" variant="adj" args={[traits.resistance[1]]} />
