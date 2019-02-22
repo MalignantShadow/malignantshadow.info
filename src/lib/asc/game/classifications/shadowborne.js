@@ -221,7 +221,6 @@ export default {
   aspect: "Dusk",
   icon,
   traits: {
-    ac: [8, "Dexterity", "Intelligence"],
     scoreIncreases: [
       ["Dexterity", 3],
       ["Intelligence", 1],
