@@ -52,11 +52,11 @@ export default withStyles(theme => ({
     position: "fixed",
     padding: 4
   },
-}))(withRouter(({classes, children, location, rightContent, toc, BreadcrumbProps}) => {
+}))(withRouter(({ classes, children, location, rightContent, toc, BreadcrumbProps }) => {
   React.useEffect(() => {
-    if(!location.hash) return
+    if (!location.hash) return
     const el = document.getElementById(location.hash.substring(1))
-    if(el) el.scrollIntoView({behavior: "smooth", block: "start"})
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
   })
 
   return (
@@ -69,7 +69,7 @@ export default withStyles(theme => ({
       <div className={classes.contentWrapper}>
         <div className={classes.wrapper}>
           <SiteBreadcrumbs icon={Asc} {...BreadcrumbProps}>{routing}</SiteBreadcrumbs>
-          <div className={classes.stretch}/>
+          <div className={classes.stretch} />
           <div className={classes.rightContent}>{rightContent}</div>
         </div>
         <div className={classes.content}>
