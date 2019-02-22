@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import MuiLink from '@material-ui/core/Link'
+import AscLink from './AscLink'
 
 export default withStyles(theme => ({
   root: {
@@ -26,7 +26,7 @@ export default withStyles(theme => ({
   <ListItem
     button
     className={classNames(classes.root, classes[`depth${depth}`], className)}
-    component={href ? MuiLink : Link} 
+    component={href ? AscLink : Link}
     href={href}
     to={to}
   >
