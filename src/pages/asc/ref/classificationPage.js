@@ -127,18 +127,24 @@ export default withStyles(theme => ({
 
   sortedTraits.sort(([a], [b]) => a - b)
 
-  const Table = withStyles(theme => ({
-    headCell: {
-      backgroundColor: theme.asc.class[id].main,
-      color: theme.palette.getContrastText(theme.asc.class[id].main)
-    },
-    row: {
-      "&:nth-child(4n+5) td:first-child": {
-        backgroundColor: theme.asc.class[id].main,
-        color: theme.palette.getContrastText(theme.asc.class[id].main)
+  const Table = withStyles(theme => {
+    const color = theme.asc.class[id]
+    const headColor = color[color.table ? color.table : "main"]
+    const modifyCell = {
+      backgroundColor: headColor,
+      color: theme.palette.getContrastText(headColor)
+    }
+    return {
+      headCell: {
+        ...modifyCell
+      },
+      row: {
+        "&:nth-child(4n+5) td:first-child": {
+          ...modifyCell
+        }
       }
     }
-  }))(({ classes, features, ...other }) => (
+  })(({ classes, features, ...other }) => (
     <AscTable classes={{
       headCell: classes.headCell,
       row: classNames({ [classes.row]: features })

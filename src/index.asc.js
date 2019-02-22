@@ -8,7 +8,7 @@ import { withRouter, Link, Switch } from 'react-router-dom'
 
 import { createMuiTheme, withStyles } from '@material-ui/core/styles'
 import { fade } from '@material-ui/core/styles/colorManipulator'
-import * as colors  from '@material-ui/core/colors'
+import * as colors from '@material-ui/core/colors'
 import Typography from '@material-ui/core/Typography'
 import Hidden from '@material-ui/core/Hidden'
 import Button from '@material-ui/core/Button'
@@ -26,14 +26,15 @@ import { useRoutes } from "./lib/routing"
 
 smoothscroll.polyfill()
 
-const makeColor = (color) => ({
-  light: color[300],
-  main: color[500],
-  dark: color[700]
+const makeColor = (color, values = [300, 500, 700], other) => ({
+  light: color[values[0]],
+  main: color[values[1]],
+  dark: color[values[2]],
+  ...other
 })
 
 const primary = {
-  light : colors.grey[800],
+  light: colors.grey[800],
   main: colors.grey[900],
   dark: "#000"
 }
@@ -101,7 +102,7 @@ const ToolbarButton = withStyles(theme => {
       color: color
     }
   }
-})(withRouter(({classes, path, title, location}) => {
+})(withRouter(({ classes, path, title, location }) => {
   const active = location.pathname.startsWith(path)
   return (
     <Button
@@ -135,11 +136,11 @@ class AscRef extends React.Component {
           toolbarClassName={classes.toolbar}
           onDrawerOpen={this.setDrawerState(true)}
         >
-          <Asc/>
+          <Asc />
           <Typography className={classes.title} variant="h5" color="inherit">Tabletop</Typography>
           <Hidden mdDown>
             {routes.map((e, i) => (
-              !e.children ? null : (<ToolbarButton key={i} {...e}/>)
+              !e.children ? null : (<ToolbarButton key={i} {...e} />)
             ))}
           </Hidden>
         </AppBar>
@@ -153,7 +154,7 @@ class AscRef extends React.Component {
         >
           {routes}
         </AppDrawer>
-        <AppContent classes={{root: classes.contentRoot}}>
+        <AppContent classes={{ root: classes.contentRoot }}>
           <Switch>
             {useRoutes(routes, pages)}
           </Switch>
@@ -165,5 +166,5 @@ class AscRef extends React.Component {
 
 AscRef = withStyles(styles)(AscRef)
 
-ReactDOM.render(<AscRef/>, document.getElementById('root'));
+ReactDOM.render(<AscRef />, document.getElementById('root'));
 //serviceWorker.unregister();
