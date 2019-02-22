@@ -1,6 +1,7 @@
 export { default as ConditionTerm } from "./ConditionTerm"
 export { default as ClassificationTerm } from "./ClassificationTerm"
 export { default as DiceTerm } from "./DiceTerm"
+export { default as FeatureTerm } from "./FeatureTerm"
 export { default as GameTerm } from "./GameTerm"
 export { default as SkillTerm } from "./SkillTerm"
 export { default as TermBase } from "./TermBase"

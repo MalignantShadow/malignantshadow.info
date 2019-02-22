@@ -15,6 +15,7 @@ export {
   ConditionTerm,
   ClassificationTerm,
   DiceTerm,
+  FeatureTerm,
   GameTerm,
   SkillTerm,
   TermBase
