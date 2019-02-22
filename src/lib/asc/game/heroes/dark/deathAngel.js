@@ -4,10 +4,7 @@ import Typography from "@material-ui/core/Typography"
 
 import {
   Calc,
-  ConditionTerm,
-  FeatureTerm,
-  GameTerm,
-  SkillTerm
+  FeatureTerm
 } from '../../../../../components/asc'
 
 const Feature = ({ id, isHero, ...other }) => <FeatureTerm classification="shadowborne" hero={isHero && "deathAngel"} feature={id} {...other} />
