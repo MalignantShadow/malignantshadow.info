@@ -90,7 +90,7 @@ export default withStyles(theme => ({
       <TocItem title href="#heroes">Hero Studies</TocItem>
       <Divider/>
       {heroes && heroes.map(({name}, i) => (
-        <TocItem key={"hero" + i} href={`#hero-${slug(name)}`}>{name}</TocItem>
+        <TocItem key={"hero" + i} href={`#hero.${slug(name)}`}>{name}</TocItem>
       ))}
     </TableOfContents>
   </React.Fragment>
