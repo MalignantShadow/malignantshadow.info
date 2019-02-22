@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { withStyles } from '@material-ui/core/styles'
-import { fade } from '@material-ui/core/styles/colorManipulator'
 import Typography from '@material-ui/core/Typography'
 
 import TermBase from './TermBase'
@@ -19,12 +18,6 @@ const classSpan = (id) => withStyles(theme => ({
 )
 
 export default withStyles(theme => ({
-  aspect: {
-    marginLeft: theme.spacing.unit,
-    color: fade(theme.palette.getContrastText(theme.palette.primary.main), .65),
-    fontSize: theme.typography.pxToRem(14),
-    fontWeight: 500
-  },
   ...styleCategory(theme.asc.classifications),
   statsWrapper: {
     display: "flex",
@@ -65,12 +58,8 @@ export default withStyles(theme => ({
   return (
     <TermBase
       icon={icon}
-      title={
-        <span>
-          <span>{name}</span>
-          <span className={classes.aspect}>Aspect of {aspect}</span>
-        </span>
-      }
+      title={name}
+      subtitle={`Aspect of ${aspect}`}
       category="classification"
       text={plural ? `${name}s` : name}
       href={`/ref/classifications/${term}`}
