@@ -17,7 +17,8 @@ import {
   DiceTerm,
   RpgTypography
 } from '../../../../components/asc/'
-import { spectre } from '../heroes'
+
+import { spectre, deathAngel } from '../heroes'
 
 // repeat from shadows dice a number of times
 const rd = (diceAmount, repeatAmount = 3) => r(() => <DiceTerm dice={d(diceAmount, 6)}/>, repeatAmount)
@@ -268,5 +269,5 @@ export default {
     featureMap.darkConsumption
   ],
 
-  heroes: [spectre]
+  heroes: [spectre, deathAngel]
 }
