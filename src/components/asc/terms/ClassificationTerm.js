@@ -4,9 +4,13 @@ import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
+import SkillTerm from './SkillTerm'
 import TermBase from './TermBase'
 import * as classifications from '../../../lib/asc/game/classifications'
-import { styleCategory } from './util'
+import { stats, styleCategory } from './util'
+
+const colorSelector = theme => theme.asc.classifications
+const ClassStats = stats(colorSelector)
 
 const classSpan = (id) => withStyles(theme => ({
   root: { color: theme.asc.class[id].main },
@@ -20,25 +24,14 @@ const classSpan = (id) => withStyles(theme => ({
 export default withStyles(theme => ({
   ...styleCategory(theme.asc.classifications),
   statsWrapper: {
-    display: "flex",
-    flexDirection: "column",
-    paddingBottom: theme.spacing.unit,
-    borderBottom: `3px solid ${theme.asc.classifications.main}`,
-    marginBottom: theme.spacing.unit * 2
-  },
-  statsWrapperRow: {
-      display: "flex",
-      flexDirection: "row"
-  },
-  rowGutter: {
+    borderBottom: "none",
+    paddingBottom: 0,
     marginBottom: theme.spacing.unit
   },
-  stat: {
-    "&:not(:first-child)": {
-      marginLeft: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit,
-      borderLeft: `2px solid ${theme.asc.classifications.main}`
-    }
+  topContent: {
+    paddingBottom: theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
+    borderBottom: `3px solid ${theme.asc.classifications.main}`
   },
   dice: {
     color: theme.asc.term.dice.main,
@@ -68,20 +61,20 @@ export default withStyles(theme => ({
       }}
       {...other}
     >
-      <div className={classes.statsWrapper}>
-        <div className={classNames(classes.statsWrapperRow, classes.rowGutter)}>
-          <Typography className={classes.stat}>
+      <div class={classes.topContent}>
+        <ClassStats classes={{root: classes.statsWrapper}}>
+          <React.Fragment>
             <b>Elemental Affinity</b>: <Span>{affinity}</Span>
-          </Typography>
-          <Typography className={classes.stat}>
+          </React.Fragment>
+          <React.Fragment>
             <b>Archetypes</b>: {archetypes.join(", ")}
-          </Typography>
-          <Typography className={classes.stat}>
+          </React.Fragment>
+          <React.Fragment>
             <b>Hit Dice</b>: <span className={classes.dice}>{hitDice.toString()}</span>
-          </Typography>
-        </div>
+          </React.Fragment>
+        </ClassStats>
         <Typography>
-          <b>Saving Throws</b>: {savingThrows.map(e => e.toUpperCase()).join(", ")}
+          <b>Saving Throws</b>: {savingThrows.map(e => e.toUpperCase().substring(0, 3)).join(", ")}
         </Typography>
         <Typography>
             <b>Weapons</b>: {weapons.map((e, i) => (
@@ -92,13 +85,9 @@ export default withStyles(theme => ({
         </Typography>
         <Typography>
             <b>Skills</b>{": "}
-            { Array.isArray(skills) ? (skills.map((e, i) => (
-              <React.Fragment key={i}>
-                {e}{i < skills.length - 1 && ", " }
-              </React.Fragment>
-            ))) : (
-              `${skills.starting} + ${skills.choices} from ${skills.pool.join(", ")}`
-            )}
+            { skills.map((e, i) => (
+              <React.Fragment key={i}><SkillTerm term={e} disableHover/>{i < skills.length - 1 ? ", " : ""}</React.Fragment>
+            ))}
         </Typography>
       </div>
       <div className={classes.desc}>
