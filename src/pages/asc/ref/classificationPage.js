@@ -52,6 +52,9 @@ export default withStyles(theme => ({
       flexDirection: "column"
     }
   },
+  heroStudiesTitleMargin: {
+    marginTop: theme.spacing.unit * 8
+  },
   heroHeading: {
     "& > h6": {
       fontSize: "1rem"
@@ -207,7 +210,8 @@ export default withStyles(theme => ({
         />
       </Paper>
       <Features Section={Section}>{features}</Features>
-      <Section variant="title" title={`${name} Hero Studies`}>
+      <div className={classes.heroStudiesTitleMargin}/>
+      <Section id="heroes" variant="title" title={`${name} Hero Studies`}>
         <Typography paragraph>
           At Level 3, you choose to study one of the Heroes shown below. You gain the features shown in the description of your chosen Hero, and you
           can choose to learn the abilities shown in that Hero's description.
