@@ -73,13 +73,14 @@ export default withStyles(theme => ({
   const term = href ?
     <AscLink href={href} className={className}>{text}</AscLink>
     : <Typography className={className} component="span">{text}</Typography>
+  const customTooltip = !TooltipProps || !TooltipProps.title
 
 return disableHover ? term :
   <Tooltip
     TransitionComponent={Fade}
     placement="top-start"
     classes={{tooltip: classes.tooltip, popper: classes.popper}}
-    title={
+    title={ customTooltip &&
       <React.Fragment>
         <div className={classes.header}>
           { Icon && <Icon className={classes.icon}/>}
