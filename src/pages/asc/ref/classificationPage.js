@@ -12,7 +12,8 @@ import {
   AscTable,
   Calc,
   DiceTerm,
-  SkillTerm
+  SkillTerm,
+  TableOfContents
  } from '../../../components/asc'
  import { slug } from '../../../lib/routing'
  import { styledTocItem, styledSection } from '../../../components/asc/util'
@@ -52,6 +53,11 @@ export default withStyles(theme => ({
     "& > h6": {
       fontSize: "1rem"
     }
+  },
+  toc: {
+    "&:not(:first-child)": {
+      marginTop: theme.spacing.unit * 3
+    }
   }
 }))(withRouter(({classes, match: {params: {id}}}) => {
   const c = classifications[id]
@@ -65,18 +71,21 @@ export default withStyles(theme => ({
   const upTo20 = new Array(20).fill(0)
 
   const toc = <React.Fragment>
-    <TocItem title href="#topContent">Classification: {name}</TocItem>
-    <Divider/>
-    <TocItem href="#traits">Traits</TocItem>
-    <TocItem href="#hit-dice" depth={1}>Hit Dice</TocItem>
-    <TocItem href="#proficiencies" depth={1}>Proficiencies</TocItem>
-    <TocItem href="#features">Features</TocItem>
-    <Divider/>
-    <TocItem title href="#heroes">Hero Studies</TocItem>
-    <Divider/>
-    {heroes && heroes.map(({name}, i) => (
-      <TocItem key={"hero" + i} href={`#hero-${slug(name)}`}>{name}</TocItem>
-    ))}
+    <TableOfContents className={classes.toc}>
+      <TocItem title href="#topContent">Classification: {name}</TocItem>
+      <Divider/>
+      <TocItem href="#traits">Traits</TocItem>
+      <TocItem href="#hit-dice" depth={1}>Hit Dice</TocItem>
+      <TocItem href="#proficiencies" depth={1}>Proficiencies</TocItem>
+      <TocItem href="#features">Features</TocItem>
+    </TableOfContents>
+    <TableOfContents className={classes.toc}>
+      <TocItem title href="#heroes">Hero Studies</TocItem>
+      <Divider/>
+      {heroes && heroes.map(({name}, i) => (
+        <TocItem key={"hero" + i} href={`#hero-${slug(name)}`}>{name}</TocItem>
+      ))}
+    </TableOfContents>
   </React.Fragment>
 
   const featureNames = []

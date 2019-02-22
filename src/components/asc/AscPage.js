@@ -7,7 +7,6 @@ import { appbarRelativeStyles } from '../../components/common/util'
 import { SiteBreadcrumbs } from '../common/app'
 import Asc from './icons/Asc'
 import routing from '../../lib/asc/routeInfo'
-import TableOfContents from './TableOfContents'
 
 const tocWidth = 320
 
@@ -49,14 +48,15 @@ export default withStyles(theme => ({
       maxHeight: `calc(100vh - ${theme.spacing.unit * 4}px - ${height}px)`
     })),
     overflowY: "auto",
-    position: "fixed"
+    position: "fixed",
+    padding: 4
   },
 }))(({classes, children, rightContent, toc, BreadcrumbProps}) => {
   return (
     <div className={classes.root}>
       {toc &&
         <Hidden smDown>
-          <TableOfContents className={classes.toc} children={toc}/>
+          <div className={classes.toc}>{toc}</div>
         </Hidden>
       }
       <div className={classes.contentWrapper}>
