@@ -108,7 +108,7 @@ export default withStyles(theme => ({
   })
 
   let sortedTraits = [
-    ["Armor Class", <Calc>{traits.ac[0]} + your {traits.ac[1]} modifier + your {traits.ac[2]} modifier</Calc>],
+    ["Armor Class", <Calc>8 + your Dexterity modifier + your {auraMod} modifier</Calc>],
     ["Aptitude Score Increases", traits.scoreIncreases.map(([apt, increase], i) => (
       `${apt} ${increase > 0 ? "+" : "-"} ${Math.abs(increase)}`
     )).join(", ")],
