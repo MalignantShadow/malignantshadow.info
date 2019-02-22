@@ -5,7 +5,6 @@ import MuiLink from '@material-ui/core/Link'
 
 // Custom link component that won't cause a re-render if the pathname is the same
 // This should only be used on pages that don't rely on hash changes (which should be every page)
-
 export default withRouter(({href, children, history, location, match, params, staticContext, ...other}) => {
   const [path, hash] = href.split("#")
   const [locationFromProp, query = ""] = path.split("?")
@@ -30,6 +29,5 @@ export default withRouter(({href, children, history, location, match, params, st
   return useHandler ?
   <MuiLink href={href} onClick={handleClick} {...other}>{children}</MuiLink> :
   <MuiLink component={Link} to={href} {...other}>{children}</MuiLink>
-
 
 })
