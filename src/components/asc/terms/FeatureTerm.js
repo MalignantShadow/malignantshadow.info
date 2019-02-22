@@ -13,10 +13,10 @@ const FeatureTerm = withStyles(theme => ({
   tooltip: { width: 775 }, // same as D&DBeyond
   ...styleCategory(theme.asc.term.feature),
   ...Object.entries(theme.asc.class).map(([k, v]) => styleTerm(v.main, {}, `term-${k}`))
-}))(({classes, classification, hero, feature, sub, ...other}) => {
+}))(({ classes, classification, hero, feature, sub, ...other }) => {
   const c = classifications[classification]
   const h = hero && heroes[hero]
-  const {[feature]: parentF } = h ? h.f : c.f
+  const { [feature]: parentF } = h ? h.f : c.f
   const subF = sub && parentF.subFeatures[parentF.subFeatures.findIndex(e => e.key === sub)]
 
   const colorSelector = theme => theme.asc.class[classification]
@@ -40,7 +40,7 @@ const FeatureTerm = withStyles(theme => ({
     >
       <Stats>
         <React.Fragment>
-          <b>Classification: </b><ClassificationTerm disableHover term={classification}/>
+          <b>Classification: </b><ClassificationTerm disableHover term={classification} />
         </React.Fragment>
         {h &&
           <React.Fragment>
@@ -52,11 +52,11 @@ const FeatureTerm = withStyles(theme => ({
         </React.Fragment>
         {subF &&
           <React.Fragment>
-            <b>Sub-feature of: </b><FeatureTerm classification={classification} feature={feature} disableHover/>
+            <b>Sub-feature of: </b><FeatureTerm classification={classification} feature={feature} disableHover />
           </React.Fragment>
         }
       </Stats>
-      <Desc disableTerms noParagraph/>
+      <Desc disableTerms noParagraph />
     </TermBase>
   )
 })
