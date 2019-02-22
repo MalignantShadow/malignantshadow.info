@@ -12,6 +12,7 @@ import {
   AscTable,
   Calc,
   DiceTerm,
+  GameTerm,
   SkillTerm,
   TableOfContents
  } from '../../../components/asc'
@@ -110,8 +111,12 @@ export default withStyles(theme => ({
     )).join(", ")],
     ["Aura Modifier", auraMod],
     ["Speed", ` ${speed} feet`],
-    [traits.resistance[0] || `${name} Resillience`, `You are resistant ${traits.resistance[1]} damage.`],
-    [traits.vulnerability[0] || `${name} Vulnerabilities`, `You are vulnerabile to ${traits.vulnerability[1]} damage.`],
+    [traits.resistance[0] || `${name} Resillience`, <React.Fragment>
+      You are <GameTerm term="resistance" variant="adj" args={[traits.resistance[1]]}/>
+    </React.Fragment>],
+    [traits.vulnerability[0] || `${name} Vulnerabilities`, <React.Fragment>
+      You are <GameTerm term="vulnerability" variant="adj" args={[traits.vulnerability[1]]}/>
+    </React.Fragment>],
   ]
   if(traits.extra)
     sortedTraits = sortedTraits.concat(traits.extra)
