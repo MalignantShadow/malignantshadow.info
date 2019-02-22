@@ -16,7 +16,7 @@ export default withRouter(({href, children, history, location, match, params, st
   function handleClick(e) {
     e.preventDefault()
     e.stopPropagation()
-    const el = document.querySelector(`#${hash}`)
+    const el = document.getElementById(hash)
     if(!el) return
 
     // Using window.history instead of history prop to prevent causing a rerender

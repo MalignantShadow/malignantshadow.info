@@ -55,7 +55,7 @@ export default withStyles(theme => ({
 }))(withRouter(({classes, children, location, rightContent, toc, BreadcrumbProps}) => {
   React.useEffect(() => {
     if(!location.hash) return
-    const el = document.querySelector(location.hash)
+    const el = document.getElementById(location.hash.substring(1))
     if(el) el.scrollIntoView({behavior: "smooth", block: "start"})
   })
 
