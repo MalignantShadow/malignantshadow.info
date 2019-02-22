@@ -5,10 +5,13 @@ import Typography from '@material-ui/core/Typography'
 import {
   Calc,
   ConditionTerm,
+  FeatureTerm,
   GameTerm,
   SkillTerm
 } from '../../../../../components/asc'
 import { Poem } from '../util'
+
+const Feature = ({id, isHero, ...other}) => <FeatureTerm classification="shadowborne" hero={isHero && "spectre"} feature={id} {...other}/>
 
 const featureMap = {
   blink: {
@@ -21,7 +24,7 @@ const featureMap = {
           This attack does not count as part of your Attack action.
         </Typography>
         <Typography paragraph>
-          While in Spectral Form, the first Blink on during your turn is a free action, and you spend
+          While in <Feature id="spectralForm" isHero disableHover={disableTerms}/>, the first Blink on during your turn is a free action, and you spend
           no Aura points involved in the cost of that Blink. You may use Blink again normally as a bonus action on your turn.
         </Typography>
         <Typography paragraph={!noParagraph}>
@@ -48,8 +51,8 @@ const featureMap = {
     desc: ({disableTerms, noParagraph}) => (
       <React.Fragment>
         <Typography paragraph>
-          At Level 3, you immediately learn how to use Blink. You also gain proficiency in one melee weapon of your choice that you did not already
-          have proficiency in.
+          At Level 3, you immediately learn how to use <Feature id="blink" disableHover={disableTerms}/>. You also gain proficiency in
+          one melee weapon of your choice that you did not already have proficiency in.
         </Typography>
         <Typography paragraph>
           As a bonus action on your turn, you can release the Aura within yourself to become a source of fear. Your body slowly emits black smoke,
@@ -64,10 +67,11 @@ const featureMap = {
           Spectral Form or they are immune to being frightened. Once you use this feature, you can’t do so again until you finish a long rest.
         </Typography>
         <Typography paragraph={!noParagraph}>
-          In addition, you can change your eyes to resemble a snake’s (elongated pupils) for a few seconds as part of Alter Appearance
-          (your eyes change back afterward). You gain advantage on <SkillTerm disableHover={disableTerms} term="intimidation"/> checks against
-          units within 5 feet of you that saw your eyes at any point during its change. The <GameTerm disableHover={disableTerms} term="gm"/> decides
-          how long a unit may be intimidated by the display, if at all.
+          In addition, you can change your eyes to resemble a snake’s (elongated pupils) for a few seconds as part
+          of <Feature id="auraPoints" sub="alterAppearance" disableHover={disableTerms}/> (your eyes change back afterward). You gain advantage
+          on <SkillTerm disableHover={disableTerms} term="intimidation"/> checks against units within 5 feet of you that saw your eyes at any
+          point during its change. The <GameTerm disableHover={disableTerms} term="gm"/> decides how long a unit may be intimidated by the display,
+          if at all.
         </Typography>
       </React.Fragment>
     )
