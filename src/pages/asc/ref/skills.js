@@ -76,13 +76,13 @@ export default () => (
       </Typography>
     </Section>
     {getSections("Intelligence")}
-    <Section variant="h1" title="Strength" caption="Measures one's ability to exert force.">
+    <Section id="str" variant="h1" title="Strength" caption="Measures one's ability to exert force.">
       <Typography paragraph>
         The <GameTerm term="gm"/> may call for a Strength when you want to use your raw physical power to accomplish a task.
       </Typography>
     </Section>
     {getSections("Strength")}
-    <Section variant="h1" title="Wisdom" caption="Measures one's worldly experience">
+    <Section id="wis" variant="h1" title="Wisdom" caption="Measures one's worldly experience">
       <Typography paragraph>
         The <GameTerm term="gm"/> may call for a Wisdom check when you want to use your social or environmental perceptiveness to solve a problem.
       </Typography>
