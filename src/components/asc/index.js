@@ -1,5 +1,6 @@
 export { default as AscPage } from './AscPage'
 export { default as AscHeading } from './AscHeading'
+export { default as AscLink } from './AscLink'
 export { default as AscSection } from './AscSection'
 export { default as AscTable } from './AscTable'
 export { default as Calc } from './Calc'
