@@ -53,13 +53,13 @@ export default withStyles(theme => ({
     position: "fixed",
     padding: 4
   },
-}))(withRouter(({ classes, children, location, rightContent, toc, BreadcrumbProps }) => {
+}))(withRouter(({ classes, children, location, location: { state: routeState }, rightContent, toc, BreadcrumbProps }) => {
   React.useEffect(() => {
-    if (!location.hash) return
+    // if we refresh the page, routeState will be undefined
+    if (!routeState) return
     const el = document.getElementById(location.hash.substring(1))
-    if (el)
-      scrollTo(window.scrollY + el.getBoundingClientRect().top, 250)
-  })
+    scrollTo(el ? window.scrollY + el.getBoundingClientRect().top : 0, 250)
+  }, [])
 
   return (
     <div className={classes.root}>

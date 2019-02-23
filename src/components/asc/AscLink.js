@@ -28,6 +28,6 @@ export default withRouter(({ href, children, history, location, match, params, s
 
   return useHandler ?
     <MuiLink href={href} onClick={handleClick} {...other}>{children}</MuiLink> :
-    <MuiLink component={Link} to={href} {...other}>{children}</MuiLink>
+    <MuiLink component={Link} to={{ pathname: path, hash: hash || "", query: query || "", state: { prevLocation: location } }} {...other}>{children}</MuiLink>
 
 })
