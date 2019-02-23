@@ -8,6 +8,7 @@ import { appbarRelativeStyles } from '../../components/common/util'
 import { SiteBreadcrumbs } from '../common/app'
 import Asc from './icons/Asc'
 import routing from '../../lib/asc/routeInfo'
+import { scrollTo } from '../../lib/common/scrolling'
 
 const tocWidth = 320
 
@@ -56,7 +57,8 @@ export default withStyles(theme => ({
   React.useEffect(() => {
     if (!location.hash) return
     const el = document.getElementById(location.hash.substring(1))
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+    if (el)
+      scrollTo(window.scrollY + el.getBoundingClientRect().top, 250)
   })
 
   return (

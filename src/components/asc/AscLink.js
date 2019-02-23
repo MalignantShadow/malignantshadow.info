@@ -3,9 +3,11 @@ import { withRouter, Link } from 'react-router-dom'
 
 import MuiLink from '@material-ui/core/Link'
 
+import { scrollTo } from '../../lib/common/scrolling'
+
 // Custom link component that won't cause a re-render if the pathname is the same
 // This should only be used on pages that don't rely on hash changes (which should be every page)
-export default withRouter(({href, children, history, location, match, params, staticContext, ...other}) => {
+export default withRouter(({ href, children, history, location, match, params, staticContext, ...other }) => {
   const [path, hash] = href.split("#")
   const [locationFromProp, query = ""] = path.split("?")
 
@@ -17,17 +19,15 @@ export default withRouter(({href, children, history, location, match, params, st
     e.preventDefault()
     e.stopPropagation()
     const el = document.getElementById(hash)
-    if(!el) return
+    if (!el) return
 
-    // Using window.history instead of history prop to prevent causing a rerender
-    // This won't show in react-router's history prop, but I don't care about that
     window.history.pushState({}, "", `${location.pathname}${href}`)
 
-    el.scrollIntoView({behavior: "smooth", block: "start"}) // 'block' is ignored in polyfill
+    scrollTo(window.scrollY + el.getBoundingClientRect().top, 250)
   }
 
   return useHandler ?
-  <MuiLink href={href} onClick={handleClick} {...other}>{children}</MuiLink> :
-  <MuiLink component={Link} to={href} {...other}>{children}</MuiLink>
+    <MuiLink href={href} onClick={handleClick} {...other}>{children}</MuiLink> :
+    <MuiLink component={Link} to={href} {...other}>{children}</MuiLink>
 
 })
