@@ -3,11 +3,11 @@ import React from "react"
 import Typography from "@material-ui/core/Typography"
 
 import {
-  Calc,
-  FeatureTerm
+  Calc
 } from '../../../../../components/asc'
+import { featureTerm } from '../util'
 
-const Feature = ({ id, isHero, ...other }) => <FeatureTerm classification="shadowborne" hero={isHero && "deathAngel"} feature={id} {...other} />
+const Feature = featureTerm("shadowborne", "deathAngel")
 
 const featureMap = {
   atDeathsDoor: {

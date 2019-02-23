@@ -5,13 +5,13 @@ import Typography from "@material-ui/core/Typography"
 import {
   Calc,
   DiceTerm,
-  FeatureTerm,
   GameTerm,
   SkillTerm
 } from '../../../../../components/asc'
 import d from "../../dice"
+import { featureTerm } from '../util'
 
-const Feature = ({ id, isHero, ...other }) => <FeatureTerm classification="shadowborne" hero={isHero && "spectre"} feature={id} {...other} />
+const Feature = featureTerm("shadowborne", "trickster")
 
 const Blink = (props) => <Feature id="blink" {...props} />
 
