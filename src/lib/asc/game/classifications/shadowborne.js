@@ -22,7 +22,7 @@ import {
   RpgTypography,
 } from '../../../../components/asc/'
 
-import { spectre, deathAngel, trickster } from '../heroes'
+import * as heroes from '../heroes/dark'
 
 const Feature = ({ id, ...other }) => <FeatureTerm classification="shadowborne" feature={id} {...other} />
 
@@ -229,5 +229,5 @@ export default {
     featureMap.darkConsumption
   ],
 
-  heroes: [spectre, deathAngel, trickster]
+  heroes: Object.values(heroes).sort((a, b) => a.name - b.name)
 }
