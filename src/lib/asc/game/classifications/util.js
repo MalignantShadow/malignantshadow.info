@@ -8,16 +8,16 @@ export const repeatVal = (val, amount) => new Array(amount).fill(val)
 export const auraPointsFeature = (features) => ({
   title: "Aura Points",
   levels: [2],
-  desc: ({noParagraph}) => (
+  desc: ({ noParagraph }) => (
     <React.Fragment>
       <Typography paragraph>
         Beginning at Level 2, you have a number of Aura points equal to your Level. Aura points can be used to add extra
         effects to your Classification Features.
         {features &&
           <span> You start by knowing {features.length} such feature{features.length === 1 ? "" : "s"}{": "}
-          {features.map(({title}, i) => (
-            <React.Fragment key={i}><b>{title}</b>{i < features.length - 1 ? ", " : ""}{i === features.length - 2 ? "and ": ""}</React.Fragment>
-          ))}.</span>
+            {features.map(({ title }, i) => (
+              <React.Fragment key={i}><b>{title}</b>{i < features.length - 1 ? ", " : ""}{i === features.length - 2 ? "and " : ""}</React.Fragment>
+            ))}.</span>
         }
       </Typography>
       <Typography paragraph>
@@ -68,35 +68,33 @@ export const alterAppearanceSubFeature = () => ({
   )
 })
 
-export const scoreImprovementFeature = () => ({
-  title: "Aptitude Score Improvement",
-  levels: [4, 8, 12, 16, 19],
-  desc: ({noParagraph}) => (
-    <Typography paragraph={!noParagraph}>
-      When you reach Levels 4, 8, 12, 16, and 19, you may raise two Aptitude Scores by 1 or two Aptitude scores by 1. You may instead choose a feat.
-    </Typography>
-  )
-})
+export const makeFeature = (title, levels, desc, other) => {
+  const obj = { title, desc }
+  if (levels) obj.levels = levels
+  return { ...obj, ...other }
+}
 
-export const extraAttackFeature = () => ({
-  title: "Extra Attack",
-  levels: [5],
-  desc: ({noParagraph}) => (
-    <Typography paragraph={!noParagraph}>
-      When you reach Level 5, you may attack twice, instead of once, when you take the Attack action on your turn.
-    </Typography>
-  )
-})
+export const makeSimpleFeature = (title, levels, desc, other) => makeFeature(title, levels, ({ noParagraph }) => (
+  <Typography paragraph={!noParagraph}>{desc}</Typography>
+), other)
 
-export const heroStudiesFeature = () => ({
-  title: "Hero Studies",
-  titleAfterFirst: "Hero Studies Feature",
-  levels: [3, 6, 11, 17],
-  desc: ({noParagraph}) => (
-    <Typography paragraph={!noParagraph}>
-      At Level 3, you undergo studying a Hero from the past to learn their tactics. Your chosen Hero Study grants you
-      features at Level 3 and again at Level 6, 11, and 17. You may also choose to learn that Hero’s abilities. You can only
-      do so if you have chosen that Hero.
-    </Typography>
-  )
-})
+
+export const scoreImprovementFeature = makeSimpleFeature(
+  "Aptitude Score Improvement",
+  [4, 8, 12, 16, 19],
+  "When you reach Levels 4, 8, 12, 16, and 19, you may raise two Aptitude Scores by 1 or two Aptitude scores by 1. You may instead choose a feat.")
+
+export const extraAttackFeature = makeSimpleFeature(
+  "Extra Attack",
+  [5],
+  "When you reach Level 5, you may attack twice, instead of once, when you take the Attack action on your turn."
+)
+
+export const heroStudiesFeature = makeSimpleFeature(
+  "Hero Studies",
+  [3, 6, 11, 17],
+  `At Level 3, you undergo studying a Hero from the past to learn their tactics. Your chosen Hero Study grants you
+   features at Level 3 and again at Level 6, 11, and 17. You may also choose to learn that Hero’s abilities.You can only
+   do so if you have chosen that Hero.`,
+  { titleAfterFirst: "Hero Studies Feature" }
+)
