@@ -23,7 +23,7 @@ import * as classifications from '../../../lib/asc/game/classifications'
 const Features = ({ children, idPrefix, Section }) => (
   <React.Fragment>
     {children.map(({ title, desc: Desc, levels: [level], subFeatures }, i) => {
-      const id = idPrefix && `${idPrefix}${slug(title)}`
+      const id = idPrefix ? `${idPrefix}${slug(title)}` : slug(title)
       return (
         <React.Fragment key={i}>
           <Section id={id} variant="h2" title={title} caption={`Level ${level} Feature`}>

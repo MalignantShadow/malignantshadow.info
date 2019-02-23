@@ -25,6 +25,9 @@ const FeatureTerm = withStyles(theme => ({
   const Desc = (subF || parentF).desc
   const name = (subF || parentF).title
 
+  const parentSlug = slug(parentF.title)
+  const subSlug = subF ? "." + slug(subF.title) : ""
+
   return (
     <TermBase
       category="Feature"
@@ -35,7 +38,7 @@ const FeatureTerm = withStyles(theme => ({
         term: classes[`term-${classification}`],
         tooltip: classes.tooltip
       }}
-      href={`/ref/classifications/${classification}#${h ? `hero.${slug(h.name)}.${slug(parentF.title)}` : `${slug(name)}`}${subF ? `.${slug(subF.title)}` : ""}`}
+      href={`/ref/classifications/${classification}#${h ? `hero.${slug(h.name)}.${parentSlug}` : `${parentSlug}`}${subSlug}`}
       {...other}
     >
       <Stats>
