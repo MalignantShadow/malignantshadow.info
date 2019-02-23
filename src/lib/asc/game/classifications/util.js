@@ -4,6 +4,8 @@ import Typography from '@material-ui/core/Typography'
 
 export const repeatVal = (val, amount) => new Array(amount).fill(val)
 
+export const sortHeroes = heroes => Object.values(heroes).sort((a, b) => a.name - b.name)
+
 //TODO: ConditionTerm for exhaustion
 export const auraPointsFeature = (features) => ({
   title: "Aura Points",

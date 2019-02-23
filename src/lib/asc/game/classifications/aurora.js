@@ -12,7 +12,8 @@ import {
   extraAttackFeature,
   scoreImprovementFeature,
   makeFeature as f,
-  makeSimpleFeature as sf
+  makeSimpleFeature as sf,
+  sortHeroes
 } from './util'
 import {
   Calc,
@@ -22,7 +23,7 @@ import {
   GameTerm
 } from '../../../../components/asc/'
 
-// import { } from '../heroes'
+import * as heroes from '../heroes/light'
 
 // repeat from inspiration dice a number of times
 const rd = (faces, repeatAmount = 4) => r(() => <DiceTerm dice={d(1, faces)} />, repeatAmount)
@@ -234,5 +235,5 @@ export default {
     featureMap.luminousSelf
   ],
 
-  heroes: []
+  heroes: sortHeroes(heroes)
 }

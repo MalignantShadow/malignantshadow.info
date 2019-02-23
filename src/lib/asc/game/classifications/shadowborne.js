@@ -12,7 +12,8 @@ import {
   extraAttackFeature,
   scoreImprovementFeature,
   makeFeature as f,
-  makeSimpleFeature as sf
+  makeSimpleFeature as sf,
+  sortHeroes
 } from './util'
 import {
   Calc,
@@ -229,5 +230,5 @@ export default {
     featureMap.darkConsumption
   ],
 
-  heroes: Object.values(heroes).sort((a, b) => a.name - b.name)
+  heroes: sortHeroes(heroes)
 }
