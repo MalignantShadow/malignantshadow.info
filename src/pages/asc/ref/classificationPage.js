@@ -109,11 +109,11 @@ export default withStyles(theme => ({
 
   let sortedTraits = [
     ["Armor Class", <Calc>8 + your Dexterity modifier + your {auraMod} modifier</Calc>],
+    ["Ability Save DC", <Calc>8 + your proficiency modifier + your {auraMod} modifier</Calc>],
     ["Aptitude Score Increases", traits.scoreIncreases.map(([apt, increase], i) => (
       `${apt} ${increase > 0 ? "+" : "-"} ${Math.abs(increase)}`
     )).join(", ")],
     ["Aura Modifier", auraMod],
-    ["Aura Save DC", <Calc>8 + your proficiency modifier + your {auraMod} modifier</Calc>],
     ["Speed", ` ${speed} feet`],
     [traits.resistance[0] || `${name} Resillience`, <React.Fragment>
       You are <GameTerm term="resistance" variant="adj" args={[traits.resistance[1]]} />
