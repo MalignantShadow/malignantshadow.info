@@ -5,12 +5,11 @@ import Divider from '@material-ui/core/Divider'
 
 import {
   AscPage,
-  GameTerm,
-  TableOfContents
- } from '../../../components/asc'
- import { skillsByAptitude } from '../../../lib/asc/game'
- import { slug } from '../../../lib/routing'
- import { styledTocItem, styledSection } from '../../../components/asc/util'
+  GameTerm
+} from '../../../components/asc'
+import { skillsByAptitude } from '../../../lib/asc/game'
+import { slug } from '../../../lib/routing'
+import { styledTocItem, styledSection } from '../../../components/asc/util'
 
 const colorSelector = theme => theme.asc.skills
 const Section = styledSection(colorSelector)
@@ -26,7 +25,7 @@ const getSections = (key) => skillsByAptitude[key].map(({name, caption, desc: De
   </Section>
 ))
 
-const toc = <TableOfContents>
+const toc = <React.Fragment>
   <SkillTocItem title href="#topContent">Reference: Skills</SkillTocItem>
   <Divider/>
   <SkillTocItem href="#cha">Charisma</SkillTocItem>
@@ -39,7 +38,7 @@ const toc = <TableOfContents>
   {getTocItems("Strength")}
   <SkillTocItem href="#wis">Wisdom</SkillTocItem>
   {getTocItems("Wisdom")}
-</TableOfContents>
+</React.Fragment>
 
 export default () => (
   <AscPage toc={toc}>
