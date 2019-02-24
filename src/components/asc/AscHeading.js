@@ -4,11 +4,12 @@ import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
 import LinkIcon from '@material-ui/icons/Link'
 
 import { slug } from "../../lib/routing"
 import { appbarRelativeStyles } from '../../components/common/util'
+
+import AscLink from './AscLink'
 
 const mapping = {
   title: "h3",
@@ -66,8 +67,8 @@ class AscHeading extends React.Component {
     showHash: false
   }
 
-  handleEnter = () => this.setState({showHash: true})
-  handleLeave = () => this.setState({showHash: false})
+  handleEnter = () => this.setState({ showHash: true })
+  handleLeave = () => this.setState({ showHash: false })
 
   render() {
     const { classes, className, id, children, variant, subtitle, caption, ...other } = this.props
@@ -76,7 +77,7 @@ class AscHeading extends React.Component {
     return (
       <React.Fragment>
         {/* eslint-disable-next-line */}
-        <a className={classes.anchor} id={resolvedId}/>
+        <a className={classes.anchor} id={resolvedId} />
         <div className={classNames(classes.root, {
           [classes.title]: variant === "title",
           [classes.h1]: variant === "h1",
@@ -87,10 +88,10 @@ class AscHeading extends React.Component {
             <Typography variant={mapping.subtitle} className={classes.subtitle}>{subtitle}</Typography>
           }
           {showHash && variant !== "title" &&
-            <Link href={`#${resolvedId}`}><LinkIcon className={classes.hash}/></Link>
+            <AscLink href={`#${resolvedId}`}><LinkIcon className={classes.hash} /></AscLink>
           }
         </div>
-        { caption &&
+        {caption &&
           <Typography className={classes.caption} gutterBottom>{caption}</Typography>
         }
       </React.Fragment>
