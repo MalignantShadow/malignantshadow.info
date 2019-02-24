@@ -45,9 +45,8 @@ export default withStyles(theme => ({
     margin: theme.spacing.unit * 2
   },
   tocPaper: {
-    boxShadow: "none",
-    background: "none",
-    padding: 4
+    border: "none",
+    background: "none"
   },
   icon: {
     fontSize: "2.25rem",
