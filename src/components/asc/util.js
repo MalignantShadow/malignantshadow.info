@@ -7,7 +7,7 @@ import AscSection from './AscSection'
 
 export const styledSection = (colorSelector) => withStyles(theme => ({
   heading: { borderColor: colorSelector(theme).main }
-}))(({classes, children, ...other}) => (
+}))(({ classes, children, ...other }) => (
   <AscSection className={classes.heading} {...other}>{children}</AscSection>
 ))
 
@@ -27,6 +27,6 @@ export const styledTocItem = (colorSelector) => withStyles(theme => {
       }
     }
   }
-})(({classes, ...other}) => (
-  <TocItem className={classes.root} textClassName={classes.text} {...other}/>
+})(({ classes, ...other }) => (
+  <TocItem className={classes.root} textClassName={classes.text} {...other} />
 ))
