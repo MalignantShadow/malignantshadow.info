@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 //import * as serviceWorker from './serviceWorker';
 
@@ -11,8 +11,6 @@ import * as colors from '@material-ui/core/colors'
 import Typography from '@material-ui/core/Typography'
 import Hidden from '@material-ui/core/Hidden'
 import Button from '@material-ui/core/Button'
-// import Tooltip from '@material-ui/core/Tooltip'
-// import InvertColorsIcon from '@material-ui/icons/InvertColors'
 
 import AppWrapper from './components/common/app/AppWrapper'
 import AppBar from './components/common/app/AppBar'
