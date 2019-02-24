@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
@@ -7,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-import { AscPage, IndexCard, IndexCardContent } from '../../components/asc'
+import { AscLink, AscPage, IndexCard, IndexCardContent } from '../../components/asc'
 import { skillsByAptitude } from "../../lib/asc/game"
 import * as classifications from '../../lib/asc/game/classifications'
 
@@ -72,7 +71,11 @@ export default withStyles(theme => ({
   skill: {
     textTransform: "uppercase",
     flexBasis: 0,
-    flexGrow: 1
+    flexGrow: 1,
+
+    "&:hover": {
+      textDecoration: "none"
+    }
   }
 }))(({ classes }) => (
   <AscPage>
@@ -108,7 +111,7 @@ export default withStyles(theme => ({
             {Object.entries(skillsByAptitude)
               .sort((a, b) => a[0].localeCompare(b[0]))
               .map(([aptitude], i) => (
-                <Button key={i} className={classes.skill} component={Link} to={`/ref/skills#${aptitude.toLowerCase().substring(0, 3)}`}>
+                <Button key={i} className={classes.skill} component={AscLink} href={`/ref/skills#${aptitude.toLowerCase().substring(0, 3)}`}>
                   {aptitude}
                 </Button>
               )
