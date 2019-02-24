@@ -44,6 +44,11 @@ export default withStyles(theme => ({
   tablePaper: {
     margin: theme.spacing.unit * 2
   },
+  tocPaper: {
+    boxShadow: "none",
+    background: "none",
+    padding: 4
+  },
   icon: {
     fontSize: "2.25rem",
     marginRight: theme.spacing.unit
@@ -153,7 +158,7 @@ export default withStyles(theme => ({
 
 
   return (
-    <AscPage toc={toc} BreadcrumbProps={{ extra: [{ title: c.name }] }}>
+    <AscPage toc={toc} BreadcrumbProps={{ extra: [{ title: c.name }] }} classes={{ toc: classes.tocPaper }}>
       <Section
         id="topContent"
         variant="title"

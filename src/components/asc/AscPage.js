@@ -9,6 +9,7 @@ import { SiteBreadcrumbs } from '../common/app'
 import Asc from './icons/Asc'
 import routing from '../../lib/asc/routeInfo'
 import { scrollTo } from '../../lib/common/scrolling'
+import TableOfContents from './TableOfContents'
 
 const tocWidth = 320
 
@@ -50,8 +51,7 @@ export default withStyles(theme => ({
       maxHeight: `calc(100vh - ${theme.spacing.unit * 4}px - ${height}px)`
     })),
     overflowY: "auto",
-    position: "fixed",
-    padding: 4
+    position: "fixed"
   },
 }))(withRouter(({ classes, children, location, location: { state: routeState }, rightContent, toc, BreadcrumbProps }) => {
   React.useEffect(() => {
@@ -65,7 +65,7 @@ export default withStyles(theme => ({
     <div className={classes.root}>
       {toc &&
         <Hidden smDown>
-          <div className={classes.toc}>{toc}</div>
+          <TableOfContents className={classes.toc}>{toc}</TableOfContents>
         </Hidden>
       }
       <div className={classes.contentWrapper}>
