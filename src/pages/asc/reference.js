@@ -16,7 +16,7 @@ const changeHeaderColors = (theme, color) => ({
   color: theme.palette.getContrastText(theme.asc[color].main)
 })
 
-const sortedClassNames = Object.entries(classifications).sort((a, b) => a.name - b.name)
+const sortedClasses = Object.values(classifications).sort((a, b) => a.name - b.name)
 
 export default withStyles(theme => ({
   card: {
@@ -74,21 +74,21 @@ export default withStyles(theme => ({
     flexBasis: 0,
     flexGrow: 1
   }
-}))(({classes}) => (
+}))(({ classes }) => (
   <AscPage>
-    <IndexCard title="Classifications" classes={{title: classes.classWrapper}}>
+    <IndexCard title="Classifications" classes={{ title: classes.classWrapper }}>
       <IndexCardContent>
         <Grid container spacing={8}>
-          {sortedClassNames.map((e, i) => (
+          {sortedClasses.map((e, i) => (
             <Grid key={i} className={classes.classImgWrapper} item md={2} sm={4} xs={6}>
-              <img alt="" src="//placehold.it/64x64" className={classes.classImg}/>
-              <Typography>{classifications[e].name}</Typography>
+              <img alt="" src="//placehold.it/64x64" className={classes.classImg} />
+              <Typography>{e.name}</Typography>
             </Grid>
           ))}
         </Grid>
       </IndexCardContent>
     </IndexCard>
-    <IndexCard className={classes.card} title="Potential" classes={{title: classes.potentialWrapper}}>
+    <IndexCard className={classes.card} title="Potential" classes={{ title: classes.potentialWrapper }}>
       <IndexCardContent>
         <div className={classes.potentialSub}>
           <Typography className={classes.potentialSubHeader} variant="h4">Abilities</Typography>
@@ -112,7 +112,7 @@ export default withStyles(theme => ({
                   {aptitude}
                 </Button>
               )
-            )}
+              )}
           </div>
         </div>
       </IndexCardContent>
