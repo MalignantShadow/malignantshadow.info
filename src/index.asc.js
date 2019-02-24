@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames'
-import smoothscroll from 'smoothscroll-polyfill'
 //import * as serviceWorker from './serviceWorker';
 
 import { withRouter, Link, Switch } from 'react-router-dom'
@@ -23,8 +22,6 @@ import Asc from './components/asc/icons/Asc'
 import routes from "./lib/asc/routeInfo"
 import pages from "./lib/asc/pageInfo"
 import { useRoutes } from "./lib/routing"
-
-smoothscroll.polyfill()
 
 const makeColor = (color, values = [300, 500, 700], other) => ({
   light: color[values[0]],
