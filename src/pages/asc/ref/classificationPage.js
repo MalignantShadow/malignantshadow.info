@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
-import Paper from '@material-ui/core/Paper'
 
 import {
   AscPage,
@@ -42,7 +41,9 @@ const Features = ({ children, idPrefix, Section }) => (
 
 export default withStyles(theme => ({
   tablePaper: {
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing.unit * 2,
+    borderRadius: 0,
+    boxShadow: "none"
   },
   tocPaper: {
     border: "none",
@@ -142,7 +143,7 @@ export default withStyles(theme => ({
       headCell: {
         ...modifyCell
       },
-      row: {
+      featureRow: {
         "&:nth-child(4n+5) td:first-child": {
           ...modifyCell
         }
@@ -151,7 +152,7 @@ export default withStyles(theme => ({
   })(({ classes, features, ...other }) => (
     <AscTable classes={{
       headCell: classes.headCell,
-      row: classNames({ [classes.row]: features })
+      row: classNames({ [classes.featureRow]: features })
     }} {...other} />
   ))
 
@@ -170,24 +171,19 @@ export default withStyles(theme => ({
       >
         <Desc />
       </Section>
-      <Section variant="h1" title="Traits">
-        <Paper className={classes.tablePaper}>
-          <Table
-            head={["Name", "Effect"]}
-            body={[
-              ...sortedTraits.map((e) => e)
-            ]}
-          />
-        </Paper>
-      </Section>
+      <Section variant="h1" title="Traits" />
+      <Table
+        head={["Name", "Effect"]}
+        body={[
+          ...sortedTraits.map((e) => e)
+        ]}
+      />
       <Section variant="h2" title="Hit Dice" />
-      <Paper className={classes.tablePaper}>
-        <Table head={[{ text: "Hit Dice", style: { width: 150 } }, "HP at Level 1", "HP After Level 1"]} body={[[
-          <DiceTerm dice={intrinsics.hitDice} />,
-          <Calc>{intrinsics.hitDice.max} + your Constitution modifier</Calc>,
-          <Calc><DiceTerm dice={intrinsics.hitDice} /> (or {intrinsics.hitDice.avg + 1}) + your Constitution modifier per Level after 1</Calc>
-        ]]} />
-      </Paper>
+      <Table head={[{ text: "Hit Dice", style: { width: 150 } }, "HP at Level 1", "HP After Level 1"]} body={[[
+        <DiceTerm dice={intrinsics.hitDice} />,
+        <Calc>{intrinsics.hitDice.max} + your Constitution modifier</Calc>,
+        <Calc><DiceTerm dice={intrinsics.hitDice} /> (or {intrinsics.hitDice.avg + 1}) + your Constitution modifier per Level after 1</Calc>
+      ]]} />
       <Section variant="h2" title="Proficiencies">
         <Typography>
           <b>Weapons</b>: {intrinsics.prof.weapons.join(", ")}
@@ -202,32 +198,30 @@ export default withStyles(theme => ({
         </Typography>
       </Section>
       <Section variant="h1" title="Features" />
-      <Paper className={classes.tablePaper}>
-        <Table
-          features
-          head={[{
-            text: "Level",
-            align: "center"
-          },
-          ...(!featureTableExtras ? [] : featureTableExtras.map(({ title }, i) => ({
-            text: title,
-            align: "center"
-          }))),
-          {
-            text: "Feature",
-            align: "center"
-          }]}
-          body={upTo20.map((e, i) => [
-            { text: i + 1, align: "center" },
-            ...(!featureTableExtras ? [] : featureTableExtras.map(({ values }) => {
-              const Val = values[i]
-              const render = typeof Val === "function" ? <Val /> : Val
-              return { text: render, align: "center" }
-            })),
-            featureNames[i] ? featureNames[i].join(", ") : "---"
-          ])}
-        />
-      </Paper>
+      <Table
+        features
+        head={[{
+          text: "Level",
+          align: "center"
+        },
+        ...(!featureTableExtras ? [] : featureTableExtras.map(({ title }, i) => ({
+          text: title,
+          align: "center"
+        }))),
+        {
+          text: "Feature",
+          align: "center"
+        }]}
+        body={upTo20.map((e, i) => [
+          { text: i + 1, align: "center" },
+          ...(!featureTableExtras ? [] : featureTableExtras.map(({ values }) => {
+            const Val = values[i]
+            const render = typeof Val === "function" ? <Val /> : Val
+            return { text: render, align: "center" }
+          })),
+          featureNames[i] ? featureNames[i].join(", ") : "---"
+        ])}
+      />
       <Features Section={Section}>{features}</Features>
       <div className={classes.heroStudiesTitleMargin} />
       <Section id="heroes" variant="title" title={`${name} Hero Studies`}>
@@ -254,14 +248,12 @@ export default withStyles(theme => ({
               </Section>
             }
             <Section id={`${heroSlug}.features`} variant="h2" title="Features" />
-            <Paper className={classes.tablePaper}>
-              <Table
-                head={["Level", "Feature"]}
-                body={[
-                  ...features.map(({ levels: [level], title }, i) => [level, title])
-                ]}
-              />
-            </Paper>
+            <Table
+              head={["Level", "Feature"]}
+              body={[
+                ...features.map(({ levels: [level], title }, i) => [level, title])
+              ]}
+            />
             <Features Section={Section} idPrefix={`${heroSlug}.`}>{features}</Features>
           </React.Fragment>
         )
