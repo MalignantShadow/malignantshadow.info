@@ -8,7 +8,7 @@ import { appbarRelativeStyles } from '../../components/common/util'
 import { SiteBreadcrumbs } from '../common/app'
 import Asc from './icons/Asc'
 import routing from '../../lib/asc/routeInfo'
-import { scrollTo } from '../../lib/common/scrolling'
+import { scrollToId } from '../../lib/common/scrolling'
 import TableOfContents from './TableOfContents'
 
 const tocWidth = 320
@@ -57,8 +57,7 @@ export default withStyles(theme => ({
   React.useEffect(() => {
     // if we refresh the page, routeState will be undefined
     if (!routeState) return
-    const el = document.getElementById(location.hash.substring(1))
-    scrollTo(el ? window.scrollY + el.getBoundingClientRect().top : 0, 250)
+    scrollToId(location.hash.substring(1))
   }, [])
 
   return (

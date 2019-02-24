@@ -70,7 +70,7 @@ const scroll = () => {
   _raf = requestAnimationFrame(scroll)
 }
 
-export const scrollTo = (y, timeout, interpolation = interpolate) => {
+export const scrollTo = (y, timeout = 250, interpolation = interpolate) => {
   cancel()
   docHeight = doc.getBoundingClientRect().height
   _startTime = Date.now().valueOf()
@@ -82,4 +82,9 @@ export const scrollTo = (y, timeout, interpolation = interpolate) => {
   _firstFrame = true
   _interpolationFn = interpolate
   _raf = requestAnimationFrame(scroll)
+}
+
+export const scrollToId = (id) => {
+  const el = document.getElementById(id)
+  scrollTo(el ? window.scrollY + el.getBoundingClientRect().top : 0)
 }

@@ -23,7 +23,7 @@ export default withRouter(({ href, children, history, location, match, params, s
 
     window.history.pushState({}, "", `${location.pathname}${href}`)
 
-    scrollTo(window.scrollY + el.getBoundingClientRect().top, 250)
+    scrollTo(window.scrollY + el.getBoundingClientRect().top)
   }
 
   return useHandler ?
