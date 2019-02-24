@@ -224,7 +224,7 @@ export default {
     featureMap.dawnbringer, featureMap.inspiring, featureMap.slashStab,
     featureMap.auraPoints,
     featureMap.heroStudies,
-    featureMap.dash,
+    featureMap.scoreImprovement, featureMap.dash,
     featureMap.extraAttack,
     featureMap.doubleTeam,
     featureMap.lunge,
