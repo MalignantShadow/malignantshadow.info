@@ -19,15 +19,15 @@ const getTocItems = (key) => skillsByAptitude[key].map((e, i) => (
   <SkillTocItem key={key + i} href={`#${slug(e.name)}`} depth={1}>{e.name}</SkillTocItem>
 ))
 
-const getSections = (key) => skillsByAptitude[key].map(({name, caption, desc: Desc}, i) => (
+const getSections = (key) => skillsByAptitude[key].map(({ name, caption, desc: Desc }, i) => (
   <Section key={name + i} variant="h2" title={name} caption={caption}>
-    <Desc/>
+    <Desc />
   </Section>
 ))
 
 const toc = <React.Fragment>
   <SkillTocItem title href="#topContent">Reference: Skills</SkillTocItem>
-  <Divider/>
+  <Divider />
   <SkillTocItem href="#cha">Charisma</SkillTocItem>
   {getTocItems("Charisma")}
   <SkillTocItem href="#dex">Dexterity</SkillTocItem>
@@ -46,44 +46,44 @@ export default () => (
       <Typography paragraph>
         A skill is a pre-defined type of action in the game, associated with one of the six aptitudes (with the exception
         of Constitution). This section details the appropriate time to use each of these skills. Note that
-        the <GameTerm term="gm"/> may decide, based on the situation, to you roll a general aptitude check instead of a skill check.
+        the <GameTerm term="gm" /> may decide, based on the situation, to you roll a general aptitude check instead of a skill check.
       </Typography>
       <Typography paragraph>
         This page does explain how to roll skill checks. It is only a reference page for the appropriate times a certain skill may be used.
       </Typography>
       <Typography paragraph>
-        This page is more of a guide for <GameTerm term="gm" disable plural/>, as they are the ones theat typically decide which check to call for based on the
+        This page is more of a guide for <GameTerm term="gm" disable plural />, as they are the ones theat typically decide which check to call for based on the
         situation.
       </Typography>
     </Section>
     <Section id="cha" variant="h1" title="Charisma" caption="Measures one's strength of character.">
       <Typography paragraph>
-        The <GameTerm term="gm"/> may call for a Charisma skill check when you want to talk or act/perform their way out of (or into)
+        The <GameTerm term="gm" /> may call for a Charisma skill check when you want to talk or act/perform their way out of (or into)
         a situation.
       </Typography>
     </Section>
     {getSections("Charisma")}
     <Section id="dex" variant="h1" caption="Measures one's flexibility and agility." title="Dexterity">
       <Typography paragraph>
-        The <GameTerm term="gm"/> may call for a Dexterity check when your character need to complete a task with balance, precision, or silence.
+        The <GameTerm term="gm" /> may call for a Dexterity check when your character need to complete a task with balance, precision, or silence.
       </Typography>
     </Section>
     {getSections("Dexterity")}
     <Section id="int" variant="h1" title="Intelligence" caption="Measures one's mental acuity and memory.">
       <Typography paragraph>
-          The <GameTerm term="gm"/> may call for an Intelligence check when to recall information or identify an object or place.
+        The <GameTerm term="gm" /> may call for an Intelligence check when to recall information or identify an object or place.
       </Typography>
     </Section>
     {getSections("Intelligence")}
     <Section id="str" variant="h1" title="Strength" caption="Measures one's ability to exert force.">
       <Typography paragraph>
-        The <GameTerm term="gm"/> may call for a Strength when you want to use your raw physical power to accomplish a task.
+        The <GameTerm term="gm" /> may call for a Strength when you want to use your raw physical power to accomplish a task.
       </Typography>
     </Section>
     {getSections("Strength")}
     <Section id="wis" variant="h1" title="Wisdom" caption="Measures one's worldly experience">
       <Typography paragraph>
-        The <GameTerm term="gm"/> may call for a Wisdom check when you want to use your social or environmental perceptiveness to solve a problem.
+        The <GameTerm term="gm" /> may call for a Wisdom check when you want to use your social or environmental perceptiveness to solve a problem.
       </Typography>
     </Section>
     {getSections("Wisdom")}
