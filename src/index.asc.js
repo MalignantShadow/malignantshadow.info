@@ -64,31 +64,6 @@ const theme = createMuiTheme({
   }
 })
 
-const styles = theme => ({
-  toolbar: {
-    marginLeft: 0,
-    [theme.breakpoints.up("lg")]: {
-      width: theme.breakpoints.values.lg,
-      margin: "auto"
-    }
-  },
-  barIcon: {
-    color: theme.palette.getContrastText(theme.palette.primary.main)
-  },
-  title: {
-    marginLeft: theme.spacing.unit * 1.5,
-    paddingRight: theme.spacing.unit * 3,
-    borderRight: "1px solid",
-
-    [theme.breakpoints.down("md")]: {
-      borderRight: "none"
-    }
-  },
-  contentRoot: {
-    [theme.breakpoints.up("lg")]: { marginLeft: 0 }
-  }
-})
-
 const ToolbarButton = withStyles(theme => {
   const color = theme.palette.getContrastText(theme.palette.primary.main)
   return {
@@ -117,52 +92,66 @@ const ToolbarButton = withStyles(theme => {
   )
 }))
 
-class AscRef extends React.Component {
+const AscRef = withStyles(theme => ({
+  toolbar: {
+    marginLeft: 0,
+    [theme.breakpoints.up("lg")]: {
+      width: theme.breakpoints.values.lg,
+      margin: "auto"
+    }
+  },
+  barIcon: {
+    color: theme.palette.getContrastText(theme.palette.primary.main)
+  },
+  title: {
+    marginLeft: theme.spacing.unit * 1.5,
+    paddingRight: theme.spacing.unit * 3,
+    borderRight: "1px solid",
 
-  state = {
-    mobileOpen: false,
+    [theme.breakpoints.down("md")]: {
+      borderRight: "none"
+    }
+  },
+  contentRoot: {
+    [theme.breakpoints.up("lg")]: { marginLeft: 0 }
   }
+}))(({ classes }) => {
+  const [mobileOpen, setMobileOpen] = React.useState()
 
-  setDrawerState = (open) => () => this.setState({ mobileOpen: open })
+  const setDrawerState = (state) => () => setMobileOpen(state)
 
-  render() {
-    const { mobileOpen } = this.state
-    const { classes } = this.props
-    return (
-      <AppWrapper theme={theme}>
-        <AppBar
-          toolbarClassName={classes.toolbar}
-          onDrawerOpen={this.setDrawerState(true)}
-        >
-          <Asc />
-          <Typography className={classes.title} variant="h5" color="inherit">Tabletop</Typography>
-          <Hidden mdDown>
-            {routes.map((e, i) => (
-              !e.children ? null : (<ToolbarButton key={i} {...e} />)
-            ))}
-          </Hidden>
-        </AppBar>
-        <AppDrawer
-          hideDesktop
-          pageInfo={pages}
-          mobileOpen={mobileOpen}
-          onClose={this.setDrawerState(false)}
-          title="Ascension: Tabletop"
-          subtitle="Edition 0"
-        >
-          {routes}
-        </AppDrawer>
-        <AppContent classes={{ root: classes.contentRoot }}>
-          <Switch>
-            {useRoutes(routes, pages)}
-          </Switch>
-        </AppContent>
-      </AppWrapper>
-    )
-  }
-}
-
-AscRef = withStyles(styles)(AscRef)
+  return (
+    <AppWrapper theme={theme}>
+      <AppBar
+        toolbarClassName={classes.toolbar}
+        onDrawerOpen={setDrawerState(true)}
+      >
+        <Asc />
+        <Typography className={classes.title} variant="h5" color="inherit">Tabletop</Typography>
+        <Hidden mdDown>
+          {routes.map((e, i) => (
+            !e.children ? null : (<ToolbarButton key={i} {...e} />)
+          ))}
+        </Hidden>
+      </AppBar>
+      <AppDrawer
+        hideDesktop
+        pageInfo={pages}
+        mobileOpen={mobileOpen}
+        onClose={setDrawerState(false)}
+        title="Ascension: Tabletop"
+        subtitle="Edition 0"
+      >
+        {routes}
+      </AppDrawer>
+      <AppContent classes={{ root: classes.contentRoot }}>
+        <Switch>
+          {useRoutes(routes, pages)}
+        </Switch>
+      </AppContent>
+    </AppWrapper>
+  )
+})
 
 ReactDOM.render(<AscRef />, document.getElementById('root'));
 //serviceWorker.unregister();
