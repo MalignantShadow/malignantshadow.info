@@ -53,7 +53,7 @@ const featureMap = {
       )
     }
   ]),
-  blindingStrike: sf("Blinding Strike", [9], `
+  blindingStrike: sf("Blinding Strike", [10], `
       When you reach Level 10, you learn how to channel Light into the blade of your melee attacks. As part of a melee attack during
       your Attack action that would hit, you may spend 1 Aura point to attempt to blind the target. If the target can see you,
       they must make a Constitution saving throw against your Aura Save DC, or be blinded until the start of your next turn.
@@ -133,7 +133,7 @@ const featureMap = {
     </Typography>
     </React.Fragment>
   )),
-  invisibility: f("Invisibilty", [9], ({ noParagraph }) => (
+  invisibility: f("Invisibilty", [13], ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       Upon reaching Level 13, you can use your action to make yourself and/or your equipment (as long as you are attuned to it)
       invisible. Invisibility requires concentration and ends when you make an attack or use an ability that is Tier 1 or above.
