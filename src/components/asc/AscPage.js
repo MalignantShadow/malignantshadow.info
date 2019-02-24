@@ -53,6 +53,11 @@ export default withStyles(theme => ({
     overflowY: "auto",
     position: "fixed"
   },
+  breadcrumbs: {
+    boxShadow: "none",
+    border: `1px solid ${theme.palette.divider}`,
+    borderRadius: 0
+  }
 }))(withRouter(({ classes, children, location, location: { state: routeState }, rightContent, toc, BreadcrumbProps }) => {
   React.useEffect(() => {
     // if we refresh the page, routeState will be undefined
@@ -69,7 +74,7 @@ export default withStyles(theme => ({
       }
       <div className={classes.contentWrapper}>
         <div className={classes.wrapper}>
-          <SiteBreadcrumbs icon={Asc} {...BreadcrumbProps}>{routing}</SiteBreadcrumbs>
+          <SiteBreadcrumbs icon={Asc} className={classes.breadcrumbs} {...BreadcrumbProps}>{routing}</SiteBreadcrumbs>
           <div className={classes.stretch} />
           <div className={classes.rightContent}>{rightContent}</div>
         </div>
