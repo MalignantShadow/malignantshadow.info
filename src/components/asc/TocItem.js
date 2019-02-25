@@ -30,9 +30,8 @@ export default withStyles(theme => ({
   <ListItem
     button
     className={classNames(classes.root, classes[`depth${depth}`], className)}
-    component={href ? AscLink : Link}
+    component={AscLink}
     href={href}
-    to={to}
   >
     <ListItemText primaryTypographyProps={{
       variant: "body2", component: "span", className: classNames({

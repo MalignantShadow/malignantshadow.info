@@ -18,6 +18,11 @@ export default withRouter(({ href, children, history, location, match, params, s
   function handleClick(e) {
     e.preventDefault()
     e.stopPropagation()
+    if (!path && !hash) {
+      scrollTo(0)
+      return
+    }
+
     const el = document.getElementById(hash)
     if (!el) return
 
@@ -28,6 +33,6 @@ export default withRouter(({ href, children, history, location, match, params, s
 
   return useHandler ?
     <MuiLink href={href} onClick={handleClick} {...other}>{children}</MuiLink> :
-    <MuiLink component={Link} to={{ pathname: path, hash: hash || "", query: query || "", state: { prevLocation: location } }} {...other}>{children}</MuiLink>
+    <MuiLink component={Link} to={{ pathname: path || location.pathname, hash: hash || "", query: query || "", state: { prevLocation: location } }} {...other}>{children}</MuiLink>
 
 })
