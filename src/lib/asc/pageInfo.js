@@ -4,6 +4,7 @@ import Reference from '../../pages/asc/reference'
 import {
   SkillsPage,
   ClassificationPage,
+  ConditionsPage
 } from '../../pages/asc/ref'
 
 const empty = () => null
@@ -28,6 +29,7 @@ export default {
           byId: ClassificationPage
         }
       },
+      conditions: ConditionsPage,
       skills: SkillsPage,
       feats: empty
     }
