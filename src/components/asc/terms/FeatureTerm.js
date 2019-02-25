@@ -11,7 +11,7 @@ import { slug } from '../../../lib/routing'
 
 const FeatureTerm = withStyles(theme => ({
   tooltip: { width: 775 }, // same as D&DBeyond
-  ...styleCategory(theme.asc.term.feature),
+  ...styleCategory(theme.asc.features),
   ...Object.entries(theme.asc.class).map(([k, v]) => styleTerm(v.main, {}, `term-${k}`))
 }))(({ classes, classification, hero, feature, sub, ...other }) => {
   const c = classifications[classification]

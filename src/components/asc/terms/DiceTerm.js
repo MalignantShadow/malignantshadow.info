@@ -7,8 +7,8 @@ import TermBase from './TermBase'
 import { styleTerm, styleCategory } from './util'
 
 export default withStyles(theme => ({
-  ...styleTerm(theme.asc.term.dice),
-  ...styleCategory(theme.asc.term.dice),
+  ...styleTerm(theme.asc.dice),
+  ...styleCategory(theme.asc.dice),
   tooltip: {
     width: 350
   },
@@ -20,10 +20,10 @@ export default withStyles(theme => ({
     "&:not(:first-child)": {
       marginLeft: theme.spacing.unit,
       paddingLeft: theme.spacing.unit,
-      borderLeft: `2px solid ${theme.asc.term.dice.main}`
+      borderLeft: `2px solid ${theme.asc.dice.main}`
     }
   },
-}))(({classes, dice, ...other}) => (
+}))(({ classes, dice, ...other }) => (
   <TermBase
     name={dice.toString()}
     category="Dice Expression"

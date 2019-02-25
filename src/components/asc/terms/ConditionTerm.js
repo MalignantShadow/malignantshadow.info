@@ -7,7 +7,7 @@ import * as conditions from '../../../lib/asc/game/conditions'
 import { styleTerm, styleCategory } from './util'
 
 export default withStyles(theme => {
-  const color = theme.asc.term.condition
+  const color = theme.asc.conditions
   return {
     ...styleTerm(color),
     ...styleCategory(color, { color: "#FFF" }),
@@ -18,7 +18,7 @@ export default withStyles(theme => {
       }
     }
   }
-})(({classes, term, ...other}) => {
+})(({ classes, term, ...other }) => {
   const condition = conditions[term]
   const Desc = condition.desc
   return (
@@ -33,7 +33,7 @@ export default withStyles(theme => {
       {...other}
     >
       <div className={classes.root}>
-        <Desc disableTerms/>
+        <Desc disableTerms />
       </div>
     </TermBase>
   )

@@ -46,15 +46,11 @@ const theme = createMuiTheme({
     abilities: makeColor(colors.purple),
     skills: makeColor(colors.orange),
     classifications: makeColor(colors.teal),
-    rules: makeColor(colors.red),
-    term: {
-      ability: makeColor(colors.purple),
-      feature: makeColor(colors.deepPurple),
-      condition: makeColor(colors.green),
-      place: makeColor(colors.blue),
-      monster: makeColor(colors.red),
-      dice: makeColor(colors.indigo)
-    },
+    features: makeColor(colors.deepPurple),
+    conditions: makeColor(colors.green),
+    places: makeColor(colors.blue),
+    monsters: makeColor(colors.red),
+    dice: makeColor(colors.indigo),
     class: {
       shadowborne: primary,
       aurora: makeColor(colors.grey, undefined, { table: "light" })

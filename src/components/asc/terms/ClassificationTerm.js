@@ -34,7 +34,7 @@ export default withStyles(theme => Object.assign({
     borderBottom: `3px solid ${theme.asc.classifications.main}`
   },
   dice: {
-    color: theme.asc.term.dice.main,
+    color: theme.asc.dice.main,
     fontWeight: 500
   }
 }, ...Object.entries(theme.asc.class).map(([k, v]) => ({
