@@ -91,6 +91,10 @@ const ToolbarButton = withStyles(theme => {
 }))
 
 const AscRef = withStyles(theme => ({
+  bar: {
+    boxShadow: "none",
+    borderBottom: `1px solid #141414`
+  },
   toolbar: {
     marginLeft: 0,
     [theme.breakpoints.up("lg")]: {
@@ -121,6 +125,7 @@ const AscRef = withStyles(theme => ({
   return (
     <AppWrapper theme={theme}>
       <AppBar
+        className={classes.bar}
         toolbarClassName={classes.toolbar}
         onDrawerOpen={setDrawerState(true)}
       >
