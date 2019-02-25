@@ -68,6 +68,11 @@ const ToolbarButton = withStyles(theme => {
     button: {
       marginLeft: theme.spacing.unit * 3,
       color: fade(color, 0.7),
+
+      "&:hover": {
+        color: color,
+        backgroundColor: "transparent"
+      }
     },
     active: {
       color: color
