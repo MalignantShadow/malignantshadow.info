@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import SkillTerm from './SkillTerm'
 import TermBase from './TermBase'
 import * as classifications from '../../../lib/asc/game/classifications'
-import { stats, styleCategory } from './util'
+import { stats, styleTerm, styleCategory } from './util'
 
 const colorSelector = theme => theme.asc.classifications
 const ClassStats = stats(colorSelector)
@@ -37,12 +37,9 @@ export default withStyles(theme => Object.assign({
     color: theme.asc.dice.main,
     fontWeight: 500
   }
-}, ...Object.entries(theme.asc.class).map(([k, v]) => ({
-  [`term_${k}`]: {
-    color: v.main,
-    borderColor: v.main
-  }
-}))))(({ classes, term, plural, ...other }) => {
+}, ...Object.entries(theme.asc.class).map(([k, v]) => styleTerm(v, {}, `term-${k}`))
+))(({ classes, term, plural, ...other }) => {
+  console.log(classes)
   const {
     name,
     aspect,
@@ -63,7 +60,7 @@ export default withStyles(theme => Object.assign({
       href={`/ref/classifications/${term}`}
       classes={{
         category: classes.category,
-        term: classes[`term_${term}`]
+        term: classes[`term-${term}`]
       }}
       {...other}
     >
