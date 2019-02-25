@@ -9,11 +9,11 @@ import * as heroes from '../../../lib/asc/game/heroes'
 import { stats, styleCategory, styleTerm } from './util'
 import { slug } from '../../../lib/routing'
 
-const FeatureTerm = withStyles(theme => ({
+const FeatureTerm = withStyles(theme => Object.assign({
   tooltip: { width: 775 }, // same as D&DBeyond
-  ...styleCategory(theme.asc.features),
-  ...Object.entries(theme.asc.class).map(([k, v]) => styleTerm(v.main, {}, `term-${k}`))
-}))(({ classes, classification, hero, feature, sub, ...other }) => {
+  ...styleCategory(theme.asc.features)
+}, ...Object.entries(theme.asc.class).map(([k, v]) => styleTerm(v, {}, `term-${k}`))
+))(({ classes, classification, hero, feature, sub, ...other }) => {
   const c = classifications[classification]
   const h = hero && heroes[hero]
   const { [feature]: parentF } = h ? h.f : c.f
