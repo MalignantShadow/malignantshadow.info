@@ -39,7 +39,6 @@ export default withStyles(theme => Object.assign({
   }
 }, ...Object.entries(theme.asc.class).map(([k, v]) => styleTerm(v, {}, `term-${k}`))
 ))(({ classes, term, plural, ...other }) => {
-  console.log(classes)
   const {
     name,
     aspect,

@@ -20,7 +20,7 @@ export const stats = (colorSelector) => withStyles(theme => {
       }
     }
   }
-})(({classes, children}) => (
+})(({ classes, children }) => (
   <div className={classes.root}>
     {children && children.map((e, i) => (
       e && <Typography key={i} className={classes.stat}>{e}</Typography>
@@ -28,13 +28,16 @@ export const stats = (colorSelector) => withStyles(theme => {
   </div>
 ))
 
-export const styleTerm = (color, other, key = "term") => ({
-  [key]: {
-    color: color.main,
-    borderColor: color.main,
-    ...other
+export const styleTerm = (color, other, key = "term") => {
+  const c = color[color.term ? color.term : "main"]
+  return {
+    [key]: {
+      color: c,
+      borderColor: c,
+      ...other
+    }
   }
-})
+}
 
 export const styleCategory = (color, other, key = "category") => ({
   [key]: {
