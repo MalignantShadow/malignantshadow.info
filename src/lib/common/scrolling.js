@@ -4,7 +4,6 @@ export const interpolate = (t) => {
 }
 
 const doc = document.documentElement
-let docHeight = 0
 
 // how long the scroll should last
 let _timeout = 0
@@ -20,10 +19,6 @@ let _scrollTopEnd = 0
 
 // the scroll position of the last frame
 let _lastScrollTop = 0
-
-// the difference (start - end)
-// also denotes direction
-let _diff = 0
 
 // the requestAnimationFrame pointer
 let _raf = null
@@ -45,39 +40,42 @@ const cancel = () => {
 const scroll = () => {
   const now = Date.now().valueOf()
   const normalStart = now - _startTime
+  const docHeight = doc.getBoundingClientRect().height
 
   // start / timeout = percentage of time
   const t = normalStart / _timeout
 
+  const maxScrollTop = Math.min(_scrollTopEnd, docHeight - window.innerHeight)
+  const diff = maxScrollTop - _scrollTopStart
+
   // * _diff = how far the scroll should be right now
-  const newScrollTop = _scrollTopStart + _diff * (_interpolationFn(t))
+  const newScrollTop = _scrollTopStart + diff * (_interpolationFn(t))
 
   // Clamp so we get exactly where we need to
   // If we are moving up, then the min is the target
   // If we are moving down, then the max is the target
-  const clampedScrollTop = _diff < 0 ? clamp(_scrollTopEnd, docHeight, newScrollTop) : clamp(_scrollTopStart, _scrollTopEnd, newScrollTop)
+  const clampedScrollTop = diff < 0 ? clamp(_scrollTopEnd, docHeight, newScrollTop) : clamp(_scrollTopStart, maxScrollTop, newScrollTop)
 
   doc.scrollTop = clampedScrollTop
 
-  // Bail if the timeout was reach, we reached our location, or the document didn't scroll
-  if (t >= 1 || clampedScrollTop === _scrollTopEnd || (!_firstFrame && _lastScrollTop === clampedScrollTop)) {
+  // Bail if the timeout was reached, we reached our location, or the document didn't scroll
+  if (t >= 1 || clampedScrollTop === maxScrollTop || (!_firstFrame && _lastScrollTop === clampedScrollTop)) {
     cancel()
     return
   }
 
-  _lastScrollTop = newScrollTop
+  _lastScrollTop = clampedScrollTop
   if (_firstFrame) _firstFrame = false
   _raf = requestAnimationFrame(scroll)
 }
 
 export const scrollTo = (y, timeout = 250, interpolation = interpolate) => {
   cancel()
-  docHeight = doc.getBoundingClientRect().height
+  console.log("start")
   _startTime = Date.now().valueOf()
   _scrollTopStart = doc.scrollTop
   _lastScrollTop = _scrollTopStart
   _scrollTopEnd = y
-  _diff = y - doc.scrollTop
   _timeout = timeout
   _firstFrame = true
   _interpolationFn = interpolate
