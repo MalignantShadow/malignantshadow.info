@@ -23,15 +23,10 @@ export default withStyles(theme => ({
   table: {},
   head: {},
   body: {},
-  zebraRow: {
-    "&:nth-child(even)": {
-      backgroundColor: "rgba(0, 0, 0, 0.05)"
-    },
-  },
   row: {
     backgroundColor: theme.palette.background.paper,
     "&:hover": {
-      backgroundColor: "rgba(0, 0, 0, 0.1)"
+      backgroundColor: "rgba(0, 0, 0, 0.035)"
     }
   },
   cell: {},
@@ -44,7 +39,7 @@ export default withStyles(theme => ({
     }
   },
   headCell: {},
-}))(({ classes, head, body, zebra }) => (
+}))(({ classes, head, body }) => (
   <div className={classes.root}>
     <Table className={classes.table}>
       <TableHead className={classes.head}>
@@ -56,7 +51,7 @@ export default withStyles(theme => ({
       </TableHead>
       <TableBody>
         {body && body.map((e, i) => (
-          <TableRow key={"row" + i} className={classNames(classes.row, { [classes.zebraRow]: zebra })}>
+          <TableRow key={"row" + i} className={classes.row}>
             {e.map((e, j) => (
               <Cell key={"row" + i + "item" + j} className={classNames(classes.cell, classes.bodyCell)}>{e}</Cell>
             ))}
