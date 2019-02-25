@@ -1,7 +1,10 @@
 import Home from '../../pages/asc/home'
 import Reference from '../../pages/asc/reference'
-import Skills from '../../pages/asc/ref/skills'
-import ClassificationPage from '../../pages/asc/ref/classificationPage'
+
+import {
+  SkillsPage,
+  ClassificationPage,
+} from '../../pages/asc/ref'
 
 const empty = () => null
 
@@ -25,7 +28,7 @@ export default {
           byId: ClassificationPage
         }
       },
-      skills: Skills,
+      skills: SkillsPage,
       feats: empty
     }
   },

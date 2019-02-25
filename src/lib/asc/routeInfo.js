@@ -26,7 +26,7 @@ export default makeRoutes([{
   }, {
     title: "Classifications",
     children: [
-      {title: "ClassificationPage", page: "byId", path: ":id"}
+      { title: "ClassificationPage", page: "byId", path: ":id" }
     ]
   }, {
     title: "Feats"
