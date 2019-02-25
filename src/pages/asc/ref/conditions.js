@@ -1,13 +1,9 @@
 import React from 'react'
-import classNames from 'classnames'
-
-import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 
 import {
-  AscPage,
-  GameTerm
+  AscPage
 } from '../../../components/asc'
 import { slug } from '../../../lib/routing'
 import { styledTocItem, styledSection } from '../../../components/asc/util'
