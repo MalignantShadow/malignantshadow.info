@@ -40,11 +40,11 @@ const toc = <React.Fragment>
   {getTocItems("Wisdom")}
 </React.Fragment>
 
-export default () => (
+const page = (
   <AscPage toc={toc}>
     <Section id="topContent" variant="title" title="Skills" subtitle="Reference Page">
       <Typography paragraph>
-        A skill is a pre-defined type of action in the game, associated with one of the six aptitudes (with the exception
+        A <b>Skill</b> is a pre-defined type of action in the game, associated with one of the six aptitudes (with the exception
         of Constitution). This section details the appropriate time to use each of these skills. Note that
         the <GameTerm term="gm" /> may decide, based on the situation, to you roll a general aptitude check instead of a skill check.
       </Typography>
@@ -89,3 +89,5 @@ export default () => (
     {getSections("Wisdom")}
   </AscPage>
 )
+
+export default () => page
