@@ -16,11 +16,15 @@ const List = ({ children, ...other }) => (
   </ul>
 )
 
+const AttackRoll = ({ against, variant, disableHover }) => (
+  <React.Fragment>Attack rolls {against ? "against" : "made by"} the unit have <GameTerm term={variant} disableHover={disableHover} /></React.Fragment>
+)
+
 export const blinded = c("Blinded", ({ disableTerms }) => (
   <List>
     <React.Fragment>The unit cannot see and automatically fails any aptitude or skill checks that require sight.</React.Fragment>
-    <React.Fragment>Attack rolls against the unit have <GameTerm term="advantage" disableHover={disableTerms} /></React.Fragment>
-    <React.Fragment>Attack rolls made by the unit have <GameTerm term="disadvantage" disableHover={disableTerms} /></React.Fragment>
+    <AttackRoll variant="disadvantage" disableHover={disableTerms} />
+    <AttackRoll against variant="advantage" disableHover={disableTerms} />
   </List>
 ))
 
@@ -29,11 +33,9 @@ export const prone = c("Prone", ({ disableTerms }) => (
     <React.Fragment>
       The unit's only movement option is to crawl or stand up. Standing up costs half the unit's movement and ends this condition.
     </React.Fragment>
+    <AttackRoll variant="disadvantage" disableHover={disableTerms} />
     <React.Fragment>
-      The unit has <GameTerm term="disadvantage" disableHover={disableTerms} /> on attack rolls.
-    </React.Fragment>
-    <React.Fragment>
-      Attack rolls against the unit have <GameTerm term="disadvantage" disableHover />. If the attacker is within 5 feet, the attack roll
+      <AttackRoll variant="disadvantage" disableHover />. If the attacker is within 5 feet, the attack roll
       has <GameTerm term="advantage" disableHover={disableTerms} /> instead.
     </React.Fragment>
   </List>
@@ -47,12 +49,8 @@ export const invisible = c("Invisible", ({ disableTerms }) => (
     <React.Fragment>
       The unit is considered heavily obscured, and can be revealed if it makes noise or tracks.
     </React.Fragment>
-    <React.Fragment>
-      Attack rolls against the unit have <GameTerm term="disadvantage" disableHover={disableTerms} />.
-    </React.Fragment>
-    <React.Fragment>
-      Attacks rolls made by the unit have <GameTerm term="advantage" disableHover={disableTerms} />.
-    </React.Fragment>
+    <AttackRoll variant="advantage" disableHover={disableTerms} />
+    <AttackRoll against variant="disadvantage" disableHover={disableTerms} />
   </List>
 ))
 
