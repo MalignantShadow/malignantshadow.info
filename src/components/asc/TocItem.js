@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import ListItem from '@material-ui/core/ListItem'
