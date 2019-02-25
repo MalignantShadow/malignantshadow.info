@@ -156,7 +156,6 @@ export default withStyles(theme => ({
     }} {...other} />
   ))
 
-
   return (
     <AscPage toc={toc} BreadcrumbProps={{ extra: [{ title: c.name }] }} classes={{ toc: classes.tocPaper }}>
       <Section

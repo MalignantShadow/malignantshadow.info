@@ -20,27 +20,31 @@ export default withStyles(theme => ({
   root: {
     margin: theme.spacing.unit * 2
   },
-  table: {
-    borderLeft: `1px solid ${theme.palette.divider}`,
-    borderRight: `1px solid ${theme.palette.divider}`,
-  },
+  table: {},
   head: {},
   body: {},
-  row: {
+  zebraRow: {
     "&:nth-child(even)": {
       backgroundColor: "rgba(0, 0, 0, 0.05)"
     },
-    "&:nth-child(odd)": {
-      backgroundColor: theme.palette.background.paper
-    },
+  },
+  row: {
+    backgroundColor: theme.palette.background.paper,
     "&:hover": {
       backgroundColor: "rgba(0, 0, 0, 0.1)"
     }
   },
   cell: {},
-  bodyCell: {},
+  bodyCell: {
+    "&:first-child": {
+      borderLeft: `1px solid ${theme.palette.divider}`,
+    },
+    "&:last-child": {
+      borderRight: `1px solid ${theme.palette.divider}`
+    }
+  },
   headCell: {},
-}))(({ classes, head, body }) => (
+}))(({ classes, head, body, zebra }) => (
   <div className={classes.root}>
     <Table className={classes.table}>
       <TableHead className={classes.head}>
@@ -52,7 +56,7 @@ export default withStyles(theme => ({
       </TableHead>
       <TableBody>
         {body && body.map((e, i) => (
-          <TableRow key={"row" + i} className={classes.row}>
+          <TableRow key={"row" + i} className={classNames(classes.row, { [classes.zebraRow]: zebra })}>
             {e.map((e, j) => (
               <Cell key={"row" + i + "item" + j} className={classNames(classes.cell, classes.bodyCell)}>{e}</Cell>
             ))}
