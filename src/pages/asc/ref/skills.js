@@ -26,7 +26,7 @@ const getSections = (key) => skillsByAptitude[key].map(({ name, caption, desc: D
 ))
 
 const toc = <React.Fragment>
-  <SkillTocItem title href="#topContent">Reference: Skills</SkillTocItem>
+  <SkillTocItem title href="">Reference: Skills</SkillTocItem>
   <Divider />
   <SkillTocItem href="#cha">Charisma</SkillTocItem>
   {getTocItems("Charisma")}

@@ -87,7 +87,7 @@ export default withStyles(theme => ({
 
   const toc = <React.Fragment>
     <TableOfContents className={classes.toc}>
-      <TocItem title href="#topContent">Classification: {name}</TocItem>
+      <TocItem title href="">Classification: {name}</TocItem>
       <Divider />
       <TocItem href="#traits">Traits</TocItem>
       <TocItem href="#hit-dice" depth={1}>Hit Dice</TocItem>
