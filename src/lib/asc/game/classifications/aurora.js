@@ -2,7 +2,7 @@ import React from 'react'
 
 import Typography from '@material-ui/core/Typography'
 
-// import icon from '../../../../components/asc/icons/Shadowborne'
+import icon from '../../../../components/asc/icons/Aurora'
 import { default as d } from '../dice'
 import {
   repeatVal as r,
@@ -188,7 +188,7 @@ export default {
   affinity: "Light",
   auraMod: "Strength",
   aspect: "Dawn",
-  // icon,
+  icon,
   traits: {
     scoreIncreases: [
       ["Strength", 2],
