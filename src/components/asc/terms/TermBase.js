@@ -15,7 +15,6 @@ export default withStyles(theme => ({
     color: theme.palette.getContrastText(theme.palette.background.default),
     width: 700,
     maxWidth: "unset",
-    border: "1px solid",
     borderRadius: 0,
     padding: 0,
     boxShadow: "0 0 30px #333"
@@ -67,37 +66,37 @@ export default withStyles(theme => ({
   content: {
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit}px`
   }
-}))(({classes, children, icon: Icon, name, title = name, subtitle, category, text = name, href, TooltipProps, disable, disableHover = disable, disableBold = disable}) =>{
+}))(({ classes, children, icon: Icon, name, title = name, subtitle, category, text = name, href, TooltipProps, disable, disableHover = disable, disableBold = disable }) => {
 
-  const className = classNames(classes.term, {[classes.termText]: !(disableHover), [classes.termBold]: !disableBold})
+  const className = classNames(classes.term, { [classes.termText]: !(disableHover), [classes.termBold]: !disableBold })
   const term = href ?
     <AscLink href={href} className={className}>{text}</AscLink>
     : <Typography className={className} component="span">{text}</Typography>
   const customTooltip = !TooltipProps || !TooltipProps.title
 
-return disableHover ? term :
-  <Tooltip
-    TransitionComponent={Fade}
-    placement="top-start"
-    classes={{tooltip: classes.tooltip, popper: classes.popper}}
-    title={ customTooltip &&
-      <React.Fragment>
-        <div className={classes.header}>
-          { Icon && <Icon className={classes.icon}/>}
-          <Typography variant="h5" className={classes.name}>
-            <TermTitle subtitle={subtitle}>{title}</TermTitle>
-          </Typography>
-          {category &&
-            <Typography component="span" className={classes.category}>{category}</Typography>
-          }
-        </div>
-        <div className={classes.content}>
-          {children}
-        </div>
-      </React.Fragment>
-    }
-    {...TooltipProps}
-  >
-    {term}
-  </Tooltip>
+  return disableHover ? term :
+    <Tooltip
+      TransitionComponent={Fade}
+      placement="top-start"
+      classes={{ tooltip: classes.tooltip, popper: classes.popper }}
+      title={customTooltip &&
+        <React.Fragment>
+          <div className={classes.header}>
+            {Icon && <Icon className={classes.icon} />}
+            <Typography variant="h5" className={classes.name}>
+              <TermTitle subtitle={subtitle}>{title}</TermTitle>
+            </Typography>
+            {category &&
+              <Typography component="span" className={classes.category}>{category}</Typography>
+            }
+          </div>
+          <div className={classes.content}>
+            {children}
+          </div>
+        </React.Fragment>
+      }
+      {...TooltipProps}
+    >
+      {term}
+    </Tooltip>
 })
