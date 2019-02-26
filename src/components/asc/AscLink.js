@@ -18,17 +18,14 @@ export default withRouter(({ href, children, history, location, match, params, s
   function handleClick(e) {
     e.preventDefault()
     e.stopPropagation()
-    if (!path && !hash) {
-      scrollTo(0)
-      return
-    }
 
-    const el = document.getElementById(hash)
-    if (!el) return
+    let el
+    const y = (!path && !hash) ? 0 : !(el = document.getElementById(hash)) ? -1 : window.scrollY + el.getBoundingClientRect().top
+    if (y < 0) return
 
     window.history.pushState({}, "", `${location.pathname}${href}`)
+    scrollTo(y)
 
-    scrollTo(window.scrollY + el.getBoundingClientRect().top)
   }
 
   return useHandler ?
