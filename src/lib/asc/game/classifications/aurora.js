@@ -196,7 +196,7 @@ export default {
     ],
     auraMod: "Charisma",
     resistance: [undefined, "light"],
-    vulnerability: ["Afriad of the Dark", "dark"],
+    vulnerability: ["Afraid of the Dark", "dark"],
     speed: 35
   },
   intrinsics: {
