@@ -193,7 +193,6 @@ export default {
       ["Strength", 2],
       ["Charisma", 1],
     ],
-    auraMod: "Charisma",
     resistance: [undefined, "light"],
     vulnerability: ["Afraid of the Dark", "dark"],
     speed: 35
