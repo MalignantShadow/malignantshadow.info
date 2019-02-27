@@ -53,7 +53,8 @@ const theme = createMuiTheme({
     dice: makeColor(colors.indigo),
     class: {
       shadowborne: primary,
-      aurora: makeColor(colors.grey, undefined, { table: "light", term: "dark" })
+      aurora: makeColor(colors.grey, undefined, { table: "light", term: "dark" }),
+      salamander: makeColor(colors.red)
     }
   }
 })
