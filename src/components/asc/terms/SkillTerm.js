@@ -20,8 +20,8 @@ export default withStyles(theme => {
       flexDirection: "column"
     }
   }
-})(({classes, term, ...other}) => {
-  const {name, aptitude, caption, desc: Desc} = skills[term]
+})(({ classes, term, ...other }) => {
+  const { name, aptitude, caption, desc: Desc } = skills[term]
   return (
     <TermBase
       name={name}
@@ -35,11 +35,11 @@ export default withStyles(theme => {
     >
       <SkillStats>
         <React.Fragment><b>Aptitude</b>: {aptitude}</React.Fragment>
-        { caption &&
+        {caption &&
           <i>{caption}</i>
         }
       </SkillStats>
-      <Desc disableTerms noParagraph/>
+      <Desc disableTerms noParagraph />
     </TermBase>
   )
 })
