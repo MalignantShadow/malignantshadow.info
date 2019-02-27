@@ -194,7 +194,6 @@ export default {
       ["Intelligence", 1],
       ["Charisma", -1]
     ],
-    auraMod: "Intelligence",
     resistance: [undefined, "dark"],
     vulnerability: ["The Light! It Burns!", "light"],
     speed: 35
