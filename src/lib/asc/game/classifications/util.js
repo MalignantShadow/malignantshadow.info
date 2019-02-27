@@ -18,8 +18,10 @@ export const makeSimpleFeature = (title, levels, desc, other) => makeFeature(tit
 
 export const makeSubFeature = (title, key, desc, other) => makeFeature(title, undefined, desc, { key, ...other })
 
+export const makeParentFeature = (title, levels, desc, subFeatures, other) => makeFeature(title, levels, desc, { subFeatures, ...other })
+
 //TODO: ConditionTerm for exhaustion
-export const auraPointsFeature = (features) => makeFeature("Aura Points", [2], ({ noParagraph }) => (
+export const auraPointsFeature = (features) => makeParentFeature("Aura Points", [2], ({ noParagraph }) => (
   <React.Fragment>
     <Typography paragraph>
       Beginning at Level 2, you have a number of Aura points equal to your Level. Aura points can be used to add extra
@@ -40,8 +42,7 @@ export const auraPointsFeature = (features) => makeFeature("Aura Points", [2], (
       At Level 1, since you have no Aura points, the roll is done normally.
     </Typography>
   </React.Fragment>
-),
-  { subFeatures: features })
+), features)
 
 export const alterAppearanceSubFeature = makeSubFeature("Alter Appearance", "alterAppearance", () => (
   <React.Fragment>
