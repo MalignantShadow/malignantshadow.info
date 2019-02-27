@@ -37,9 +37,9 @@ export default withStyles(theme => ({
     marginBottom: theme.spacing.unit,
     marginTop: theme.spacing.unit
   },
-  classImg: {
+  classIcon: {
     height: 64,
-    borderRadius: 64,
+    width: 64,
     marginBottom: theme.spacing.unit
   },
   potentialWrapper: {
@@ -82,10 +82,10 @@ export default withStyles(theme => ({
     <IndexCard title="Classifications" classes={{ title: classes.classWrapper }}>
       <IndexCardContent>
         <Grid container spacing={8}>
-          {sortedClasses.map((e, i) => (
+          {sortedClasses.map(({ name, icon: Icon }, i) => (
             <Grid key={i} className={classes.classImgWrapper} item md={2} sm={4} xs={6}>
-              <img alt="" src="//placehold.it/64x64" className={classes.classImg} />
-              <Typography>{e.name}</Typography>
+              <Icon className={classes.classIcon} />
+              <Typography>{name}</Typography>
             </Grid>
           ))}
         </Grid>
