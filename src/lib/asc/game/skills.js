@@ -8,18 +8,18 @@ import {
   GameTerm
 } from '../../../components/asc'
 
-const s = (name, aptitude, caption, desc) => ({name, aptitude, caption, desc})
+const s = (name, aptitude, caption, desc) => ({ name, aptitude, caption, desc })
 
 export const acrobatics = s(
   "Acrobatics",
   "Dexterity",
   "",
-  ({disableTerms, noParagraph}) => (
+  ({ disableTerms, noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       An Acrobatics check determines how well you can keep your balance or footing during a task. Common situations typically encompass
-      slippery or unstable areas; such as walking across ice or a narrow walkway/bridge. The <GameTerm disableHover={disableTerms} term="gm"/> may
+      slippery or unstable areas; such as walking across ice or a narrow walkway/bridge. The <GameTerm disableHover={disableTerms} term="gm" /> may
       also ask for this check when you want to make a precise adjustment while running, like jumping over a table. A critical fail on
-      an Acrobatics check may cause your character to become <ConditionTerm disableHover={disableTerms} term="prone"/>.
+      an Acrobatics check may cause your character to become <ConditionTerm disableHover={disableTerms} term="prone" />.
     </Typography>
   )
 )
@@ -28,7 +28,7 @@ export const animalHandling = s(
   "Animal Handling",
   "Wisdom",
   "",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       An Animal Handling check determines how well you can control or coerce an animal. Common instances of this skill check include <b>training a
       pet</b>, <b>convicing an animal you are friendly</b>, and <b>determing an animal's intentions</b>.
@@ -40,7 +40,7 @@ export const athletics = s(
   "Athletics",
   "Strength",
   "May be contested by: Athletics or Acrobatics",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       An Athletics check determines how well you can endure a troubling situation or apply brute force to an object. Common examples
       include <b>treading water for an extended period of time</b>, <b>forcing open a door</b>, <b>moving a heavy object</b>, and <b>standing
@@ -53,7 +53,7 @@ export const deception = s(
   "Deception",
   "Charisma",
   "Contested with: Insight",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <React.Fragment>
       <Typography paragraph>
         A Deception check determines how well you can hide the truth. Most of the time, this is done with vague wording or telling a
@@ -72,7 +72,7 @@ export const history = s(
   "History",
   "Intelligence",
   "",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       A History check determines how well and accurate you can recall information about the history of Ecumene. For instance, his check may be
       prompted when you try to <b>indentify a building's historical significance</b>, <b>recall a historical battle</b>, or <b>identify a
@@ -85,10 +85,10 @@ export const insight = s(
   "Insight",
   "Wisdom",
   "Contested by: Deception or Persuasion",
-  ({disableTerms, noParagraph}) => (
+  ({ disableTerms, noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       An Insight check determines how well you can deduce a person's intentions based on their body language, speech patterns, and mannerisms.
-      Insight checks typically have a lower <GameTerm disableHover={disableTerms} term="dc"/> the better you know a person.
+      Insight checks typically have a lower <GameTerm disableHover={disableTerms} term="dc" /> the better you know a person.
     </Typography>
   )
 )
@@ -97,7 +97,7 @@ export const intimidation = s(
   "Intimidation",
   "Charisma",
   "",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       An Intimidation check determines how well you can threaten or scare another person or creature. A threat can be
       verbal, by using a specific combination of words to create an elaborate threat, or they can be physical, such as harming
@@ -110,7 +110,7 @@ export const investigation = s(
   "Investigation",
   "Intelligence",
   "",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <React.Fragment>
       <Typography paragraph>
         An Investigation check determines how well you can make a deduction or extrapolate information. Typical examples of Investigation checks
@@ -131,14 +131,14 @@ export const medicine = s(
   "Medicine",
   "Wisdom",
   "",
-  ({disableTerms, noParagraph}) => (
+  ({ disableTerms, noParagraph }) => (
     <React.Fragment>
       <Typography paragraph>
         A Medicine check determines how well you can use your medical knowledge and experience in a particular situation. The most common examples
         are <b>diagnosing a disease or infection</b> and <b>applying first aid</b>.
       </Typography>
       <Typography paragraph={!noParagraph}>
-        The <GameTerm disableHover={disableTerms} term="gm"/> may require you to be proficient in this skill in order to pass certain Medicine checks.
+        The <GameTerm disableHover={disableTerms} term="gm" /> may require you to be proficient in this skill in order to pass certain Medicine checks.
       </Typography>
     </React.Fragment>
   )
@@ -148,7 +148,7 @@ export const nature = s(
   "Nature",
   "Intelligence",
   "",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       A Nature checks how well you can recall information about the landscapes, plants, animals, and weather cycles of Ecumene.
     </Typography>
@@ -159,7 +159,7 @@ export const perception = s(
   "Perception",
   "Wisdom",
   "",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <React.Fragment>
       <Typography paragraph>
         A Perception check determines how well you sense the presence of an object or creature using your senses. Common examples
@@ -178,7 +178,7 @@ export const performance = s(
   "Performance",
   "Charisma",
   "",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       A Performance check indicates how well you can dance, play an instrument, act, or perform some other type of entertainment.
       Available entertainment and standards vary by area.
@@ -190,7 +190,7 @@ export const persuasion = s(
   "Persuasion",
   "Charisma",
   "Contested with: Insight",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       A Persuasion check determines how well you can influence another person or creature's actions with your own benevolent actions,
       without false pretenses. Examples include <b>convincing a group you are friendly by laying down your weapons</b>, <b>bribing a
@@ -203,7 +203,7 @@ export const sleightOfHand = s(
   "Sleight of Hand",
   "Dexterity",
   "Contested with: Perception",
-  ({noParagraph}) => (
+  ({ noParagraph }) => (
     <Typography paragraph={!noParagraph}>
       A Sleight of Hand check determines how well you can conceal or move an object without anyone noticing. Common examples
       include <b>pickpocketing</b>, <b>placing a small object into somone else's pocket</b>, and <b>cheating in a card game</b>.
@@ -215,16 +215,29 @@ export const stealth = s(
   "Stealth",
   "Dexterity",
   "Contested with: Perception",
-  ({disableTerms, noParagraph}) => (
+  ({ disableTerms, noParagraph }) => (
     <React.Fragment>
       <Typography paragraph>
-        A Stealth check detmines how well you can stay out of sight from onlookers. Typical situations include <b>eavesdropping</b> and <b>traveling
+        A Stealth check determines how well you can stay out of sight from onlookers. Typical situations include <b>eavesdropping</b> and <b>traveling
         through a crowded/gaurded area</b> <i>without being detected</i>.
       </Typography>
       <Typography paragraph={!noParagraph}>
-        <ClassificationTerm disableHover={disableTerms} term="shadowborne"/> are particularly adept at Stealth.
+        <ClassificationTerm disableHover={disableTerms} term="shadowborne" /> are particularly adept at Stealth.
       </Typography>
     </React.Fragment>
+  )
+)
+
+export const survival = s(
+  "Survival",
+  "Widsom",
+  "",
+  ({ noParagraph }) => (
+    <Typography paragraph={!noParagraph}>
+      A Surival check determines how well you can use context clues from the environment around you to solve a problem or retrieve information.
+      Common tasks include <b>discerning the direction a creature is moving from its tracks</b>, <b>predicting the weather</b>
+      , and <b>avoiding natural hazards</b>.
+    </Typography>
   )
 )
 
@@ -243,13 +256,14 @@ const skills = [
   performance,
   persuasion,
   sleightOfHand,
-  stealth
+  stealth,
+  survival
 ]
 
 export default skills
 export const byAptitude = skills.reduce((acc, obj) => {
   const apt = obj.aptitude
-  if(!acc[apt]) acc[apt] = []
+  if (!acc[apt]) acc[apt] = []
   acc[apt].push(obj)
   return acc
 }, {})
