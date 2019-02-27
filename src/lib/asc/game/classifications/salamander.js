@@ -51,7 +51,7 @@ export default {
       ["Strength", 1],
     ],
     resistance: [undefined, "fire"],
-    vulnerability: ["The Bad Kind of Wet", "water"],
+    vulnerability: ["The Bad Kind of Wet", "cold"],
     speed: 35
   },
   intrinsics: {
