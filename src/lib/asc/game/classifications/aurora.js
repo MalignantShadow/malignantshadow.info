@@ -183,7 +183,6 @@ export default {
       </Typography>
     </React.Fragment>
   ),
-  icon: () => null,
   archetypes: ["Fighter", "?"],
   affinity: "Light",
   auraMod: "Strength",
