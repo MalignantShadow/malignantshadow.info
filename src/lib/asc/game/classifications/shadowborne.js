@@ -202,7 +202,7 @@ export default {
     hitDice: d(1, 8),
     prof: {
       weapons: ["Automatic rifles", "precision weapons", "simple melee weapons", "sidearms"],
-      savingThrows: ["Dexterity", "Intelligence"],
+      savingThrows: ["Dexterity", "Wisdom"],
       skills: ["acrobatics", "insight", "investigation", "perception", "sleightOfHand", "stealth"]
     },
     equipment: [
