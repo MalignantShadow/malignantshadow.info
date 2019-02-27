@@ -13,6 +13,7 @@ import {
   scoreImprovementFeature,
   makeFeature as f,
   makeSimpleFeature as sf,
+  makeSubFeature as subf,
   sortHeroes
 } from './util'
 import {
@@ -33,27 +34,21 @@ const rd = (diceAmount, repeatAmount = 3) => r(() => <DiceTerm dice={d(diceAmoun
 
 const featureMap = {
   auraPoints: auraPointsFeature([
-    alterAppearanceSubFeature(), {
-      title: "Curse",
-      key: "curse",
-      desc: ({ noParagraph }) => (
-        <Typography paragraph={!noParagraph}>
-          Immediately after a weapon attack during your Attack action, you spend 1 Aura point to attempt to curse the target’s fate.
-          The target must succeed on a Constitution saving throw or have disadvantage on the first saving throw
-          (your choice of Dexterity or Strength) they make until the start of your next turn. You may only use this feature once per turn,
-          and a unit can only be cursed once by any source. If you attempt to Curse a target that has already been Cursed and they
-          fail their saving throw, the Curse is overwritten.
-        </Typography>
-      )
-    }, {
-      title: "Interlude",
-      key: "interlude",
-      desc: ({ noParagraph }) => (
-        <Typography paragraph={!noParagraph}>
-          You spend 1 Aura point to take the Dodge action as a bonus action.
-        </Typography>
-      )
-    }
+    alterAppearanceSubFeature,
+    subf("Curse", "curse", ({ noParagraph }) => (
+      <Typography paragraph={!noParagraph}>
+        Immediately after a weapon attack during your Attack action, you spend 1 Aura point to attempt to curse the target’s fate.
+        The target must succeed on a Constitution saving throw or have disadvantage on the first saving throw
+        (your choice of Dexterity or Strength) they make until the start of your next turn. You may only use this feature once per turn,
+        and a unit can only be cursed once by any source. If you attempt to Curse a target that has already been Cursed and they
+        fail their saving throw, the Curse is overwritten.
+      </Typography>
+    )),
+    subf("Interlude", "interlude", ({ noParagraph }) => (
+      <Typography paragraph={!noParagraph}>
+        You spend 1 Aura point to take the Dodge action as a bonus action.
+      </Typography>
+    ))
   ]),
   banishSummon: f("Banish/Summon", [9], ({ noParagraph }) => (
     <React.Fragment>

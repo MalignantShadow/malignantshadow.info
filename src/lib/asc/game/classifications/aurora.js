@@ -13,6 +13,7 @@ import {
   scoreImprovementFeature,
   makeFeature as f,
   makeSimpleFeature as sf,
+  makeSubFeature as subf,
   sortHeroes
 } from './util'
 import {
@@ -32,26 +33,20 @@ const Feature = ({ id, ...other }) => <FeatureTerm classification="aurora" featu
 
 const featureMap = {
   auraPoints: auraPointsFeature([
-    alterAppearanceSubFeature(), {
-      title: "Avert Blindness",
-      key: "avertBlindness",
-      desc: ({ disableTerms, noParagraph }) => (
-        <Typography paragraph={!noParagraph}>
-          When subjected to an effect that creates a large amount of light to blind you (such as someone activating floodlights, an ability,
-          or a similar effect), you spend 1 Aura point to prevent yourself from being Blinded. This does not
-          prevent other effects, such as damage, unless the effect is a direct cause of being Blinded.
-        </Typography>
-      )
-    }, {
-      title: "Counter",
-      key: "counter",
-      desc: ({ noParagraph }) => (
-        <Typography paragraph={!noParagraph}>
-          If you took the Dodge action on your last turn, and an attacker makes a melee attack against you that misses,
-          you spend 1 Aura point to make a melee attack against them as a reaction.
-        </Typography>
-      )
-    }
+    alterAppearanceSubFeature,
+    subf("Avert Blindness", "avertBlindness", ({ noParagraph }) => (
+      <Typography paragraph={!noParagraph}>
+        When subjected to an effect that creates a large amount of light to blind you (such as someone activating floodlights, an ability,
+        or a similar effect), you spend 1 Aura point to prevent yourself from being Blinded. This does not
+        prevent other effects, such as damage, unless the effect is a direct cause of being Blinded.
+      </Typography>
+    )),
+    subf("Counter", "counter", ({ noParagraph }) => (
+      <Typography paragraph={!noParagraph}>
+        If you took the Dodge action on your last turn, and an attacker makes a melee attack against you that misses,
+        you spend 1 Aura point to make a melee attack against them as a reaction.
+      </Typography>
+    ))
   ]),
   blindingStrike: sf("Blinding Strike", [10], `
       When you reach Level 10, you learn how to channel Light into the blade of your melee attacks. As part of a melee attack during
