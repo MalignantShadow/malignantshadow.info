@@ -96,7 +96,7 @@ export const heroStudiesFeature = makeSimpleFeature(
   "Hero Studies",
   [3, 6, 11, 17],
   `At Level 3, you undergo studying a Hero from the past to learn their tactics. Your chosen Hero Study grants you
-   features at Level 3 and again at Level 6, 11, and 17. You may also choose to learn that Hero’s abilities.You can only
-   do so if you have chosen that Hero.`,
+   features at Level 3 and again at Levels 6, 11, and 17. You may also choose to learn that Hero’s abilities. You can only
+   do so if you have chosen that particular Hero.`,
   { titleAfterFirst: "Hero Studies Feature" }
 )
