@@ -1,8 +1,12 @@
 const t = (name, desc, other) => ({ name, desc, ...other })
 
+const capitalize = (str) => str[0].toUpperCase() + str.substring(1)
+
 const damage = (noun, adj, doubled) => (args, variant) => {
   const is = doubled ? "doubled" : "halved"
-  const dmg = args && args.length ? args[0][0].toUpperCase() + args[0].substring(1) : ""
+  const dmg = variant === "adj" && args && args.length > 1
+    ? args.map(e => capitalize(e)).slice(0, -1).join(", ") + ", and " + capitalize(args[args.length - 1])
+    : args[0]
   if (variant === "adj")
     return t(`${adj} to ${dmg} damage`, `${dmg} damage is ${is}`)
   return t(noun, `Damage is ${is}`)
