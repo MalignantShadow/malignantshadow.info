@@ -5,10 +5,12 @@ import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
+import Grid from '@material-ui/core/Grid'
 
 import {
   AscPage,
   AscTable,
+  StatItem,
   Calc,
   DiceTerm,
   GameTerm,
@@ -16,7 +18,7 @@ import {
   TableOfContents
 } from '../../../components/asc'
 import { slug } from '../../../lib/routing'
-import { styledTocItem, styledSection } from '../../../components/asc/util'
+import { styledTocItem, styledSection, styledStatItem } from '../../../components/asc/util'
 import * as classifications from '../../../lib/asc/game/classifications'
 
 const Features = ({ children, idPrefix, Section }) => (
@@ -58,6 +60,12 @@ export default withStyles(theme => ({
       flexDirection: "column"
     }
   },
+  statsWrapper: {
+    marginBottom: theme.spacing.unit * 2.25
+  },
+  statSpace: {
+    marginBottom: theme.spacing.unit / 2
+  },
   heroStudiesTitleMargin: {
     marginTop: theme.spacing.unit * 8
   },
@@ -82,6 +90,7 @@ export default withStyles(theme => ({
   const colorSelector = theme => theme.asc.class[id]
   const Section = styledSection(colorSelector)
   const TocItem = styledTocItem(colorSelector)
+  const StatItem = styledStatItem(colorSelector)
 
   const upTo20 = new Array(20).fill(0)
 
@@ -112,26 +121,6 @@ export default withStyles(theme => ({
     })
   })
 
-  let sortedTraits = [
-    ["Armor Class", <Calc>8 + your Dexterity modifier + your {auraMod} modifier</Calc>],
-    ["Ability Save DC", <Calc>8 + your proficiency modifier + your {auraMod} modifier</Calc>],
-    ["Aptitude Score Increases", traits.scoreIncreases.map(([apt, increase], i) => (
-      `${apt} ${increase > 0 ? "+" : "-"} ${Math.abs(increase)}`
-    )).join(", ")],
-    ["Aura Modifier", auraMod],
-    ["Speed", ` ${speed} feet`],
-    [traits.resistance[0] || `${name} Resillience`, <React.Fragment>
-      You are <GameTerm term="resistance" variant="adj" args={[traits.resistance[1]]} />
-    </React.Fragment>],
-    [traits.vulnerability[0] || `${name} Vulnerabilities`, <React.Fragment>
-      You are <GameTerm term="vulnerability" variant="adj" args={[traits.vulnerability[1]]} />
-    </React.Fragment>],
-  ]
-  if (traits.extra)
-    sortedTraits = sortedTraits.concat(traits.extra)
-
-  sortedTraits.sort(([a], [b]) => a - b)
-
   const Table = withStyles(theme => {
     const color = theme.asc.class[id]
     const headColor = color[color.table ? color.table : "main"]
@@ -140,6 +129,12 @@ export default withStyles(theme => ({
       color: theme.palette.getContrastText(headColor)
     }
     return {
+      cell: {
+        [theme.breakpoints.down("md")]: {
+          paddingLeft: theme.spacing.unit,
+          paddingRight: theme.spacing.unit
+        }
+      },
       headCell: {
         ...modifyCell
       },
@@ -151,6 +146,7 @@ export default withStyles(theme => ({
     }
   })(({ classes, features, ...other }) => (
     <AscTable classes={{
+      cell: classes.cell,
       headCell: classes.headCell,
       row: classNames({ [classes.featureRow]: features })
     }} {...other} />
@@ -168,34 +164,24 @@ export default withStyles(theme => ({
         subtitle="Classification Details"
         classes={{ heading: classes.pageTitle }}
       >
-        <Desc />
-      </Section>
-      <Section variant="h1" title="Traits" />
-      <Table
-        head={["Name", "Effect"]}
-        body={[
-          ...sortedTraits.map((e) => e)
-        ]}
-      />
-      <Section variant="h2" title="Hit Dice" />
-      <Table head={[{ text: "Hit Dice", style: { width: 150 } }, "HP at Level 1", "HP After Level 1"]} body={[[
-        <DiceTerm dice={intrinsics.hitDice} />,
-        <Calc>{intrinsics.hitDice.max} + your Constitution modifier</Calc>,
-        <Calc><DiceTerm dice={intrinsics.hitDice} /> (or {intrinsics.hitDice.avg + 1}) + your Constitution modifier per Level after 1</Calc>
-      ]]} />
-      <Section variant="h2" title="Proficiencies">
-        <Typography>
-          <b>Weapons</b>: {intrinsics.prof.weapons.join(", ")}
-        </Typography>
-        <Typography>
-          <b>Saving Throws</b>: {intrinsics.prof.savingThrows.join(", ")}
-        </Typography>
-        <Typography paragraph>
-          <b>Skills</b>: Choose 3 from {intrinsics.prof.skills.map((e, i) => (
+        <Grid container className={classes.statsWrapper}>
+          <StatItem xs={6} sm={4} k="Aura Modifier" v={auraMod} />
+          <StatItem xs={6} sm={4} k="Resilience" />
+          <StatItem xs={6} sm={4} k="Speed" v={speed} />
+          <StatItem xs={6} sm={4} k="Aptitude Score Increases" v={
+            traits.scoreIncreases.map(([apt, increase], i) => (
+              `${apt.substring(0, 3).toUpperCase()} ${increase > 0 ? "+" : "-"} ${Math.abs(increase)}`)
+            ).join(", ")
+          } />
+          <StatItem xs={6} sm={4} k="Hit Die" v={<DiceTerm dice={intrinsics.hitDice} />} />
+          <StatItem xs={6} sm={4} k="Saving Throws" v={intrinsics.prof.savingThrows.map(e => e.substring(0, 3).toUpperCase()).join(", ")} />
+          <StatItem xs={12} sm={4} k="Skills (3)" v={intrinsics.prof.skills.map((e, i) => (
             <React.Fragment key={i}><SkillTerm term={e} />{i < intrinsics.prof.skills.length - 1 ? ", " : ""}</React.Fragment>
-          ))}
-        </Typography>
+          ))} />
+          <StatItem xs={12} sm={8} k="Weapons" v={intrinsics.prof.weapons.join(", ")} />
+        </Grid>
       </Section>
+      <Desc />
       <Section variant="h1" title="Features" />
       <Table
         features
