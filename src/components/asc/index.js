@@ -9,6 +9,7 @@ export { default as IndexCardContent } from './IndexCardContent'
 export { default as RpgTypography } from './RpgTypography'
 export { default as TableOfContents } from './TableOfContents'
 export { default as TocItem } from './TocItem'
+export { default as StatItem } from './StatItem'
 
 // Terms
 export {
