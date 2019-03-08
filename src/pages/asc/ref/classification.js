@@ -197,7 +197,9 @@ export default withStyles(theme => ({
         const heroSlug = `hero.${slug(name)}`
         return (
           <React.Fragment key={"hero-" + name}>
-            <div className={i > 0 ? classes.heroNameMargin : undefined} />
+            <AscAvatar src="https://placehold.it/64x64/151515/fff" />
+            <br />
+            {/* <div className={i > 0 ? classes.heroNameMargin : undefined} />
             <Section id={heroSlug} variant="h1" title={name} subtitle={epithet} className={classes.heroHeading}>
               {quote && <React.Fragment>
                 <Typography align="center"><i>"{quote.text}"</i></Typography>
@@ -217,7 +219,7 @@ export default withStyles(theme => ({
                 ...features.map(({ levels: [level], title }, i) => [level, title])
               ]}
             />
-            <Features Section={Section} idPrefix={`${heroSlug}.`}>{features}</Features>
+            <Features Section={Section} idPrefix={`${heroSlug}.`}>{features}</Features> */}
           </React.Fragment>
         )
       })}
