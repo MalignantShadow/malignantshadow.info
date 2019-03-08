@@ -20,7 +20,7 @@ export default withStyles(theme => ({
   root: {
     position: "relative",
     margin: theme.spacing.unit * 2,
-    ...theme.asc.mixin.metalBorder()
+    border: `1px solid ${theme.palette.divider}`
   },
   table: {
 
