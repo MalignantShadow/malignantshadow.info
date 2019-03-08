@@ -3,15 +3,10 @@ import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 
 import {
-  AscPage, ConditionTerm
+  AscPage, ConditionTerm, TocItem, AscSection as Section
 } from '../../../components/asc'
 import { slug } from '../../../lib/routing'
-import { styledTocItem, styledSection } from '../../../components/asc/util'
 import conditions from '../../../lib/asc/game/conditions'
-
-const colorSelector = theme => theme.asc.conditions
-const TocItem = styledTocItem(colorSelector)
-const Section = styledSection(colorSelector)
 
 const toc = <React.Fragment>
   <TocItem title href="">Reference: Conditions</TocItem>

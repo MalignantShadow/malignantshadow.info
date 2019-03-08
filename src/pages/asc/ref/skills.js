@@ -5,18 +5,15 @@ import Divider from '@material-ui/core/Divider'
 
 import {
   AscPage,
-  GameTerm
+  GameTerm,
+  TocItem,
+  AscSection as Section
 } from '../../../components/asc'
 import { skillsByAptitude } from '../../../lib/asc/game'
 import { slug } from '../../../lib/routing'
-import { styledTocItem, styledSection } from '../../../components/asc/util'
-
-const colorSelector = theme => theme.asc.skills
-const Section = styledSection(colorSelector)
-const SkillTocItem = styledTocItem(colorSelector)
 
 const getTocItems = (key) => skillsByAptitude[key].map((e, i) => (
-  <SkillTocItem key={key + i} href={`#${slug(e.name)}`} depth={1}>{e.name}</SkillTocItem>
+  <TocItem key={key + i} href={`#${slug(e.name)}`} depth={1}>{e.name}</TocItem>
 ))
 
 const getSections = (key) => skillsByAptitude[key].map(({ name, caption, desc: Desc }, i) => (
@@ -26,17 +23,17 @@ const getSections = (key) => skillsByAptitude[key].map(({ name, caption, desc: D
 ))
 
 const toc = <React.Fragment>
-  <SkillTocItem title href="">Reference: Skills</SkillTocItem>
+  <TocItem title href="">Reference: Skills</TocItem>
   <Divider />
-  <SkillTocItem href="#cha">Charisma</SkillTocItem>
+  <TocItem href="#cha">Charisma</TocItem>
   {getTocItems("Charisma")}
-  <SkillTocItem href="#dex">Dexterity</SkillTocItem>
+  <TocItem href="#dex">Dexterity</TocItem>
   {getTocItems("Dexterity")}
-  <SkillTocItem href="#int">Intelligence</SkillTocItem>
+  <TocItem href="#int">Intelligence</TocItem>
   {getTocItems("Intelligence")}
-  <SkillTocItem href="#str">Strength</SkillTocItem>
+  <TocItem href="#str">Strength</TocItem>
   {getTocItems("Strength")}
-  <SkillTocItem href="#wis">Wisdom</SkillTocItem>
+  <TocItem href="#wis">Wisdom</TocItem>
   {getTocItems("Wisdom")}
 </React.Fragment>
 

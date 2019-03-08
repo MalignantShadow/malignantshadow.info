@@ -18,27 +18,32 @@ const Cell = ({ children, className }) =>
 
 export default withStyles(theme => ({
   root: {
-    margin: theme.spacing.unit * 2
+    position: "relative",
+    margin: theme.spacing.unit * 2,
+    ...theme.asc.mixin.metalBorder()
   },
-  table: {},
+  table: {
+
+  },
   head: {},
   body: {},
   row: {
     backgroundColor: theme.palette.background.paper,
     "&:hover": {
-      backgroundColor: "rgba(0, 0, 0, 0.035)"
-    }
-  },
-  cell: {},
-  bodyCell: {
-    "&:first-child": {
-      borderLeft: `1px solid ${theme.palette.divider}`,
+      backgroundColor: "rgba(255, 255, 255, 0.075)"
     },
-    "&:last-child": {
-      borderRight: `1px solid ${theme.palette.divider}`
-    }
   },
-  headCell: {},
+  cell: {
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: theme.spacing.unit,
+      paddingRight: theme.spacing.unit
+    },
+    borderBottom: "none"
+  },
+  bodyCell: {},
+  headCell: {
+    backgroundColor: theme.asc.accent2
+  },
 }))(({ classes, head, body }) => (
   <div className={classes.root}>
     <Table className={classes.table}>

@@ -57,6 +57,13 @@ export default withStyles(theme => ({
     boxShadow: "none",
     border: `1px solid ${theme.palette.divider}`,
     borderRadius: 0
+  },
+  breadcrumbLink: {
+    color: theme.asc.accent,
+
+    "&:hover": {
+      color: theme.asc.accentText
+    }
   }
 }))(withRouter(({ classes, children, location, location: { state: routeState }, rightContent, toc, BreadcrumbProps }) => {
   React.useEffect(() => {
@@ -74,7 +81,7 @@ export default withStyles(theme => ({
       }
       <div className={classes.contentWrapper}>
         <div className={classes.wrapper}>
-          <SiteBreadcrumbs icon={Asc} className={classes.breadcrumbs} {...BreadcrumbProps}>{routing}</SiteBreadcrumbs>
+          <SiteBreadcrumbs icon={Asc} className={classes.breadcrumbs} classes={{ link: classes.breadcrumbLink }} {...BreadcrumbProps}>{routing}</SiteBreadcrumbs>
           <div className={classes.stretch} />
           <div className={classes.rightContent}>{rightContent}</div>
         </div>

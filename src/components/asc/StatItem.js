@@ -9,11 +9,12 @@ export default withStyles(theme => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit * 1.5
   },
   key: {
-    fontSize: theme.typography.pxToRem(12),
-    fontWeight: 500
+    fontSize: theme.typography.pxToRem(11),
+    fontWeight: 500,
+    color: theme.asc.accent
   },
   value: {
 

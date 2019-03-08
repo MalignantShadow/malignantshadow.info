@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import { withRouter, Link, Switch } from 'react-router-dom'
 
 import { createMuiTheme, withStyles } from '@material-ui/core/styles'
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
 import * as colors from '@material-ui/core/colors'
 import Typography from '@material-ui/core/Typography'
 import Hidden from '@material-ui/core/Hidden'
@@ -34,15 +34,36 @@ const primary = {
   dark: "#000"
 }
 
+const background = {
+  default: "#111",
+  paper: "#151515"
+}
+
+//gold
+const accent = "rgb(203, 172, 98)"
+const accent2 = "rgb(103, 71, 31)"
+const accentText = "rgb(255, 230, 169)"
+const accentGradient = (direction = "bottom") => `linear-gradient(to ${direction}, ${accent}, ${accent2})`
+
+const lightBorder = lighten(background.default, 0.1)
+
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true
   },
   palette: {
+    type: "dark",
     primary: primary,
-    secondary: colors.deepPurple
+    secondary: colors.deepPurple,
+    divider: accent2,
+    background
   },
   asc: {
+    accent,
+    accent2,
+    accentText,
+    accentGradient,
+    lightBorder,
     abilities: makeColor(colors.purple),
     skills: makeColor(colors.orange),
     classifications: makeColor(colors.teal),
@@ -55,24 +76,33 @@ const theme = createMuiTheme({
       shadowborne: primary,
       aurora: makeColor(colors.grey, undefined, { table: "light", term: "dark" }),
       salamander: makeColor(colors.red)
+    },
+    mixin: {
+      metalBorder: (direction) => ({
+        border: `1px solid ${accent}`,
+        borderImage: accentGradient(direction),
+        borderWidth: 1,
+        borderImageSlice: 1
+      })
     }
   }
 })
 
 const ToolbarButton = withStyles(theme => {
-  const color = theme.palette.getContrastText(theme.palette.primary.main)
   return {
     button: {
       marginLeft: theme.spacing.unit * 3,
-      color: fade(color, 0.7),
+      color: theme.asc.accent,
 
+      "&:not($active):hover": {
+        color: theme.asc.accentText
+      },
       "&:hover": {
-        color: color,
         backgroundColor: "transparent"
       }
     },
     active: {
-      color: color
+      color: "#fff"
     }
   }
 })(withRouter(({ classes, path, title, location }) => {
@@ -92,25 +122,23 @@ const ToolbarButton = withStyles(theme => {
   )
 }))
 
-const AscRef = withStyles(theme => ({
+const AscRef = withStyles(({
   bar: {
     boxShadow: "none",
-    borderBottom: `1px solid #141414`
+    borderBottom: `2px solid ${theme.asc.lightBorder}`
   },
   toolbar: {
     marginLeft: 0,
     [theme.breakpoints.up("lg")]: {
       width: theme.breakpoints.values.lg,
       margin: "auto"
-    }
-  },
-  barIcon: {
-    color: theme.palette.getContrastText(theme.palette.primary.main)
+    },
+    color: "white"
   },
   title: {
     marginLeft: theme.spacing.unit * 1.5,
     paddingRight: theme.spacing.unit * 3,
-    borderRight: "1px solid",
+    borderRight: `2px solid ${theme.asc.lightBorder}`,
 
     [theme.breakpoints.down("md")]: {
       borderRight: "none"
@@ -127,6 +155,7 @@ const AscRef = withStyles(theme => ({
   return (
     <AppWrapper theme={theme}>
       <AppBar
+        color="inherit"
         className={classes.bar}
         toolbarClassName={classes.toolbar}
         onDrawerOpen={setDrawerState(true)}

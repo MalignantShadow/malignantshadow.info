@@ -2,13 +2,12 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { withStyles } from '@material-ui/core/styles'
-import { fade } from '@material-ui/core/styles/colorManipulator'
 import Typography from '@material-ui/core/Typography'
 import LinkIcon from '@material-ui/icons/Link'
 
 import { slug } from "../../lib/routing"
-import { appbarRelativeStyles } from '../../components/common/util'
 
+import Anchor from '../common/Anchor'
 import AscLink from './AscLink'
 
 const mapping = {
@@ -26,38 +25,35 @@ const styles = theme => ({
     alignItems: "flex-end",
     marginBottom: theme.spacing.unit
   },
+  accentText: {
+    color: theme.asc.accent
+  },
   title: {
     alignItems: "baseline"
   },
   h1: {
-    borderBottom: "3px solid"
+    borderBottom: `3px solid ${theme.palette.divider}`
   },
   h2: {
-    borderBottom: "1px solid"
+    borderBottom: `1px solid ${theme.palette.divider}`
   },
   subtitle: {
-    color: fade(theme.palette.getContrastText(theme.palette.background.default), .5),
+    color: theme.asc.accent,
     marginLeft: theme.spacing.unit
   },
   hash: {
-    color: fade(theme.palette.getContrastText(theme.palette.background.default), .5),
+    color: theme.asc.accent2,
     marginLeft: theme.spacing.unit,
     verticalAlign: "baseline",
     display: "flex",
 
     "&:hover": {
-      color: fade(theme.palette.getContrastText(theme.palette.background.default), .75)
+      color: theme.asc.accentText
     }
   },
   caption: {
     fontStyle: "italic",
     marginLeft: theme.spacing.unit * 3
-  },
-  anchor: {
-    ...appbarRelativeStyles(theme, height => ({
-      marginTop: -height - (theme.spacing.unit * 2)
-    })),
-    position: "absolute"
   }
 })
 
@@ -76,14 +72,13 @@ class AscHeading extends React.Component {
     const resolvedId = id || slug(children)
     return (
       <React.Fragment>
-        {/* eslint-disable-next-line */}
-        <a className={classes.anchor} id={resolvedId} />
+        <Anchor id={resolvedId} />
         <div className={classNames(classes.root, {
           [classes.title]: variant === "title",
           [classes.h1]: variant === "h1",
           [classes.h2]: variant === "h2"
         }, className)} {...other} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
-          <Typography variant={mapping[variant]}>{children}</Typography>
+          <Typography variant={mapping[variant]} className={classNames({ [classes.accentText]: variant !== "title" })}>{children}</Typography>
           {subtitle &&
             <Typography variant={mapping.subtitle} className={classes.subtitle}>{subtitle}</Typography>
           }

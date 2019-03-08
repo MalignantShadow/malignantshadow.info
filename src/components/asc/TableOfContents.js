@@ -11,7 +11,7 @@ export default withStyles(theme => ({
       display: "none"
     },
     boxShadow: "none",
-    border: `1px solid ${theme.palette.divider}`
+    ...theme.asc.mixin.metalBorder()
   }
 }))(({ classes, children, className, ...other }) => (
   <Paper square className={classNames(classes.root, className)} {...other}>

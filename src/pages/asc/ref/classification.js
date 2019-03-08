@@ -15,10 +15,12 @@ import {
   DiceTerm,
   GameTerm,
   SkillTerm,
-  TableOfContents
+  TableOfContents,
+  TocItem,
+  AscAvatar,
+  AscSection as Section
 } from '../../../components/asc'
 import { slug } from '../../../lib/routing'
-import { styledTocItem, styledSection, styledStatItem } from '../../../components/asc/util'
 import * as classifications from '../../../lib/asc/game/classifications'
 
 const Features = ({ children, idPrefix, Section }) => (
@@ -87,11 +89,6 @@ export default withStyles(theme => ({
   if (!c) return "Encountered an uh-oh"
   const { name, speed = 35, auraMod, icon: Icon, desc: Desc, traits, intrinsics, features, featureTableExtras, heroes } = c
 
-  const colorSelector = theme => theme.asc.class[id]
-  const Section = styledSection(colorSelector)
-  const TocItem = styledTocItem(colorSelector)
-  const StatItem = styledStatItem(colorSelector)
-
   const upTo20 = new Array(20).fill(0)
 
   const toc = <React.Fragment>
@@ -121,33 +118,14 @@ export default withStyles(theme => ({
     })
   })
 
-  const Table = withStyles(theme => {
-    const color = theme.asc.class[id]
-    const headColor = color[color.table ? color.table : "main"]
-    const modifyCell = {
-      backgroundColor: headColor,
-      color: theme.palette.getContrastText(headColor)
-    }
-    return {
-      cell: {
-        [theme.breakpoints.down("md")]: {
-          paddingLeft: theme.spacing.unit,
-          paddingRight: theme.spacing.unit
-        }
-      },
-      headCell: {
-        ...modifyCell
-      },
-      featureRow: {
-        "&:nth-child(4n+5) td:first-child": {
-          ...modifyCell
-        }
+  const Table = withStyles(theme => ({
+    featureRow: {
+      "&:nth-child(4n+5) td:first-child": {
+        backgroundColor: theme.asc.accent2
       }
     }
-  })(({ classes, features, ...other }) => (
+  }))(({ classes, features, ...other }) => (
     <AscTable classes={{
-      cell: classes.cell,
-      headCell: classes.headCell,
       row: classNames({ [classes.featureRow]: features })
     }} {...other} />
   ))
