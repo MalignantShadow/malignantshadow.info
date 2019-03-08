@@ -93,6 +93,9 @@ const ToolbarButton = withStyles(theme => {
     button: {
       marginLeft: theme.spacing.unit * 3,
       color: theme.asc.accent,
+      padding: 0,
+      height: 54,
+      borderRadius: 0,
 
       "&:not($active):hover": {
         color: theme.asc.accentText
@@ -102,7 +105,8 @@ const ToolbarButton = withStyles(theme => {
       }
     },
     active: {
-      color: "#fff"
+      color: "#fff",
+      borderBottom: `2px solid ${accent}`
     }
   }
 })(withRouter(({ classes, path, title, location }) => {
@@ -133,6 +137,8 @@ const AscRef = withStyles(({
       width: theme.breakpoints.values.lg,
       margin: "auto"
     },
+    minHeight: "unset",
+    height: 50,
     color: "white"
   },
   title: {

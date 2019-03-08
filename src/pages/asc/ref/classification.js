@@ -197,8 +197,13 @@ export default withStyles(theme => ({
         const heroSlug = `hero.${slug(name)}`
         return (
           <React.Fragment key={"hero-" + name}>
-            <AscAvatar src="https://placehold.it/64x64/151515/fff" />
-            <br />
+            <div style={{ display: "flex" }}>
+              <AscAvatar src="https://placehold.it/64/151515/fff?text=H" />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <Typography>{name}</Typography>
+                <Typography>{epithet}</Typography>
+              </div>
+            </div>
             {/* <div className={i > 0 ? classes.heroNameMargin : undefined} />
             <Section id={heroSlug} variant="h1" title={name} subtitle={epithet} className={classes.heroHeading}>
               {quote && <React.Fragment>
