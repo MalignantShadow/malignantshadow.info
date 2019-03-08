@@ -1,3 +1,4 @@
+export { default as AscAvatar } from './AscAvatar'
 export { default as AscPage } from './AscPage'
 export { default as AscHeading } from './AscHeading'
 export { default as AscLink } from './AscLink'
