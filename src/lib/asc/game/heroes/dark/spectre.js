@@ -77,6 +77,14 @@ export default {
     text: "Run, playthings.",
     author: "Evelynn Blake to a group of Freelancers"
   },
+  stats: {
+    region: "Helix",
+    dob: "?",
+    extra: {
+      title: "Favorite Passtime",
+      desc: "Slaughtering the Freebies"
+    }
+  },
   desc: ({ noParagraph }) => (
     <Poem paragraph={!noParagraph}>{[
       "Hush now child, I shall tell you a tale;",
