@@ -24,7 +24,8 @@ export default withStyles(theme => ({
   },
   term: {
     display: "initial",
-    fontSize: "inherit"
+    fontSize: "inherit",
+    textTransform: "none"
   },
   termText: {
     borderBottom: "1px dotted",
