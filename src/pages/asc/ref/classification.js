@@ -51,8 +51,8 @@ export default withStyles(theme => ({
     color: "#fff",
     fontSize: 128,
     float: "left",
-    paddingBottom: theme.spacing.unit * 1.5,
-    marginRight: theme.spacing.unit * 1.5,
+    paddingBottom: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 2,
     borderBottom: `4px solid ${theme.asc.accent}`
   },
   featureHeader: {
