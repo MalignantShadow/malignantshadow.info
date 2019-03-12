@@ -21,12 +21,11 @@ export default withStyles(theme => ({
   },
   content: {
     width: theme.breakpoints.values.lg,
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px`,
     [theme.breakpoints.down('md')]: {
       width: "100%"
     }
   }
-}))(({classes, children}) => (
+}))(({ classes, children }) => (
   <div className={classes.root}>
     <div className={classes.contentWrapper}>
       <div className={classes.content}>

@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { withRouter } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -31,14 +32,20 @@ export default withStyles(theme => ({
   contentWrapper: {
     display: "flex",
     flexDirection: "column",
-    flexGrow: 1,
+    flexGrow: 1
+  },
+  contentShift: {
     [theme.breakpoints.up("md")]: {
       marginLeft: tocWidth + theme.spacing.unit * 3
     }
   },
   content: {
-    marginTop: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 16,
+    margin: `${theme.spacing.unit * 4}px auto ${theme.spacing.unit * 16}px auto`,
+    padding: `0 ${theme.spacing.unit * 8}px`,
+    width: theme.breakpoints.values.md,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
     flexGrow: 1,
     "@media print": {
       marginTop: 0
@@ -79,7 +86,7 @@ export default withStyles(theme => ({
           <TableOfContents className={classes.toc}>{toc}</TableOfContents>
         </Hidden>
       }
-      <div className={classes.contentWrapper}>
+      <div className={classNames(classes.contentWrapper, { [classes.contentShift]: toc })}>
         <div className={classes.wrapper}>
           <SiteBreadcrumbs icon={Asc} className={classes.breadcrumbs} classes={{ link: classes.breadcrumbLink }} {...BreadcrumbProps}>{routing}</SiteBreadcrumbs>
           <div className={classes.stretch} />
