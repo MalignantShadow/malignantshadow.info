@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { withStyles } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core';
 
 export default withStyles(theme => ({
   root: {
@@ -9,10 +10,23 @@ export default withStyles(theme => ({
     height: 64,
     position: "relative"
   },
-  img: {
+  inside: {
     width: "100%",
     height: "100%",
-    clipPath: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%)"
+    backgroundColor: theme.palette.background.paper,
+    clipPath: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%)",
+  },
+  text: {
+    clipPath: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    "& span": {
+      color: theme.asc.accentText,
+      fontWeight: 500,
+      fontSize: theme.typography.pxToRem(20)
+    }
   },
   imgBorder: {
     position: "absolute",
@@ -24,9 +38,15 @@ export default withStyles(theme => ({
     ...theme.asc.mixin.metalBorder("bottom right"),
     borderWidth: 3
   }
-}))(({ classes, className, src }) => (
-  <div className={classNames(classes.root, className)}>
-    <div className={classes.img} style={{ "background": `url(${src})`, backgroundPosition: "center", backgroundRepeat: "no-repeat" }} />
-    <div className={classes.imgBorder} />
-  </div>
-))
+}))(({ classes, children, className, src }) => {
+  const style = { "background": `url(${src})`, backgroundPosition: "center", backgroundRepeat: "no-repeat" }
+  const child = src
+    ? <div className={classes.inside} style={style} />
+    : <div className={classNames(classes.inside, classes.text)}><Typography component="span">{children}</Typography></div>
+  return (
+    <div className={classNames(classes.root, className)}>
+      {child}
+      <div className={classes.imgBorder} />
+    </div>
+  )
+})
