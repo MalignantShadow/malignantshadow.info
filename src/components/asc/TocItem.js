@@ -14,7 +14,10 @@ export default withStyles(theme => ({
 
     "& > span:last-of-type": { //the touchRipple <span>
       left: -3
-    }
+    },
+
+    "&:active, &:hover": { backgroundColor: "transparent" },
+    "&:hover": { borderLeft: `3px solid ${theme.asc.accent}` }
   },
   title: {
     fontSize: theme.typography.pxToRem(18),
